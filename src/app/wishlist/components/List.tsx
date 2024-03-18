@@ -31,6 +31,7 @@ export default function WishlistComponent() {
                   height={0}
                   sizes="100vw"
                   style={{ width: '100%', height: 'auto', padding: '20%' }}
+                  priority
                 />
               </Link>
             </div>

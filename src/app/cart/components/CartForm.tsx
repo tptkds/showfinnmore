@@ -256,6 +256,7 @@ function CartForm() {
                             objectFit: 'contain',
                             minWidth: '56px',
                           }}
+                          priority
                         />
                       </Link>
                     </div>

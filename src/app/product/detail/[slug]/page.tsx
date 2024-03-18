@@ -43,6 +43,7 @@ export default function Detail({ params }: { params: { slug: number } }) {
                   height={0}
                   sizes="100vw"
                   style={{ width: '100%', height: 'auto', padding: '1%' }}
+                  priority
                 />
               ) : (
                 <div className="skeleton w-full h-full"></div>
