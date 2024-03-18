@@ -54,10 +54,7 @@ function CartForm() {
         [target.name]: !checkBoxes[target.name],
       };
       setCheckBoxes(newCheckBoxes);
-      // setCheckBoxes((prevCheckBoxes) => ({
-      //   ...prevCheckBoxes,
-      //   [target.name]: !prevCheckBoxes[target.name],
-      // }));
+
       if (
         Object.keys(newCheckBoxes).filter((key) => !newCheckBoxes[key]).length >
         0
@@ -315,7 +312,9 @@ function CartForm() {
                           id={v}
                           name="deleteOne"
                           onClick={handleClick}
+                          className="tooltip"
                           aria-label="장바구니 아이템 1개 삭제하기"
+                          data-tip="Delete"
                         >
                           <MdDelete style={{ fontSize: '20px' }} />
                         </button>

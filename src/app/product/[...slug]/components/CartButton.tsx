@@ -49,7 +49,12 @@ const CartButton: React.FC<CartButtonProps> = ({ product, cartItems }) => {
   };
 
   return (
-    <button onClick={toggleCartItem} aria-label="장바구니">
+    <button
+      onClick={toggleCartItem}
+      aria-label="장바구니"
+      className="tooltip"
+      data-tip="장바구니 넣기"
+    >
       {cartItems[product.id] ? (
         <PiShoppingBagFill style={{ fontSize: '28px' }} />
       ) : (

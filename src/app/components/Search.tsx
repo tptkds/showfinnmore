@@ -50,10 +50,11 @@ function Search() {
         <button
           name="searching"
           id="searching"
-          className="p-4"
+          className="p-4 tooltip"
           style={{ fontSize: '46px' }}
           onClick={toggleModal}
           aria-label="검색"
+          data-tip="Search"
         >
           <FiSearch />
         </button>
@@ -65,7 +66,7 @@ function Search() {
           <div className="absolute top-10 search-modal-center  bg-white w-11/12 sm:w-8/12 xl:w-1/2 h-80svh overflow-y-auto dark:bg-zinc-900 ">
             <button
               name="downModal"
-              className="absolute right-4 top-4 text-xl"
+              className="absolute right-4 top-4 text-xl "
               onClick={toggleModal}
               aria-label="닫기"
             >
