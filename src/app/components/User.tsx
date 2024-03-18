@@ -53,6 +53,7 @@ export default function User() {
         className="w-full h-full fixed top-0 left-0 hidden transition-all"
         ref={modal}
         role="alertdialog"
+        aria-modal="true"
       >
         <div className="absolute z-50 top-10  shadow-md search-modal-center bg-white w-80 h-32 shadow-lg flex items-center justify-center  overflow-y-auto dark:text-white  dark:bg-zinc-900">
           <p>정상적으로 로그아웃 되었습니다.</p>

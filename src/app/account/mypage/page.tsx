@@ -120,7 +120,7 @@ export default function MyPage() {
     <div className="mt-14 flex flex-col justify-center w-full items-center">
       <h2>마이페이지</h2>
       <div className="my-14 flex flex-col items-center min-w-64">
-        <h3 className=" text-xl">Account Info</h3>
+        <h3 className=" text-xl">내 정보</h3>
 
         <div className="mt-8">
           <div className="flex ">
@@ -132,6 +132,7 @@ export default function MyPage() {
             <p>{currentUser?.email}</p>
           </div>
         </div>
+
         <div className="flex flex-col items-center mt-6 w-full ">
           <button
             name="nameButton"
@@ -157,7 +158,10 @@ export default function MyPage() {
           className="bg-black bg-opacity-30 w-full h-full fixed top-0 left-0 hidden"
           ref={modalBackground}
         >
-          <div className="absolute z-50 top-10  shadow-md search-modal-center bg-white w-96 h-96  overflow-y-auto dark:bg-zinc-800">
+          <div
+            aria-modal="true"
+            className="absolute z-50 top-10  shadow-md search-modal-center bg-white w-96 h-96  overflow-y-auto dark:bg-zinc-800"
+          >
             <button
               name="downModal"
               className="absolute right-4 top-4 text-xl"
