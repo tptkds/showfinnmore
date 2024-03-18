@@ -46,15 +46,18 @@ function Search() {
   if (!isLoaded) return;
   return (
     <>
-      <div className="flex items-center relative w-full " role="search">
+      <div
+        className="flex items-center relative w-full tooltip"
+        role="search"
+        data-tip="Search"
+      >
         <button
           name="searching"
           id="searching"
-          className="p-4 tooltip"
+          className="p-4 "
           style={{ fontSize: '46px' }}
           onClick={toggleModal}
           aria-label="검색"
-          data-tip="Search"
         >
           <FiSearch />
         </button>
@@ -63,7 +66,10 @@ function Search() {
           className="bg-black bg-opacity-30 w-full h-full fixed top-0 left-0 hidden dark:bg-white dark:bg-opacity-30"
           ref={modalBackground}
         >
-          <div className="absolute top-10 search-modal-center  bg-white w-11/12 sm:w-8/12 xl:w-1/2 h-80svh overflow-y-auto dark:bg-zinc-900 ">
+          <div
+            aria-modal="true"
+            className="absolute top-10 search-modal-center  bg-white w-11/12 sm:w-8/12 xl:w-1/2 h-80svh overflow-y-auto dark:bg-zinc-900 "
+          >
             <button
               name="downModal"
               className="absolute right-4 top-4 text-xl "

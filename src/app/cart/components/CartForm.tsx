@@ -390,7 +390,7 @@ function CartForm() {
           <div className="flex mt-8 ">
             <button
               // onClick={purchase}
-              className="w-full bg-zinc-900 dark:hover:bg-zinc-200 dark:bg-white dark:disabled:bg-zinc-400 p-4 text-white dark:text-black  rounded hover:bg-zinc-700 transition disabled:bg-zinc-400"
+              className="w-full bg-zinc-900 dark:hover:bg-zinc-200 dark:bg-white dark:disabled:bg-zinc-400 py-2 px-8 text-white dark:text-black  rounded hover:bg-zinc-700 transition disabled:bg-zinc-400"
               aria-label="선택한 장바구니 아이템 구매하기"
             >
               구매하기

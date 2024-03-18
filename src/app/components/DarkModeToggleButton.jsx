@@ -20,18 +20,15 @@ export default function DarkModeToggleButton() {
   };
   return (
     <>
-      <button
-        onClick={themeToggle}
-        aria-label="다크모드 테마 변경"
-        className="tooltip"
-        data-tip="Dark Mode"
-      >
-        {theme === 'light' ? (
-          <IoIosSunny style={{ fontSize: '22px' }} />
-        ) : (
-          <IoIosMoon style={{ fontSize: '20px' }} />
-        )}
-      </button>
+      <div className="tooltip flex itesm-center" data-tip="Dark Mode">
+        <button onClick={themeToggle} aria-label="다크모드 테마 변경">
+          {theme === 'light' ? (
+            <IoIosSunny style={{ fontSize: '22px' }} />
+          ) : (
+            <IoIosMoon style={{ fontSize: '20px' }} />
+          )}
+        </button>
+      </div>
     </>
   );
 }
