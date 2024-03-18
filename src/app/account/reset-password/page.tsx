@@ -80,6 +80,7 @@ export default function ResetPassword() {
             type="submit"
             disabled={isResetting}
             className="h-12  bg-zinc-900 dark:bg-white dark:text-black dark:hover:bg-zinc-300  text-white transition duration-200 ease-in-out  w-11/12 sm:w-4/5 md:w-1/2 lg:w-2/5 xl:w-1/3"
+            aria-label="비밀번호 재설정하기"
           >
             {isResetting ? '이메일 보내는 중..' : '비밀번호 재설정'}
           </button>
@@ -88,6 +89,7 @@ export default function ResetPassword() {
       <div
         className="w-full h-full fixed top-0 left-0 hidden transition-all"
         ref={modal}
+        role="alertdialog"
       >
         <div className="absolute z-50 top-10  shadow-md search-modal-center bg-white w-96 h-32 shadow-lg flex items-center justify-center  overflow-y-auto dark:text-white  dark:bg-zinc-900">
           <p>비밀번호 재설정 이메일이 전송되었습니다.</p>

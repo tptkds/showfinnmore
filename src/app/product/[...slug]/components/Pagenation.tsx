@@ -30,6 +30,7 @@ const Pagination: React.FC = () => {
           onClick={() => movePage(currentPage - 1)}
           disabled={currentPage === 1}
           style={{ fontSize: '20px' }}
+          aria-label="다음 페이지"
         >
           <FiChevronLeft />
         </button>
@@ -41,6 +42,7 @@ const Pagination: React.FC = () => {
               className="disabled:text-zinc-300 text-black  text-base dark:text-white dark:disabled:text-zinc-300"
               onClick={() => movePage(page)}
               disabled={page === currentPage}
+              aria-label={`${page} page`}
             >
               {page}
             </button>
@@ -54,6 +56,7 @@ const Pagination: React.FC = () => {
           onClick={() => movePage(currentPage + 1)}
           disabled={currentPage === totalPages}
           style={{ fontSize: '20px' }}
+          aria-label="이전 페이지"
         >
           <FiChevronRight />
         </button>

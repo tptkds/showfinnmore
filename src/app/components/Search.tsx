@@ -46,13 +46,14 @@ function Search() {
   if (!isLoaded) return;
   return (
     <>
-      <div className="flex items-center relative w-full ">
+      <div className="flex items-center relative w-full " role="search">
         <button
           name="searching"
           id="searching"
           className="p-4"
           style={{ fontSize: '46px' }}
           onClick={toggleModal}
+          aria-label="검색"
         >
           <FiSearch />
         </button>
@@ -66,6 +67,7 @@ function Search() {
               name="downModal"
               className="absolute right-4 top-4 text-xl"
               onClick={toggleModal}
+              aria-label="닫기"
             >
               <IoCloseSharp />
             </button>

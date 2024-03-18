@@ -35,6 +35,7 @@ export default function AddCartButton({ item }: { item: Product }) {
     <>
       <button
         onClick={handleClick}
+        aria-label="장바구니에 담기"
         className="mt-4 w-full lg:w-1/2  bg-zinc-900 dark:hover:bg-zinc-200 dark:bg-white dark:disabled:bg-zinc-400 p-4 text-white dark:text-black  rounded hover:bg-zinc-700 transition disabled:bg-zinc-400"
       >
         장바구니에 담기
@@ -42,10 +43,13 @@ export default function AddCartButton({ item }: { item: Product }) {
       <div
         className="absolute flex flex-col modal-center shadow-md items-center pt-8 z-30 rounded-box hidden w-96 "
         ref={modal}
+        aria-modal="true"
+        role="alertdialog"
       >
         <p className=" mb-4">상품이 장바구니에 담겼어요.</p>
         <div className="flex flex-row w-full">
           <button
+            aria-label="장바구니로 이동"
             name="goCart"
             onClick={handleClick}
             className="mr-8  bg-zinc-900 dark:hover:bg-zinc-200 dark:bg-white w-1/2 dark:disabled:bg-zinc-400 py-2 px-4 text-white dark:text-black rounded hover:bg-zinc-700 transition disabled:bg-zinc-400"
@@ -53,6 +57,7 @@ export default function AddCartButton({ item }: { item: Product }) {
             장바구니로 이동
           </button>
           <button
+            aria-label="계속 쇼핑하기"
             name="continueShopping"
             onClick={handleClick}
             className="w-1/2 bg-zinc-900 dark:hover:bg-zinc-200 dark:bg-white dark:disabled:bg-zinc-400 py-2 px-4 text-white dark:text-black  rounded hover:bg-zinc-700 transition disabled:bg-zinc-400"
