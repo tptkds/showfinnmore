@@ -119,6 +119,7 @@ function Form() {
             type="submit"
             className="dark:bg-white dark:text-black dark:hover:bg-zinc-300 h-12 bg-zinc-900   text-white  transition duration-200 ease-in-out  w-11/12 sm:w-4/5 md:w-1/2 lg:w-2/5 xl:w-1/3"
             disabled={isRegistering}
+            aria-label="회원가입하기"
           >
             {isRegistering ? '회원가입 중...' : '회원가입하기'}
           </button>

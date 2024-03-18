@@ -138,6 +138,7 @@ export default function MyPage() {
             type="button"
             className="h-12  dark:bg-white dark:text-black dark:hover:bg-zinc-300  bg-zinc-900 hover:bg-zinc-700 text-white transition duration-200 ease-in-out w-full"
             onClick={toggleModal}
+            aria-label="이름 변경하기"
           >
             이름 변경
           </button>
@@ -146,6 +147,7 @@ export default function MyPage() {
             type="button"
             className="mt-4 h-12  dark:bg-white dark:text-black dark:hover:bg-zinc-300  bg-zinc-900 hover:bg-zinc-700 text-white transition duration-200 ease-in-out w-full"
             onClick={toggleModal}
+            aria-label="패스워드 변경하기"
           >
             패스워드 변경
           </button>
@@ -160,6 +162,7 @@ export default function MyPage() {
               name="downModal"
               className="absolute right-4 top-4 text-xl"
               onClick={toggleModal}
+              aria-label="닫기"
             >
               <IoCloseSharp />
             </button>
@@ -194,6 +197,7 @@ export default function MyPage() {
                 className="h-12 mt-4 dark:bg-white dark:text-black dark:hover:bg-zinc-300    bg-zinc-900 hover:bg-zinc-700 text-white transition duration-200 ease-in-out w-full"
                 onClick={changeSomething}
                 disabled={isUpdating}
+                aria-label="변경하기"
               >
                 {isUpdating
                   ? '변경 중...'

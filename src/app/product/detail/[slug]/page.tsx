@@ -60,6 +60,7 @@ export default function Detail({ params }: { params: { slug: number } }) {
           <p>${curItem?.price}</p>
           <div className="flex flex-col mt-4 text-sm sm:mt-16 items-center">
             <button
+              aria-label="바로 구매하기"
               onClick={purchase}
               className="mt-4 w-full lg:w-1/2 bg-zinc-900 dark:hover:bg-zinc-200 dark:bg-white dark:disabled:bg-zinc-400 p-4 text-white dark:text-black  rounded hover:bg-zinc-700 transition disabled:bg-zinc-400"
             >

@@ -48,12 +48,7 @@ const List: React.FC = () => {
             </Link>
           </div>
           <div>
-            <Link
-              href={`/product/detail/${product.id}`}
-              className="text-lg font-semibold"
-            >
-              {product.title}
-            </Link>
+            <Link href={`/product/detail/${product.id}`}>{product.title}</Link>
             <p className="my-2">${product.price}</p>
           </div>
           <div className="flex">

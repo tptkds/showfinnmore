@@ -54,10 +54,7 @@ function CartForm() {
         [target.name]: !checkBoxes[target.name],
       };
       setCheckBoxes(newCheckBoxes);
-      // setCheckBoxes((prevCheckBoxes) => ({
-      //   ...prevCheckBoxes,
-      //   [target.name]: !prevCheckBoxes[target.name],
-      // }));
+
       if (
         Object.keys(newCheckBoxes).filter((key) => !newCheckBoxes[key]).length >
         0
@@ -278,6 +275,8 @@ function CartForm() {
                           name="decrement"
                           onClick={(e) => decrement(e, v)}
                           className="p-2"
+                          aria-controls="number"
+                          aria-label="1 빼기"
                         >
                           -
                         </button>
@@ -287,12 +286,15 @@ function CartForm() {
                           value={cartItems[v].count}
                           data-hs-input-number-input
                           readOnly
+                          aria-live="assertive"
                         />
                         <button
                           type="button"
                           name="increment"
                           className="p-2"
                           onClick={(e) => increment(e, v)}
+                          aria-controls="number"
+                          aria-label="1 더하기"
                         >
                           +
                         </button>
@@ -306,7 +308,14 @@ function CartForm() {
                         </p>
                       </div>
                       <div className=" w-full md:w-1/5 whitespace-pre-line=true  flex justify-end  items-center md:w-1/4">
-                        <button id={v} name="deleteOne" onClick={handleClick}>
+                        <button
+                          id={v}
+                          name="deleteOne"
+                          onClick={handleClick}
+                          className="tooltip"
+                          aria-label="장바구니 아이템 1개 삭제하기"
+                          data-tip="Delete"
+                        >
                           <MdDelete style={{ fontSize: '20px' }} />
                         </button>
                       </div>
@@ -323,6 +332,7 @@ function CartForm() {
                 onClick={handleClick}
                 className="mt-4 bg-zinc-900 dark:hover:bg-zinc-200 dark:bg-white dark:disabled:bg-zinc-400 py-2 px-4 text-white dark:text-black text-xs rounded hover:bg-zinc-700 transition disabled:bg-zinc-400"
                 disabled={cartItemKeys.length === 0}
+                aria-label="선택한 장바구니 아이템 삭제하기"
               >
                 선택 삭제
               </button>
@@ -381,6 +391,7 @@ function CartForm() {
             <button
               // onClick={purchase}
               className="w-full bg-zinc-900 dark:hover:bg-zinc-200 dark:bg-white dark:disabled:bg-zinc-400 p-4 text-white dark:text-black  rounded hover:bg-zinc-700 transition disabled:bg-zinc-400"
+              aria-label="선택한 장바구니 아이템 구매하기"
             >
               구매하기
             </button>

@@ -1,5 +1,4 @@
 import React from 'react';
-import Search from './Search';
 import User from './User';
 import LogoLink from './LogoLink';
 import Menu from './Menu';
