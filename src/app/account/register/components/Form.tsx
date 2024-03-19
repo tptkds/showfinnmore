@@ -6,7 +6,8 @@ import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { AppDispatch } from '@/types/reduxTypes';
 import { setUserInfo } from '@/slices/userSlice';
 import { useRouter } from 'next/navigation';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
+import { setCartItems, setWishlist } from '@/slices/productSlict';
 
 const Form: React.FC = () => {
   const [name, setName] = useState<string>('');
@@ -41,11 +42,14 @@ const Form: React.FC = () => {
             displayName: name,
           });
           dispatch(setUserInfo(user));
-          addDoc(collection(db, 'users'), {
+          setDoc(doc(db, 'users', email), {
             wishlist: {},
             cartItems: {},
             //  purchaseList: {},
           });
+
+          dispatch(setWishlist({}));
+          dispatch(setCartItems({}));
           router.push('/');
         })
         .catch((error) => {
@@ -70,7 +74,7 @@ const Form: React.FC = () => {
               setError('잘못된 요청이에요.');
               return;
             default:
-              setError('회원가입에 실패했어요.');
+              setError('회원가입에 실패했어요.' + errorCode);
               return;
           }
         });
