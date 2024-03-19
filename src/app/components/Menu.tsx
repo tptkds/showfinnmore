@@ -21,7 +21,10 @@ export default function Menu() {
   };
   return (
     <>
-      <div className="tooltip" data-tip="Menu">
+      <div
+      //className="tooltip"
+      //data-tip="Menu"
+      >
         <button
           type="button"
           className="flex lg:hidden ml-8 lg:m-0 h-full items-center "

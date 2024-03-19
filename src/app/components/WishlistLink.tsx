@@ -5,7 +5,10 @@ import { PiHeartStraightFill } from 'react-icons/pi';
 
 export default function WishlistLink() {
   return (
-    <div className="tooltip flex items-center " data-tip="Wish List">
+    <div
+      className=" flex items-center "
+      //data-tip="Wish List"
+    >
       <Link href="/wishlist" className="flex items-center">
         <PiHeartStraightFill
           className=" xl:mr-2"

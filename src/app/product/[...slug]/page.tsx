@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import { setCurrentPage, setCategory } from '@/slices/productSlict';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
@@ -15,7 +15,7 @@ export default function Product({ params }: { params: { slug: string } }) {
   const curCategory: string = params.slug[0];
   const curPage: number = Number(params.slug[1]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (prevCategory !== curCategory) dispatch(setCategory(curCategory));
     if (curPage === undefined || curPage === null) dispatch(setCurrentPage(1));
     dispatch(setCurrentPage(curPage));

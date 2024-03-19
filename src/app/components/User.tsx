@@ -31,7 +31,10 @@ export default function User() {
   return (
     <>
       {currentUser ? (
-        <div className="tooltip flex items-center " data-tip="Logout">
+        <div
+          className=" flex items-center "
+          //data-tip="Logout"
+        >
           <button
             onClick={logout}
             className="flex items-center"
@@ -42,7 +45,10 @@ export default function User() {
           </button>
         </div>
       ) : (
-        <div className="tooltip flex items-center " data-tip="Login">
+        <div
+          className=" flex items-center "
+          // data-tip="Login"
+        >
           <Link href="/account/login" className="flex items-center">
             <RiLoginBoxFill className="xl:mr-2" style={{ fontSize: '20px' }} />
             <p className="hidden xl:block">Login</p>

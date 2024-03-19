@@ -12,7 +12,7 @@ import {
 import { doc, updateDoc } from 'firebase/firestore';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useLayoutEffect, useState } from 'react';
 import { MdDelete } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 interface CheckBoxes {
@@ -20,179 +20,179 @@ interface CheckBoxes {
 }
 
 function CartForm() {
-  const dispatch = useDispatch();
-  const [checkBoxes, setCheckBoxes] = useState<CheckBoxes>({});
-  const [checkAllBox, setCheckAllBox] = useState<boolean>(false);
-  const { currentUser } = useContext(AuthContext);
-  const cartItems: CartItems = useAppSelector(
-    (state) => state.product.cartItems
-  );
+  // const dispatch = useDispatch();
+  // const [checkBoxes, setCheckBoxes] = useState<CheckBoxes>({});
+  // const [checkAllBox, setCheckAllBox] = useState<boolean>(false);
+  // const { currentUser } = useContext(AuthContext);
+  // const cartItems: CartItems = useAppSelector(
+  //   (state) => state.product.cartItems
+  // );
 
-  let cartItemKeys: string[] = cartItems && Object.keys(cartItems);
-  useEffect(() => {
-    let checkBoxesData: { [key: string]: boolean } = {};
-    Object.keys(cartItems).forEach((key) => {
-      checkBoxesData[key] = true;
-    });
-    setCheckBoxes(checkBoxesData);
-    setCheckAllBox(true);
-  }, []);
+  // let cartItemKeys: string[] = cartItems && Object.keys(cartItems);
+  // useLayoutEffect(() => {
+  //   let checkBoxesData: { [key: string]: boolean } = {};
+  //   Object.keys(cartItems).forEach((key) => {
+  //     checkBoxesData[key] = true;
+  //   });
+  //   setCheckBoxes(checkBoxesData);
+  //   setCheckAllBox(true);
+  // }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const target = e.target;
+  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const target = e.target;
 
-    if (target.name === 'all') {
-      const newCheckAllBox = !checkAllBox;
-      const newCheckBoxes: CheckBoxes = {};
+  //   if (target.name === 'all') {
+  //     const newCheckAllBox = !checkAllBox;
+  //     const newCheckBoxes: CheckBoxes = {};
 
-      cartItemKeys.forEach((key) => (newCheckBoxes[key] = newCheckAllBox));
-      setCheckBoxes(newCheckBoxes);
-      setCheckAllBox(newCheckAllBox);
-    } else {
-      const newCheckBoxes = {
-        ...checkBoxes,
-        [target.name]: !checkBoxes[target.name],
-      };
-      setCheckBoxes(newCheckBoxes);
+  //     cartItemKeys.forEach((key) => (newCheckBoxes[key] = newCheckAllBox));
+  //     setCheckBoxes(newCheckBoxes);
+  //     setCheckAllBox(newCheckAllBox);
+  //   } else {
+  //     const newCheckBoxes = {
+  //       ...checkBoxes,
+  //       [target.name]: !checkBoxes[target.name],
+  //     };
+  //     setCheckBoxes(newCheckBoxes);
 
-      if (
-        Object.keys(newCheckBoxes).filter((key) => !newCheckBoxes[key]).length >
-        0
-      )
-        setCheckAllBox(false);
-      else setCheckAllBox(true);
-    }
-  };
+  //     if (
+  //       Object.keys(newCheckBoxes).filter((key) => !newCheckBoxes[key]).length >
+  //       0
+  //     )
+  //       setCheckAllBox(false);
+  //     else setCheckAllBox(true);
+  //   }
+  // };
 
-  const handleClick = (
-    e: React.MouseEvent<HTMLButtonElement>,
-    key: string | null = null
-  ) => {
-    e.preventDefault();
-    const target = e.target as HTMLButtonElement;
-    let newItems = { ...cartItems };
+  // const handleClick = (
+  //   e: React.MouseEvent<HTMLButtonElement>,
+  //   key: string | null = null
+  // ) => {
+  //   e.preventDefault();
+  //   const target = e.target as HTMLButtonElement;
+  //   let newItems = { ...cartItems };
 
-    if (target?.name === 'deleteMany') {
-      const keys: string[] = Object.keys(checkBoxes).filter(
-        (key) => checkBoxes[key]
-      );
-      if (currentUser) {
-        let newCartItems: CartItems = {
-          ...cartItems,
-        };
-        keys.forEach((key) => {
-          delete newCartItems[key];
-        });
-        newItems = newCartItems;
-        let userRef = null;
-        if (currentUser?.email) userRef = doc(db, 'users', currentUser?.email);
-        if (userRef)
-          updateDoc(userRef, {
-            cartItems: newCartItems,
-          });
-        let checkBoxesData: { [key: string]: boolean } = {};
-        Object.keys(newCartItems).forEach((key) => {
-          checkBoxesData[key] = true;
-        });
-        setCheckBoxes(checkBoxesData);
-        setCheckAllBox(true);
+  //   if (target?.name === 'deleteMany') {
+  //     const keys: string[] = Object.keys(checkBoxes).filter(
+  //       (key) => checkBoxes[key]
+  //     );
+  //     if (currentUser) {
+  //       let newCartItems: CartItems = {
+  //         ...cartItems,
+  //       };
+  //       keys.forEach((key) => {
+  //         delete newCartItems[key];
+  //       });
+  //       newItems = newCartItems;
+  //       let userRef = null;
+  //       if (currentUser?.email) userRef = doc(db, 'users', currentUser?.email);
+  //       if (userRef)
+  //         updateDoc(userRef, {
+  //           cartItems: newCartItems,
+  //         });
+  //       let checkBoxesData: { [key: string]: boolean } = {};
+  //       Object.keys(newCartItems).forEach((key) => {
+  //         checkBoxesData[key] = true;
+  //       });
+  //       setCheckBoxes(checkBoxesData);
+  //       setCheckAllBox(true);
 
-        dispatch(setCartItems(newItems));
-        console.log(checkBoxes);
-      } else {
-        deleteCartItemsLocalStorage(keys);
-        newItems = getCartItemsLocalStorage();
-        dispatch(setCartItems(newItems));
-        let checkBoxesData: { [key: string]: boolean } = {};
-        Object.keys(newItems).forEach((key) => {
-          checkBoxesData[key] = true;
-        });
-        setCheckBoxes(checkBoxesData);
-        setCheckAllBox(true);
-      }
-    } else if (target?.name === 'deleteOne') {
-      if (currentUser) {
-        let newCartItems: CartItems = {
-          ...cartItems,
-        };
-        delete newCartItems[target.id];
-        newItems = newCartItems;
-        let userRef = null;
-        if (currentUser?.email) userRef = doc(db, 'users', currentUser?.email);
-        if (userRef)
-          updateDoc(userRef, {
-            cartItems: newCartItems,
-          });
-        let checkBoxesData: { [key: string]: boolean } = {};
-        Object.keys(newCartItems).forEach((key) => {
-          checkBoxesData[key] = true;
-        });
-        setCheckBoxes(checkBoxesData);
-        setCheckAllBox(true);
+  //       dispatch(setCartItems(newItems));
+  //       console.log(checkBoxes);
+  //     } else {
+  //       deleteCartItemsLocalStorage(keys);
+  //       newItems = getCartItemsLocalStorage();
+  //       dispatch(setCartItems(newItems));
+  //       let checkBoxesData: { [key: string]: boolean } = {};
+  //       Object.keys(newItems).forEach((key) => {
+  //         checkBoxesData[key] = true;
+  //       });
+  //       setCheckBoxes(checkBoxesData);
+  //       setCheckAllBox(true);
+  //     }
+  //   } else if (target?.name === 'deleteOne') {
+  //     if (currentUser) {
+  //       let newCartItems: CartItems = {
+  //         ...cartItems,
+  //       };
+  //       delete newCartItems[target.id];
+  //       newItems = newCartItems;
+  //       let userRef = null;
+  //       if (currentUser?.email) userRef = doc(db, 'users', currentUser?.email);
+  //       if (userRef)
+  //         updateDoc(userRef, {
+  //           cartItems: newCartItems,
+  //         });
+  //       let checkBoxesData: { [key: string]: boolean } = {};
+  //       Object.keys(newCartItems).forEach((key) => {
+  //         checkBoxesData[key] = true;
+  //       });
+  //       setCheckBoxes(checkBoxesData);
+  //       setCheckAllBox(true);
 
-        dispatch(setCartItems(newItems));
-      } else {
-        deleteCartItemsLocalStorage([target.id]);
-        newItems = getCartItemsLocalStorage();
-        dispatch(setCartItems(newItems));
-        let checkBoxesData: { [key: string]: boolean } = {};
-        Object.keys(newItems).forEach((key) => {
-          checkBoxesData[key] = true;
-        });
-        setCheckBoxes(checkBoxesData);
-        setCheckAllBox(true);
-      }
-    } else {
-      return;
-    }
-  };
+  //       dispatch(setCartItems(newItems));
+  //     } else {
+  //       deleteCartItemsLocalStorage([target.id]);
+  //       newItems = getCartItemsLocalStorage();
+  //       dispatch(setCartItems(newItems));
+  //       let checkBoxesData: { [key: string]: boolean } = {};
+  //       Object.keys(newItems).forEach((key) => {
+  //         checkBoxesData[key] = true;
+  //       });
+  //       setCheckBoxes(checkBoxesData);
+  //       setCheckAllBox(true);
+  //     }
+  //   } else {
+  //     return;
+  //   }
+  // };
 
-  const decrement = (e: any, key: string) => {
-    if (key) {
-      if (cartItems[key].count - 1 < 1) return;
-      const newItem = {
-        [key]: {
-          product: cartItems[key].product,
-          count: cartItems[key].count - 1,
-        },
-      };
-      const newCartItems = { ...cartItems, ...newItem };
-      const newItems = newCartItems;
-      dispatch(setCartItems(newItems));
-      if (currentUser) {
-        let userRef = null;
-        if (currentUser?.email) userRef = doc(db, 'users', currentUser?.email);
-        if (userRef)
-          updateDoc(userRef, {
-            cartItems: newCartItems,
-          });
-      } else setCartItemsLocalStorage(newCartItems);
-      dispatch(setCartItems(newItems));
-    }
-  };
-  const increment = (e: any, key: string) => {
-    setCheckAllBox(true);
-    if (key) {
-      const newItem = {
-        [key]: {
-          product: cartItems[key].product,
-          count: cartItems[key].count + 1,
-        },
-      };
-      const newCartItems = { ...cartItems, ...newItem };
-      const newItems = newCartItems;
+  // const decrement = (e: any, key: string) => {
+  //   if (key) {
+  //     if (cartItems[key].count - 1 < 1) return;
+  //     const newItem = {
+  //       [key]: {
+  //         product: cartItems[key].product,
+  //         count: cartItems[key].count - 1,
+  //       },
+  //     };
+  //     const newCartItems = { ...cartItems, ...newItem };
+  //     const newItems = newCartItems;
+  //     dispatch(setCartItems(newItems));
+  //     if (currentUser) {
+  //       let userRef = null;
+  //       if (currentUser?.email) userRef = doc(db, 'users', currentUser?.email);
+  //       if (userRef)
+  //         updateDoc(userRef, {
+  //           cartItems: newCartItems,
+  //         });
+  //     } else setCartItemsLocalStorage(newCartItems);
+  //     dispatch(setCartItems(newItems));
+  //   }
+  // };
+  // const increment = (e: any, key: string) => {
+  //   setCheckAllBox(true);
+  //   if (key) {
+  //     const newItem = {
+  //       [key]: {
+  //         product: cartItems[key].product,
+  //         count: cartItems[key].count + 1,
+  //       },
+  //     };
+  //     const newCartItems = { ...cartItems, ...newItem };
+  //     const newItems = newCartItems;
 
-      if (currentUser) {
-        let userRef = null;
-        if (currentUser?.email) userRef = doc(db, 'users', currentUser?.email);
-        if (userRef)
-          updateDoc(userRef, {
-            cartItems: newCartItems,
-          });
-      } else setCartItemsLocalStorage(newCartItems);
-      dispatch(setCartItems(newItems));
-    }
-  };
+  //     if (currentUser) {
+  //       let userRef = null;
+  //       if (currentUser?.email) userRef = doc(db, 'users', currentUser?.email);
+  //       if (userRef)
+  //         updateDoc(userRef, {
+  //           cartItems: newCartItems,
+  //         });
+  //     } else setCartItemsLocalStorage(newCartItems);
+  //     dispatch(setCartItems(newItems));
+  //   }
+  // };
 
   return (
     <>
@@ -312,9 +312,9 @@ function CartForm() {
                           id={v}
                           name="deleteOne"
                           onClick={handleClick}
-                          className="tooltip"
+                          // className="tooltip"
                           aria-label="장바구니 아이템 1개 삭제하기"
-                          data-tip="Delete"
+                          // data-tip="Delete"
                         >
                           <MdDelete style={{ fontSize: '20px' }} />
                         </button>

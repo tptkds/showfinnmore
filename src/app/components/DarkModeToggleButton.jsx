@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
 import '@theme-toggles/react/css/Classic.css';
 import { IoIosMoon, IoIosSunny } from 'react-icons/io';
@@ -8,7 +8,7 @@ export default function DarkModeToggleButton() {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setMounted(true);
   }, []);
 
@@ -20,7 +20,10 @@ export default function DarkModeToggleButton() {
   };
   return (
     <>
-      <div className="tooltip flex itesm-center" data-tip="Dark Mode">
+      <div
+        className=" flex itesm-center"
+        //data-tip="Dark Mode"
+      >
         <button onClick={themeToggle} aria-label="다크모드 테마 변경">
           {theme === 'light' ? (
             <IoIosSunny style={{ fontSize: '22px' }} />

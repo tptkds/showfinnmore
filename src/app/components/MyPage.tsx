@@ -3,7 +3,10 @@ import { BiSolidUserRectangle } from 'react-icons/bi';
 
 export default function MyPage() {
   return (
-    <div className="tooltip flex items-center " data-tip="My Page">
+    <div
+      className=" flex items-center "
+      //data-tip="My Page"
+    >
       <Link href="/account/mypage" className="flex items-center">
         <BiSolidUserRectangle
           className="xl:mr-2"

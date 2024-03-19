@@ -47,9 +47,9 @@ function Search() {
   return (
     <>
       <div
-        className="flex items-center relative w-full tooltip"
+        className="flex items-center relative w-full "
         role="search"
-        data-tip="Search"
+        //data-tip="Search"
       >
         <button
           name="searching"

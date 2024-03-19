@@ -45,8 +45,8 @@ const WishlistButton: React.FC<WishlistButtonProps> = ({
     <button
       onClick={toggleWishlist}
       aria-label="찜"
-      data-tip="찜하기"
-      className="tooltip"
+      // data-tip="찜"
+      // className="tooltip"
     >
       {wishlist[product.id] ? (
         <PiHeartFill style={{ fontSize: '28px' }} />
