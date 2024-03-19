@@ -4,7 +4,11 @@ import { auth, db } from './firebaseConfig';
 import { User } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
-import { setCartItems, setWishlist } from '@/slices/productSlict';
+import {
+  setCartItems,
+  setPurchaseItems,
+  setWishlist,
+} from '@/slices/productSlict';
 
 interface AuthContextProps {
   currentUser: User | null;
@@ -46,8 +50,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       }
       getUserSnapshot(user).then((userData) => {
         if (userData) {
-          dispatch(setWishlist(userData.wishlist || []));
-          dispatch(setCartItems(userData.cartItems || []));
+          dispatch(setWishlist(userData.wishlist || {}));
+          dispatch(setCartItems(userData.cartItems || {}));
+          dispatch(setPurchaseItems(userData.purchaseList || {}));
         }
         setLoading(false);
       });

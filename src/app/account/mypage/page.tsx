@@ -7,6 +7,7 @@ import { updatePassword, updateProfile } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import React, { useContext, useLayoutEffect, useRef, useState } from 'react';
 import { IoCloseSharp } from 'react-icons/io5';
+import PurchaseListButton from './component/PurcahseListButton';
 
 const MyPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -153,6 +154,7 @@ const MyPage: React.FC = () => {
           >
             패스워드 변경
           </button>
+          <PurchaseListButton />
         </div>
 
         <div

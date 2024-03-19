@@ -22,27 +22,38 @@ const PurchaseButton: React.FC<PurchaseButtonProps> = ({
 }) => {
   const { currentUser } = useContext(AuthContext);
   const cartItems = useAppSelector((state) => state.product.cartItems);
+  const purchaseList = useAppSelector((state) => state.product.purchaseList);
   const dispatch = useAppDispatch();
   const purchase = () => {
+    if (!currentUser) {
+      // deleteCartItemsLocalStorage(keys);
+      // const newItems = getCartItemsLocalStorage();
+      // dispatch(setCartItems(newItems));
+      // let checkBoxesData: { [key: string]: boolean } = {};
+      // Object.keys(newItems).forEach((key) => {
+      //   checkBoxesData[key] = true;
+      // });
+      // setCheckAllBoxes(true);
+      alert('로그인이 필요한 서비스입니다.');
+      return;
+    }
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = ('0' + (today.getMonth() + 1)).slice(-2);
+    const day = ('0' + today.getDate()).slice(-2);
+    const dateString = year + '-' + month + '-' + day;
+
     const keys: string[] = Object.keys(checkBoxes).filter(
       (key) => checkBoxes[key]
     );
-    if (!currentUser) {
-      deleteCartItemsLocalStorage(keys);
-      const newItems = getCartItemsLocalStorage();
-      dispatch(setCartItems(newItems));
-      let checkBoxesData: { [key: string]: boolean } = {};
-      Object.keys(newItems).forEach((key) => {
-        checkBoxesData[key] = true;
-      });
-      setCheckAllBoxes(true);
-      alert('구매가 완료되었습니다.');
-      return;
-    }
+
+    let purchases: any = {};
+    keys.forEach((key) => (purchases[key] = { ...cartItems[key] }));
 
     let newCartItems: CartItems = {
       ...cartItems,
     };
+
     keys.forEach((key) => {
       delete newCartItems[key];
     });
@@ -52,11 +63,20 @@ const PurchaseButton: React.FC<PurchaseButtonProps> = ({
     if (userRef)
       updateDoc(userRef, {
         cartItems: { ...newCartItems },
+        purchaseList: {
+          ...purchaseList,
+
+          [today.getMilliseconds() + Math.random() * 1000]: {
+            date: dateString,
+            products: purchases,
+          },
+        },
       });
     dispatch(setCartItems({ ...newCartItems }));
     setCheckAllBoxes(true);
     alert('구매가 완료되었습니다.');
   };
+
   return (
     <div className="flex mt-8 ">
       <button

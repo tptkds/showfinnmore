@@ -5,6 +5,8 @@ import { useAppSelector } from '@/hooks/useAppSelector';
 import { Product } from '@/types/globalTypes';
 import AddCartButton from './components/AddCartButton';
 import { AuthContext } from '@/app/AuthProvider';
+import { doc, updateDoc } from 'firebase/firestore';
+import { db } from '@/app/firebaseConfig';
 interface DetailProps {
   params: {
     slug: string;
@@ -14,6 +16,8 @@ interface DetailProps {
 const Detail: React.FC<DetailProps> = ({ params }) => {
   const [curItem, setCurItem] = useState<Product | undefined>();
   const { currentUser } = useContext(AuthContext);
+  const purchaseList = useAppSelector((state) => state.product.purchaseList);
+
   const productList: Product[] = useAppSelector(
     (state) => state.product.productList
   );
@@ -28,9 +32,31 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
 
   const purchase = () => {
     if (!currentUser) {
-      alert('로그인이 필요한 기능입니다.');
+      alert('로그인이 필요한 서비스입니다.');
       return;
     }
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = ('0' + (today.getMonth() + 1)).slice(-2);
+    const day = ('0' + today.getDate()).slice(-2);
+    const dateString = year + '-' + month + '-' + day;
+
+    let purchase: any = { product: curItem, count: 1 };
+
+    let userRef = null;
+    if (currentUser?.email) userRef = doc(db, 'users', currentUser?.email);
+    if (userRef)
+      updateDoc(userRef, {
+        purchaseList: {
+          ...purchaseList,
+
+          [today.getMilliseconds() + Math.random() * 1000]: {
+            date: dateString,
+            products: purchase,
+          },
+        },
+      });
+
     alert('구매가 완료되었습니다.');
   };
 
