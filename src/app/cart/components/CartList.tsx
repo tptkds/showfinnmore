@@ -13,7 +13,6 @@ const CartList: React.FC = () => {
   const cartItems: CartItems = useAppSelector(
     (state) => state.product.cartItems
   );
-  // const [cartItemKeys, setCartItemKeys] = useState<string[]>([]);
   const cartItemKeys = useMemo(() => Object.keys(cartItems), [cartItems]);
 
   useEffect(() => {
@@ -23,7 +22,6 @@ const CartList: React.FC = () => {
     });
     setCheckBoxes(initialCheckBoxes);
     setCheckAllBoxes(true);
-    //setCartItemKeys(Object.keys(cartItems));
   }, [cartItems]);
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {

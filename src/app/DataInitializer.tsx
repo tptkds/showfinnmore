@@ -53,34 +53,3 @@ export default function DataInitializer({
 
   return <>{children}</>;
 }
-
-// export default function DataInitializer({
-//   children,
-// }: {
-//   children: React.ReactNode;
-// }) {
-//   const { currentUser } = useContext(AuthContext);
-//   const dispatch: AppDispatch = useAppDispatch();
-//   const [loading, setLoading] = useState(true);
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       const productList: Product[] = await getProductList();
-//       dispatch(setProductList(productList));
-
-//       if (!currentUser) {
-//         const cartItems: CartItems = getCartItemsLocalStorage();
-//         dispatch(setCartItems(cartItems));
-//       }
-//       setLoading(false);
-//     };
-
-//     fetchData();
-//   }, []);
-
-//   if (loading) {
-//     return null;
-//   }
-
-//   return <>{children}</>;
-// }

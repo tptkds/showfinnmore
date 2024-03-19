@@ -27,7 +27,6 @@ export const getUserOnFireBase = async (
 ) => {
   signInWithEmailAndPassword(auth, email.toString(), password.toString())
     .then((userCredential) => {
-      // Signed in
       const user = userCredential.user;
     })
     .catch((error) => {

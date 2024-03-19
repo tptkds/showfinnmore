@@ -26,7 +26,6 @@ const CartButton: React.FC<CartButtonProps> = ({ product, cartItems }) => {
     let newCartItems: CartItems = { ...cartItems };
 
     if (currentUser && currentUser.email) {
-      // 로그인 사용자: Firestore 데이터 업데이트
       if (newCartItems[productID]) {
         delete newCartItems[productID];
       } else {

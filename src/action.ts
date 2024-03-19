@@ -14,7 +14,6 @@ const schema = z.object({
 });
 
 export async function createUser(formData: FormData) {
-  //const name: FormDataEntryValue | null = formData.get('name');
   const validatedFields = schema.safeParse({
     email: formData.get('email'),
     password: formData.get('password'),

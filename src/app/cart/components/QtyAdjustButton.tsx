@@ -33,7 +33,6 @@ const QtyAdjustButton: React.FC<QtyAdjustButtonProps> = ({
       ? currentCount + 1
       : Math.max(currentCount - 1, 0);
 
-    // If the count doesn't change, return early to avoid unnecessary operations.
     if (currentCount === newCount) return;
 
     const newItem = {
