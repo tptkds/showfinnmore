@@ -4,7 +4,8 @@ import DarkModeToggleButton from './DarkModeToggleButton';
 import Link from 'next/link';
 import { CATEGIRIES } from '@/constants/product';
 import { GrMenu } from 'react-icons/gr';
-export default function Menu() {
+
+const Menu: React.FC = () => {
   const menu = useRef<HTMLUListElement>(null);
   const toggleMenu = () => {
     if (menu.current?.classList.contains('hidden')) {
@@ -39,7 +40,7 @@ export default function Menu() {
       </div>
 
       <ul
-        className=" hidden text-sm dark:bg-opacity-60 bg-opacity-80 font-light shadow-md absolute bg-zinc-100 dark:bg-black dark:lg:bg-transparent dark:text-white p-4 top-full left-4 lg:basis-5/6 lg:shadow-none lg:bg-transparent lg:static lg:p-0 lg:flex lg:justify-between   lg:w-full lg:min-w-220"
+        className=" hidden text-sm dark:bg-opacity-60 bg-opacity-80 font-normal	 shadow-md absolute bg-zinc-100 dark:bg-black dark:lg:bg-transparent dark:text-white p-4 top-full left-4 lg:basis-5/6 lg:shadow-none lg:bg-transparent lg:static lg:p-0 lg:flex lg:justify-between   lg:w-full lg:min-w-220"
         ref={menu}
         onMouseOver={openMenu}
         onMouseLeave={hiddenMenu}
@@ -57,4 +58,4 @@ export default function Menu() {
       </div>
     </>
   );
-}
+};

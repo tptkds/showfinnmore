@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
-export default function CreateAccount() {
+const CreateAccount: React.FC = () => {
   return (
     <Link
       href="/account/register"
@@ -10,4 +10,5 @@ export default function CreateAccount() {
       회원가입
     </Link>
   );
-}
+};
+export default CreateAccount;

@@ -5,8 +5,13 @@ import { useAppSelector } from '@/hooks/useAppSelector';
 import { Product } from '@/types/globalTypes';
 import AddCartButton from './components/AddCartButton';
 import { AuthContext } from '@/app/AuthProvider';
+interface DetailProps {
+  params: {
+    slug: string;
+  };
+}
 
-export default function Detail({ params }: { params: { slug: number } }) {
+const Detail: React.FC<DetailProps> = ({ params }) => {
   const [curItem, setCurItem] = useState<Product | undefined>();
   const { currentUser } = useContext(AuthContext);
   const productList: Product[] = useAppSelector(
@@ -72,4 +77,5 @@ export default function Detail({ params }: { params: { slug: number } }) {
       </div>
     </div>
   );
-}
+};
+export default Detail;

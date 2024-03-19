@@ -10,7 +10,7 @@ import { CartItems } from '@/types/globalTypes';
 import { setCartItems, setWishlist } from '@/slices/productSlict';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 
-export default function User() {
+const User: React.FC = () => {
   const dispatch = useAppDispatch();
   const { currentUser, setCurrentUser } = useContext(AuthContext);
   const router = useRouter();
@@ -67,4 +67,5 @@ export default function User() {
       </div>
     </>
   );
-}
+};
+export default User;

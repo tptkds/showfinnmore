@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Notice() {
+const Notice: React.FC = () => {
   const text =
     'Check out the fresh drop at SS24 – explore and roll through the vibes!';
   return (
@@ -14,6 +14,6 @@ function Notice() {
       </div>
     </div>
   );
-}
+};
 
 export default Notice;

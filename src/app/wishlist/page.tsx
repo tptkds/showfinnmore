@@ -4,7 +4,7 @@ import List from './components/List';
 import { useRouter } from 'next/navigation';
 import { AuthContext } from '../AuthProvider';
 
-export default function WishlistComponent() {
+const WishlistComponent: React.FC = () => {
   const router = useRouter();
   const { currentUser } = useContext(AuthContext);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
@@ -25,4 +25,5 @@ export default function WishlistComponent() {
       <List />
     </div>
   );
-}
+};
+export default WishlistComponent;

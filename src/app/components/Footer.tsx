@@ -3,7 +3,7 @@ import { SiVelog } from 'react-icons/si';
 import React from 'react';
 import Link from 'next/link';
 
-export default function Footer() {
+const Footer = () => {
   return (
     <footer className=" px-4 sm:px-12 py-14 relative bg-white bg-opacity-60  flex flex-col items-center  shadow-md dark:bg-zinc-900 dark:text-white">
       <ul className="flex text-lg mb-4">
@@ -35,11 +35,12 @@ export default function Footer() {
           </Link>
         </li>
       </ul>
-      <ul className="">
+      <ul>
         <li>
           <p>@2024 kimyougyoung</p>
         </li>
       </ul>
     </footer>
   );
-}
+};
+export default Footer;

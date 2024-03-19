@@ -7,7 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-export default function WishlistComponent() {
+const WishlistComponent: React.FC = () => {
   const wishlist: Wishlist = useAppSelector((state) => state.product.wishlist);
   const keysOfWishlist = [...Object.keys(wishlist)];
   const cartItems: CartItems = useAppSelector(
@@ -57,4 +57,5 @@ export default function WishlistComponent() {
       <p className="text-center  p-14 ">There are no favorite items</p>
     </div>
   );
-}
+};
+export default WishlistComponent;

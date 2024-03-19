@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { IoCloseSharp } from 'react-icons/io5';
 
-export default function MyPage() {
+const MyPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const [name, setName] = useState<string>('');
@@ -215,4 +215,5 @@ export default function MyPage() {
       </div>
     </div>
   );
-}
+};
+export default MyPage;

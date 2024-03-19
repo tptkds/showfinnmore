@@ -2,11 +2,12 @@ import React from 'react';
 import Notice from './Notice';
 import Nav from './Nav';
 
-export default function Header() {
+const Header: React.FC = () => {
   return (
     <header className=" relative z-10 ">
       <Notice />
       <Nav />
     </header>
   );
-}
+};
+export default Header;

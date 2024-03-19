@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 import { IoBagSharp } from 'react-icons/io5';
 
-export default function CartLink() {
+const CartLink: React.FC = () => {
   return (
     <div
       className=" flex items-center "
@@ -14,4 +14,5 @@ export default function CartLink() {
       </Link>
     </div>
   );
-}
+};
+export default CartLink;

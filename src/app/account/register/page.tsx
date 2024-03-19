@@ -2,7 +2,7 @@ import React from 'react';
 import Form from './components/Form';
 import ReturnToLogin from './components/ReturnToLogin';
 
-export default function Register() {
+const Register: React.FC = () => {
   return (
     <div className="mt-14 flex flex-col justify-center w-full items-center">
       <div className="my-8 ">
@@ -14,4 +14,5 @@ export default function Register() {
       </div>
     </div>
   );
-}
+};
+export default Register;

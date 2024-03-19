@@ -5,8 +5,8 @@ import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import { IoCloseSharp } from 'react-icons/io5';
-``;
-function Search() {
+
+const Search: React.FC = () => {
   const productList = useAppSelector((state) => state.product.productList);
   const [searchText, setSearchText] = useState<string>('');
   const [searchedDatas, setSearchedData] = useState<Product[]>([]);
@@ -107,6 +107,6 @@ function Search() {
       </div>
     </>
   );
-}
+};
 
 export default Search;

@@ -7,7 +7,7 @@ import { AppDispatch } from '@/types/reduxTypes';
 import { useRouter } from 'next/navigation';
 import { setUserInfo } from '@/slices/userSlice';
 
-function Form() {
+const Form: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [isSignIng, setIsSignIng] = useState<boolean>(false);
@@ -104,6 +104,6 @@ function Form() {
       </form>
     </>
   );
-}
+};
 
 export default Form;

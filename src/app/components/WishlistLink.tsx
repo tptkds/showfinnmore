@@ -1,9 +1,8 @@
 import Link from 'next/link';
 import React from 'react';
-import { FiHeart } from 'react-icons/fi';
 import { PiHeartStraightFill } from 'react-icons/pi';
 
-export default function WishlistLink() {
+const WishlistLink: React.FC = () => {
   return (
     <div
       className=" flex items-center "
@@ -18,4 +17,5 @@ export default function WishlistLink() {
       </Link>
     </div>
   );
-}
+};
+export default WishlistLink;

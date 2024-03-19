@@ -8,7 +8,11 @@ import {
 import { useRouter } from 'next/navigation';
 import React, { useRef } from 'react';
 
-export default function AddCartButton({ item }: { item: Product }) {
+interface AddCartButtonProps {
+  item: Product;
+}
+
+const AddCartButton: React.FC<AddCartButtonProps> = ({ item }) => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const modal = useRef<HTMLDivElement | null>(null);
@@ -72,4 +76,5 @@ export default function AddCartButton({ item }: { item: Product }) {
       ></div>
     </>
   );
-}
+};
+export default AddCartButton;

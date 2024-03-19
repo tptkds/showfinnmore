@@ -1,11 +1,11 @@
 'use client';
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
 import '@theme-toggles/react/css/Classic.css';
 import { IoIosMoon, IoIosSunny } from 'react-icons/io';
 
-export default function DarkModeToggleButton() {
-  const [mounted, setMounted] = useState(false);
+const DarkModeToggleButton: React.FC = () => {
+  const [mounted, setMounted] = useState<boolean>(false);
   const { theme, setTheme } = useTheme();
 
   useLayoutEffect(() => {
@@ -34,4 +34,5 @@ export default function DarkModeToggleButton() {
       </div>
     </>
   );
-}
+};
+export default DarkModeToggleButton;

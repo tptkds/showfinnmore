@@ -6,9 +6,9 @@ import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { AppDispatch } from '@/types/reduxTypes';
 import { setUserInfo } from '@/slices/userSlice';
 import { useRouter } from 'next/navigation';
-import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
+import { addDoc, collection } from 'firebase/firestore';
 
-function Form() {
+const Form: React.FC = () => {
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -127,6 +127,6 @@ function Form() {
       </form>
     </>
   );
-}
+};
 
 export default Form;

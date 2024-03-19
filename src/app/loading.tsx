@@ -4,7 +4,7 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { usePathname } from 'next/navigation';
 
-export default function Loading() {
+const Loading: React.FC = () => {
   const productListSkeleton = (
     <ul className="mt-28 grid grid-cols-1 gap-8 min-h-screen sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {Array.from({ length: 12 }).map((_, index) => (
@@ -46,4 +46,5 @@ export default function Loading() {
       )}
     </>
   );
-}
+};
+export default Loading;

@@ -6,8 +6,12 @@ import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { AppDispatch } from '@/types/reduxTypes';
 import List from './components/List';
 import Pagenation from './components/Pagenation';
-
-export default function Product({ params }: { params: { slug: string } }) {
+interface ProductProps {
+  params: {
+    slug: string;
+  };
+}
+const Product: React.FC<ProductProps> = ({ params }) => {
   const dispatch: AppDispatch = useAppDispatch();
   const prevCategory: string = useAppSelector(
     (state) => state.product.category
@@ -35,4 +39,5 @@ export default function Product({ params }: { params: { slug: string } }) {
       </div>
     </>
   );
-}
+};
+export default Product;

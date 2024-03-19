@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { BiSolidUserRectangle } from 'react-icons/bi';
 
-export default function MyPage() {
+const MyPage: React.FC = () => {
   return (
     <div
       className=" flex items-center "
@@ -16,4 +16,5 @@ export default function MyPage() {
       </Link>
     </div>
   );
-}
+};
+export default MyPage;
