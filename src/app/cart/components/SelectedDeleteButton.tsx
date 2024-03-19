@@ -1,5 +1,7 @@
+import { AuthContext } from '@/app/AuthProvider';
 import { db } from '@/app/firebaseConfig';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { useAppSelector } from '@/hooks/useAppSelector';
 import { setCartItems } from '@/slices/productSlict';
 import { CartItems, CheckBoxes } from '@/types/globalTypes';
 import { AppDispatch } from '@/types/reduxTypes';
@@ -7,27 +9,26 @@ import {
   deleteCartItemsLocalStorage,
   getCartItemsLocalStorage,
 } from '@/utilities/localstorage';
-import { User } from 'firebase/auth';
 import { doc, updateDoc } from 'firebase/firestore';
+import { useContext } from 'react';
 
 interface SelectedDeleteButtonProps {
-  cartItems: CartItems;
-  currentUser: User | null;
   setCheckAllBoxes: (value: boolean) => void;
   setCheckBoxes: React.Dispatch<React.SetStateAction<CheckBoxes>>;
   checkBoxes: CheckBoxes;
   cartItemKeys: string[];
 }
 const SelectedDeleteButton: React.FC<SelectedDeleteButtonProps> = ({
-  cartItems,
-  currentUser,
   setCheckAllBoxes,
   setCheckBoxes,
   checkBoxes,
   cartItemKeys,
 }) => {
   const dispatch: AppDispatch = useAppDispatch();
-
+  const { currentUser } = useContext(AuthContext);
+  const cartItems: CartItems = useAppSelector(
+    (state) => state.product.cartItems
+  );
   const deleteSelectedItems = (e: React.MouseEvent<HTMLButtonElement>) => {
     let newItems = { ...cartItems };
     const keys: string[] = Object.keys(checkBoxes).filter(

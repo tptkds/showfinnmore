@@ -1,10 +1,13 @@
+import { useAppSelector } from '@/hooks/useAppSelector';
 import { CartItems, CheckBoxes } from '@/types/globalTypes';
 
 interface SummaryProps {
   checkBoxes: CheckBoxes;
-  cartItems: CartItems;
 }
-const Summary: React.FC<SummaryProps> = ({ checkBoxes, cartItems }) => {
+const Summary: React.FC<SummaryProps> = ({ checkBoxes }) => {
+  const cartItems: CartItems = useAppSelector(
+    (state) => state.product.cartItems
+  );
   return (
     <>
       <div className="flex">

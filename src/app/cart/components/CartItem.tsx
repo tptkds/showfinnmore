@@ -3,15 +3,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 import QtyAdjustButton from './QtyAdjustButton';
 import DeleteCartItem from './DeleteCartItem';
-import { User } from 'firebase/auth';
+import { useContext } from 'react';
+import { AuthContext } from '@/app/AuthProvider';
+import { useAppSelector } from '@/hooks/useAppSelector';
 
 interface CartItemProps {
   handleCheckboxChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   itemKey: string;
   checkBoxes: CheckBoxes;
-  cartItems: CartItems;
+
   setCheckAllBoxes: (newCheckAllBox: boolean) => void;
-  currentUser: User | null;
   setCheckBoxes: React.Dispatch<React.SetStateAction<CheckBoxes>>;
 }
 
@@ -19,11 +20,14 @@ const CartItem: React.FC<CartItemProps> = ({
   handleCheckboxChange,
   itemKey,
   checkBoxes,
-  cartItems,
+
   setCheckAllBoxes,
-  currentUser,
   setCheckBoxes,
 }) => {
+  const { currentUser } = useContext(AuthContext);
+  const cartItems: CartItems = useAppSelector(
+    (state) => state.product.cartItems
+  );
   return (
     <li className="my-4 items-center flex flex-row">
       <input
