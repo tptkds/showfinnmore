@@ -19,3 +19,6 @@ export interface CartItems {
 export interface Wishlist {
   [productId: string]: Product;
 }
+export interface CheckBoxes {
+  [key: string]: boolean;
+}
