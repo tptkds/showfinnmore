@@ -1,4 +1,4 @@
-import { AuthContext } from '@/app/AuthProvider';
+/*import { AuthContext } from '@/app/AuthProvider';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import Link from 'next/link';
 import { useContext, useRef } from 'react';
@@ -66,3 +66,4 @@ const PurchaseListButton: React.FC = () => {
   );
 };
 export default PurchaseListButton;
+*/
