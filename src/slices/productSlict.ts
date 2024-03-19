@@ -7,7 +7,7 @@ interface productState {
   category: string;
   cartItems: CartItems;
   wishlist: Wishlist;
-  purchaseList: any;
+  //purchaseList: any;
 }
 
 export const productSlice = createSlice({
@@ -18,7 +18,7 @@ export const productSlice = createSlice({
     category: '',
     cartItems: {},
     wishlist: {},
-    purchaseList: [],
+    // purchaseList: [],
   } as productState,
   reducers: {
     setProductList: (state, action) => {
@@ -36,9 +36,9 @@ export const productSlice = createSlice({
     setWishlist: (state, action) => {
       state.wishlist = action.payload;
     },
-    setPurchaseItems: (state, action) => {
-      state.purchaseList = action.payload;
-    },
+    // setPurchaseItems: (state, action) => {
+    //   state.purchaseList = action.payload;
+    // },
   },
 });
 
@@ -48,6 +48,6 @@ export const {
   setCategory,
   setCartItems,
   setWishlist,
-  setPurchaseItems,
+  // setPurchaseItems,
 } = productSlice.actions;
 export const productReducer = productSlice.reducer;

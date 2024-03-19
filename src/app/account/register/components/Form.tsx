@@ -44,7 +44,7 @@ const Form: React.FC = () => {
           addDoc(collection(db, 'users'), {
             wishlist: {},
             cartItems: {},
-            purchaseList: {},
+            //  purchaseList: {},
           });
           router.push('/');
         })

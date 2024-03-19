@@ -6,7 +6,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import {
   setCartItems,
-  setPurchaseItems,
+  // setPurchaseItems,
   setWishlist,
 } from '@/slices/productSlict';
 
@@ -52,7 +52,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         if (userData) {
           dispatch(setWishlist(userData.wishlist || {}));
           dispatch(setCartItems(userData.cartItems || {}));
-          dispatch(setPurchaseItems(userData.purchaseList || {}));
+          //  dispatch(setPurchaseItems(userData.purchaseList || {}));
         }
         setLoading(false);
       });

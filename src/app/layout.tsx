@@ -24,7 +24,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
           <div className="relative h-dvh dark:bg-zinc-900 dark:text-white">
             <div className="min-h-full dark:bg-zinc-900 dark:text-white">
               <Header />
-              <main className="z-0 px-4 sm:px-12">{children}</main>
+              <main className="z-40 px-4 sm:px-12">{children}</main>
             </div>
             <Footer />
             <div className="fixed bottom-10 right-10 bg-white shadow-lg rounded-full bg-opacity-80 dark:bg-opacity-80 z-20 dark:bg-zinc-700">

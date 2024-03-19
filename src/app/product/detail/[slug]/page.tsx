@@ -16,7 +16,7 @@ interface DetailProps {
 const Detail: React.FC<DetailProps> = ({ params }) => {
   const [curItem, setCurItem] = useState<Product | undefined>();
   const { currentUser } = useContext(AuthContext);
-  const purchaseList = useAppSelector((state) => state.product.purchaseList);
+  //const purchaseList = useAppSelector((state) => state.product.purchaseList);
 
   const productList: Product[] = useAppSelector(
     (state) => state.product.productList
@@ -35,29 +35,29 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
       alert('로그인이 필요한 서비스입니다.');
       return;
     }
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = ('0' + (today.getMonth() + 1)).slice(-2);
-    const day = ('0' + today.getDate()).slice(-2);
-    const dateString = year + '-' + month + '-' + day;
+    // const today = new Date();
+    // const year = today.getFullYear();
+    // const month = ('0' + (today.getMonth() + 1)).slice(-2);
+    // const day = ('0' + today.getDate()).slice(-2);
+    // const dateString = year + '-' + month + '-' + day;
 
-    let purchase: any = { product: curItem, count: 1 };
+    //let purchase: any = { product: curItem, count: 1 };
 
-    let userRef = null;
-    if (currentUser?.email) userRef = doc(db, 'users', currentUser?.email);
-    if (userRef)
-      updateDoc(userRef, {
-        purchaseList: {
-          ...purchaseList,
+    // let userRef = null;
+    // if (currentUser?.email) userRef = doc(db, 'users', currentUser?.email);
+    // if (userRef)
+    //   updateDoc(userRef, {
+    //     purchaseList: {
+    //       ...purchaseList,
 
-          [today.getMilliseconds() + Math.random() * 1000]: {
-            date: dateString,
-            products: purchase,
-          },
-        },
-      });
+    //       [today.getMilliseconds() + Math.random() * 1000]: {
+    //         date: dateString,
+    //         products: purchase,
+    //       },
+    //     },
+    //   });
 
-    alert('구매가 완료되었습니다.');
+    alert('구매가 완료되었습니다. (구매 내역은 개발 중입니다...)');
   };
 
   return (
