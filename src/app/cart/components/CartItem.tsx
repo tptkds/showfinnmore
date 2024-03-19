@@ -24,12 +24,11 @@ const CartItem: React.FC<CartItemProps> = ({
   setCheckAllBoxes,
   setCheckBoxes,
 }) => {
-  const { currentUser } = useContext(AuthContext);
   const cartItems: CartItems = useAppSelector(
     (state) => state.product.cartItems
   );
   return (
-    <li className="my-4 items-center flex flex-row">
+    <li className="my-4 items-center flex flex-row mb-8">
       <input
         name={itemKey}
         type="checkbox"
@@ -40,7 +39,8 @@ const CartItem: React.FC<CartItemProps> = ({
       <div className="relative flex items-start h-44 md:h-24 w-6/12 md:w-2/12 mx-4 bg-white">
         <Link
           href={`/product/detail/${cartItems[itemKey].product.id}`}
-          className="h-full"
+          className=" h-full w-full relative"
+          as="image"
         >
           <Image
             src={cartItems[itemKey].product.image}
@@ -62,7 +62,7 @@ const CartItem: React.FC<CartItemProps> = ({
           </Link>
         </div>
         <div className="mt-4 md:mt-0 w-full md:w-1/5 whitespace-pre-line=true flex justify-end items-center md:w-1/4">
-          <p>${cartItems[itemKey].product.price}</p>
+          <p aria-label="제품 가격">${cartItems[itemKey].product.price}</p>
         </div>
         <div className="w-full md:w-1/5 whitespace-pre-line=true flex justify-end items-center md:w-1/4">
           <QtyAdjustButton
@@ -85,7 +85,7 @@ const CartItem: React.FC<CartItemProps> = ({
           />
         </div>
         <div className="w-full md:w-1/5 whitespace-pre-line=true flex justify-end items-center md:w-1/4">
-          <p>
+          <p aria-label="제품 수량 합계 금액">
             $
             {(
               cartItems[itemKey].product.price * cartItems[itemKey].count

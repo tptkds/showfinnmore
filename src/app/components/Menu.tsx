@@ -23,8 +23,9 @@ const Menu: React.FC = () => {
   return (
     <>
       <div
-      //className="tooltip"
-      //data-tip="Menu"
+        className="h-full"
+        //className="tooltip"
+        //data-tip="Menu"
       >
         <button
           type="button"
@@ -59,3 +60,4 @@ const Menu: React.FC = () => {
     </>
   );
 };
+export default Menu;

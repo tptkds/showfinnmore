@@ -5,7 +5,7 @@ import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { setUserInfo } from '@/slices/userSlice';
 import { updatePassword, updateProfile } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useLayoutEffect, useRef, useState } from 'react';
 import { IoCloseSharp } from 'react-icons/io5';
 
 const MyPage: React.FC = () => {
@@ -20,7 +20,7 @@ const MyPage: React.FC = () => {
   const modalBackground = useRef<HTMLDivElement | null>(null);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isLoaded)
       if (!currentUser) {
         router.push('/account/login');
@@ -105,8 +105,9 @@ const MyPage: React.FC = () => {
             })
             .catch((error) => {
               console.error(error);
-              switch (error) {
-              }
+              setIsUpdating(false);
+              setError(`재로그인 후 다시 시도해 주세요.`);
+              setPassword('');
             });
         } catch (error) {
           console.error(error);

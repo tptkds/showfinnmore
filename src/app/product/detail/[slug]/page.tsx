@@ -1,5 +1,5 @@
 'use client';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useLayoutEffect, useState } from 'react';
 import Image from 'next/image';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { Product } from '@/types/globalTypes';
@@ -18,7 +18,7 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
     (state) => state.product.productList
   );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const slugAsNumber = Number(params.slug);
     const item = productList.find((product) => product.id === slugAsNumber);
     setCurItem(item);
