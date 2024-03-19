@@ -98,7 +98,11 @@ const CartList: React.FC = () => {
       />
       <div className="flex flex-col  items-end w-full text-sm">
         <Summary checkBoxes={checkBoxes} />
-        <PurchaseButton />
+        <PurchaseButton
+          setCheckAllBoxes={setCheckAllBoxes}
+          setCheckBoxes={setCheckBoxes}
+          checkBoxes={checkBoxes}
+        />
       </div>
     </>
   );

@@ -3,8 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import QtyAdjustButton from './QtyAdjustButton';
 import DeleteCartItem from './DeleteCartItem';
-import { useContext } from 'react';
-import { AuthContext } from '@/app/AuthProvider';
 import { useAppSelector } from '@/hooks/useAppSelector';
 
 interface CartItemProps {
@@ -40,7 +38,6 @@ const CartItem: React.FC<CartItemProps> = ({
         <Link
           href={`/product/detail/${cartItems[itemKey].product.id}`}
           className=" h-full w-full relative"
-          as="image"
         >
           <Image
             src={cartItems[itemKey].product.image}
@@ -48,7 +45,6 @@ const CartItem: React.FC<CartItemProps> = ({
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             fill
             style={{ objectFit: 'contain', minWidth: '56px' }}
-            priority
           />
         </Link>
       </div>

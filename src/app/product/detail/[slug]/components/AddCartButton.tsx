@@ -45,7 +45,7 @@ const AddCartButton: React.FC<AddCartButtonProps> = ({ item }) => {
         장바구니에 담기
       </button>
       <div
-        className="absolute flex flex-col modal-center shadow-md items-center pt-8 z-30 rounded-box hidden w-96 "
+        className="absolute dark:bg-black flex flex-col modal-center shadow-md items-center pt-8 z-30 rounded-box hidden w-96 "
         ref={modal}
         aria-modal="true"
         role="alertdialog"

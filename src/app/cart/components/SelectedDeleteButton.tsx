@@ -48,24 +48,15 @@ const SelectedDeleteButton: React.FC<SelectedDeleteButtonProps> = ({
         updateDoc(userRef, {
           cartItems: newCartItems,
         });
-      let checkBoxesData: { [key: string]: boolean } = {};
-      Object.keys(newCartItems).forEach((key) => {
-        checkBoxesData[key] = true;
-      });
-      setCheckBoxes(checkBoxesData);
+
       setCheckAllBoxes(true);
 
       dispatch(setCartItems(newItems));
-      console.log(checkBoxes);
     } else {
       deleteCartItemsLocalStorage(keys);
       newItems = getCartItemsLocalStorage();
       dispatch(setCartItems(newItems));
-      let checkBoxesData: { [key: string]: boolean } = {};
-      Object.keys(newItems).forEach((key) => {
-        checkBoxesData[key] = true;
-      });
-      setCheckBoxes(checkBoxesData);
+
       setCheckAllBoxes(true);
     }
   };

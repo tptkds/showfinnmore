@@ -1,13 +1,60 @@
 import { AuthContext } from '@/app/AuthProvider';
+import { db } from '@/app/firebaseConfig';
+import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { useAppSelector } from '@/hooks/useAppSelector';
+import { setCartItems } from '@/slices/productSlict';
+import { CartItems, CheckBoxes } from '@/types/globalTypes';
+import {
+  deleteCartItemsLocalStorage,
+  getCartItemsLocalStorage,
+} from '@/utilities/localstorage';
+import { doc, updateDoc } from 'firebase/firestore';
 import { useContext } from 'react';
+interface PurchaseButtonProps {
+  setCheckAllBoxes: (value: boolean) => void;
+  setCheckBoxes: React.Dispatch<React.SetStateAction<CheckBoxes>>;
+  checkBoxes: CheckBoxes;
+}
+const PurchaseButton: React.FC<PurchaseButtonProps> = ({
+  setCheckAllBoxes,
 
-const PurchaseButton: React.FC = ({}) => {
+  checkBoxes,
+}) => {
   const { currentUser } = useContext(AuthContext);
+  const cartItems = useAppSelector((state) => state.product.cartItems);
+  const dispatch = useAppDispatch();
   const purchase = () => {
+    const keys: string[] = Object.keys(checkBoxes).filter(
+      (key) => checkBoxes[key]
+    );
     if (!currentUser) {
-      alert('로그인이 필요한 기능입니다.');
+      deleteCartItemsLocalStorage(keys);
+      const newItems = getCartItemsLocalStorage();
+      dispatch(setCartItems(newItems));
+      let checkBoxesData: { [key: string]: boolean } = {};
+      Object.keys(newItems).forEach((key) => {
+        checkBoxesData[key] = true;
+      });
+      setCheckAllBoxes(true);
+      alert('구매가 완료되었습니다.');
       return;
     }
+
+    let newCartItems: CartItems = {
+      ...cartItems,
+    };
+    keys.forEach((key) => {
+      delete newCartItems[key];
+    });
+
+    let userRef = null;
+    if (currentUser?.email) userRef = doc(db, 'users', currentUser?.email);
+    if (userRef)
+      updateDoc(userRef, {
+        cartItems: { ...newCartItems },
+      });
+    dispatch(setCartItems({ ...newCartItems }));
+    setCheckAllBoxes(true);
     alert('구매가 완료되었습니다.');
   };
   return (
