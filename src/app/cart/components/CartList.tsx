@@ -1,9 +1,12 @@
+'use client';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { CartItems, CheckBoxes } from '@/types/globalTypes';
 import { useContext, useEffect, useState } from 'react';
 import CartItem from './CartItem';
 import { AuthContext } from '@/app/AuthProvider';
 import SelectedDeleteButton from './SelectedDeleteButton';
+import Summary from './Summary';
+import PurchaseButton from './PurchaseButton';
 
 const CartList: React.FC = () => {
   const [checkBoxes, setCheckBoxes] = useState<{ [key: string]: boolean }>({});
@@ -100,8 +103,10 @@ const CartList: React.FC = () => {
         checkBoxes={checkBoxes}
         cartItemKeys={cartItemKeys}
       />
-      <Summary />
-      <PurchaseButton />
+      <div className="flex flex-col  items-end w-full text-sm">
+        <Summary cartItems={cartItems} checkBoxes={checkBoxes} />
+        <PurchaseButton currentUser={currentUser} />
+      </div>
     </>
   );
 };

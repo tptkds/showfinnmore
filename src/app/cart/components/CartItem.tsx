@@ -14,6 +14,7 @@ interface CartItemProps {
   currentUser: User | null;
   setCheckBoxes: React.Dispatch<React.SetStateAction<CheckBoxes>>;
 }
+
 const CartItem: React.FC<CartItemProps> = ({
   handleCheckboxChange,
   itemKey,
@@ -24,15 +25,15 @@ const CartItem: React.FC<CartItemProps> = ({
   setCheckBoxes,
 }) => {
   return (
-    <li className="my-4  items-center  flex flex-row">
+    <li className="my-4 items-center flex flex-row">
       <input
         name={itemKey}
         type="checkbox"
-        className="mr-4 flex "
+        className="mr-4 flex"
         onChange={handleCheckboxChange}
         checked={checkBoxes[itemKey] || false}
       />
-      <div className="relative  flex items-start h-44 md:h-24  w-6/12 md:w-2/12 mx-4 bg-white">
+      <div className="relative flex items-start h-44 md:h-24 w-6/12 md:w-2/12 mx-4 bg-white">
         <Link
           href={`/product/detail/${cartItems[itemKey].product.id}`}
           className="h-full"
@@ -42,15 +43,12 @@ const CartItem: React.FC<CartItemProps> = ({
             alt={cartItems[itemKey].product.title}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             fill
-            style={{
-              objectFit: 'contain',
-              minWidth: '56px',
-            }}
+            style={{ objectFit: 'contain', minWidth: '56px' }}
             priority
           />
         </Link>
       </div>
-      <div className="w-full flex  sm-max-textsize-12 flex-col md:flex-row">
+      <div className="w-full flex sm-max-textsize-12 flex-col md:flex-row">
         <div className="w-full md:w-1/5 whitespace-pre-line=true flex items-center md:w-1/4 overflow-hidden">
           <Link
             href={`/product/detail/${cartItems[itemKey].product.id}`}
@@ -59,10 +57,10 @@ const CartItem: React.FC<CartItemProps> = ({
             {cartItems[itemKey].product.title}
           </Link>
         </div>
-        <div className="mt-4 md:mt-0 w-full md:w-1/5 whitespace-pre-line=true  flex justify-end  items-center md:w-1/4">
+        <div className="mt-4 md:mt-0 w-full md:w-1/5 whitespace-pre-line=true flex justify-end items-center md:w-1/4">
           <p>${cartItems[itemKey].product.price}</p>
         </div>
-        <div className=" w-full md:w-1/5 whitespace-pre-line=true  flex justify-end  items-center md:w-1/4">
+        <div className="w-full md:w-1/5 whitespace-pre-line=true flex justify-end items-center md:w-1/4">
           <QtyAdjustButton
             isIncrease={false}
             itemKey={itemKey}
@@ -84,7 +82,7 @@ const CartItem: React.FC<CartItemProps> = ({
             setCheckAllBoxes={setCheckAllBoxes}
           />
         </div>
-        <div className=" w-full md:w-1/5 whitespace-pre-line=true  flex justify-end  items-center md:w-1/4">
+        <div className="w-full md:w-1/5 whitespace-pre-line=true flex justify-end items-center md:w-1/4">
           <p>
             $
             {(
@@ -92,7 +90,7 @@ const CartItem: React.FC<CartItemProps> = ({
             ).toFixed(2)}
           </p>
         </div>
-        <div className=" w-full md:w-1/5 whitespace-pre-line=true  flex justify-end  items-center md:w-1/4">
+        <div className="w-full md:w-1/5 whitespace-pre-line=true flex justify-end items-center md:w-1/4">
           <DeleteCartItem
             itemKey={itemKey}
             cartItems={cartItems}
@@ -105,4 +103,5 @@ const CartItem: React.FC<CartItemProps> = ({
     </li>
   );
 };
+
 export default CartItem;
