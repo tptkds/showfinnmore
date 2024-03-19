@@ -1,9 +1,8 @@
 'use client';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { CartItems, CheckBoxes } from '@/types/globalTypes';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import CartItem from './CartItem';
-import { AuthContext } from '@/app/AuthProvider';
 import SelectedDeleteButton from './SelectedDeleteButton';
 import Summary from './Summary';
 import PurchaseButton from './PurchaseButton';
@@ -11,11 +10,11 @@ import PurchaseButton from './PurchaseButton';
 const CartList: React.FC = () => {
   const [checkBoxes, setCheckBoxes] = useState<{ [key: string]: boolean }>({});
   const [checkAllBoxes, setCheckAllBoxes] = useState<boolean>(true);
-  const { currentUser } = useContext(AuthContext);
   const cartItems: CartItems = useAppSelector(
     (state) => state.product.cartItems
   );
-  const [cartItemKeys, setCartItemKeys] = useState<string[]>([]);
+  // const [cartItemKeys, setCartItemKeys] = useState<string[]>([]);
+  const cartItemKeys = useMemo(() => Object.keys(cartItems), [cartItems]);
 
   useEffect(() => {
     const initialCheckBoxes: { [key: string]: boolean } = {};
@@ -24,7 +23,7 @@ const CartList: React.FC = () => {
     });
     setCheckBoxes(initialCheckBoxes);
     setCheckAllBoxes(true);
-    setCartItemKeys(Object.keys(cartItems));
+    //setCartItemKeys(Object.keys(cartItems));
   }, [cartItems]);
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -84,9 +83,7 @@ const CartList: React.FC = () => {
                 itemKey={key}
                 key={key}
                 checkBoxes={checkBoxes}
-                cartItems={cartItems}
                 setCheckAllBoxes={setCheckAllBoxes}
-                currentUser={currentUser}
                 setCheckBoxes={setCheckBoxes}
               />
             );
@@ -96,16 +93,14 @@ const CartList: React.FC = () => {
         )}
       </ul>
       <SelectedDeleteButton
-        cartItems={cartItems}
-        currentUser={currentUser}
         setCheckAllBoxes={setCheckAllBoxes}
         setCheckBoxes={setCheckBoxes}
         checkBoxes={checkBoxes}
         cartItemKeys={cartItemKeys}
       />
       <div className="flex flex-col  items-end w-full text-sm">
-        <Summary cartItems={cartItems} checkBoxes={checkBoxes} />
-        <PurchaseButton currentUser={currentUser} />
+        <Summary checkBoxes={checkBoxes} />
+        <PurchaseButton />
       </div>
     </>
   );

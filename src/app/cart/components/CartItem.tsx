@@ -68,7 +68,6 @@ const CartItem: React.FC<CartItemProps> = ({
           <QtyAdjustButton
             isIncrease={false}
             itemKey={itemKey}
-            cartItems={cartItems}
             setCheckAllBoxes={setCheckAllBoxes}
           />
           <input
@@ -82,7 +81,6 @@ const CartItem: React.FC<CartItemProps> = ({
           <QtyAdjustButton
             isIncrease={true}
             itemKey={itemKey}
-            cartItems={cartItems}
             setCheckAllBoxes={setCheckAllBoxes}
           />
         </div>
@@ -97,8 +95,6 @@ const CartItem: React.FC<CartItemProps> = ({
         <div className="w-full md:w-1/5 whitespace-pre-line=true flex justify-end items-center md:w-1/4">
           <DeleteCartItem
             itemKey={itemKey}
-            cartItems={cartItems}
-            currentUser={currentUser}
             setCheckAllBoxes={setCheckAllBoxes}
             setCheckBoxes={setCheckBoxes}
           />
