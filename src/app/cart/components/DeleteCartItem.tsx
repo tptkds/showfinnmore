@@ -1,3 +1,5 @@
+'use client';
+import { AuthContext } from '@/app/AuthProvider';
 import { db } from '@/app/firebaseConfig';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { setCartItems } from '@/slices/productSlict';
@@ -7,25 +9,24 @@ import {
   deleteCartItemsLocalStorage,
   getCartItemsLocalStorage,
 } from '@/utilities/localstorage';
-import { User } from 'firebase/auth';
 import { doc, updateDoc } from 'firebase/firestore';
+import { useContext } from 'react';
 import { MdDelete } from 'react-icons/md';
 
 interface DeleteCartItemProps {
   itemKey: string;
   cartItems: CartItems;
-  currentUser: User | null;
   setCheckAllBoxes: (value: boolean) => void;
   setCheckBoxes: React.Dispatch<React.SetStateAction<CheckBoxes>>;
 }
 const DeleteCartItem: React.FC<DeleteCartItemProps> = ({
   itemKey,
   cartItems,
-  currentUser,
   setCheckAllBoxes,
   setCheckBoxes,
 }) => {
   const dispatch: AppDispatch = useAppDispatch();
+  const { currentUser } = useContext(AuthContext);
 
   const deleteItemInCart = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();

@@ -1,9 +1,8 @@
-import { User } from 'firebase/auth';
+import { AuthContext } from '@/app/AuthProvider';
+import { useContext } from 'react';
 
-interface PurchaseButtonProps {
-  currentUser: User | null;
-}
-const PurchaseButton: React.FC<PurchaseButtonProps> = ({ currentUser }) => {
+const PurchaseButton: React.FC = ({}) => {
+  const { currentUser } = useContext(AuthContext);
   const purchase = () => {
     if (!currentUser) {
       alert('로그인이 필요한 기능입니다.');

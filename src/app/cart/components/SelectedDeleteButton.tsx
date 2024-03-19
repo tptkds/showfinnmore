@@ -1,3 +1,4 @@
+import { AuthContext } from '@/app/AuthProvider';
 import { db } from '@/app/firebaseConfig';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { setCartItems } from '@/slices/productSlict';
@@ -7,12 +8,11 @@ import {
   deleteCartItemsLocalStorage,
   getCartItemsLocalStorage,
 } from '@/utilities/localstorage';
-import { User } from 'firebase/auth';
 import { doc, updateDoc } from 'firebase/firestore';
+import { useContext } from 'react';
 
 interface SelectedDeleteButtonProps {
   cartItems: CartItems;
-  currentUser: User | null;
   setCheckAllBoxes: (value: boolean) => void;
   setCheckBoxes: React.Dispatch<React.SetStateAction<CheckBoxes>>;
   checkBoxes: CheckBoxes;
@@ -20,13 +20,13 @@ interface SelectedDeleteButtonProps {
 }
 const SelectedDeleteButton: React.FC<SelectedDeleteButtonProps> = ({
   cartItems,
-  currentUser,
   setCheckAllBoxes,
   setCheckBoxes,
   checkBoxes,
   cartItemKeys,
 }) => {
   const dispatch: AppDispatch = useAppDispatch();
+  const { currentUser } = useContext(AuthContext);
 
   const deleteSelectedItems = (e: React.MouseEvent<HTMLButtonElement>) => {
     let newItems = { ...cartItems };

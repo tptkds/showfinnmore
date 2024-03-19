@@ -86,7 +86,6 @@ const CartList: React.FC = () => {
                 checkBoxes={checkBoxes}
                 cartItems={cartItems}
                 setCheckAllBoxes={setCheckAllBoxes}
-                currentUser={currentUser}
                 setCheckBoxes={setCheckBoxes}
               />
             );
@@ -97,7 +96,6 @@ const CartList: React.FC = () => {
       </ul>
       <SelectedDeleteButton
         cartItems={cartItems}
-        currentUser={currentUser}
         setCheckAllBoxes={setCheckAllBoxes}
         setCheckBoxes={setCheckBoxes}
         checkBoxes={checkBoxes}
@@ -105,7 +103,7 @@ const CartList: React.FC = () => {
       />
       <div className="flex flex-col  items-end w-full text-sm">
         <Summary cartItems={cartItems} checkBoxes={checkBoxes} />
-        <PurchaseButton currentUser={currentUser} />
+        <PurchaseButton />
       </div>
     </>
   );
