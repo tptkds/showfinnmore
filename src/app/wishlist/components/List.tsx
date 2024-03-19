@@ -21,7 +21,7 @@ const WishlistComponent: React.FC = () => {
           <li className="h-full" key={key}>
             <div className="h-4/5">
               <Link
-                href={`/product/${key}`}
+                href={`/product/detail/${key}`}
                 className="flex items-center w-full h-full"
               >
                 <Image
