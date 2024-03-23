@@ -22,3 +22,7 @@ export interface Wishlist {
 export interface CheckBoxes {
   [key: string]: boolean;
 }
+
+export interface ModalContentsProps {
+  toggleModal: () => void;
+}
