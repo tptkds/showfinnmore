@@ -52,13 +52,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         if (userData) {
           dispatch(setWishlist(userData.wishlist || {}));
           dispatch(setCartItems(userData.cartItems || {}));
-          //  dispatch(setPurchaseItems(userData.purchaseList || {}));
         }
         setLoading(false);
       });
     });
-
-    // return unsubscribe;
   }, []);
 
   if (loading)

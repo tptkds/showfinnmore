@@ -19,7 +19,6 @@ interface RootLayoutProps {
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang="ko" suppressHydrationWarning>
-
       <body className="overflow-x-hidden select-none h-dvh relative">
         <AppProviders>
           <div className="relative h-dvh dark:bg-zinc-900 dark:text-white">
