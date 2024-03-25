@@ -1,7 +1,7 @@
 import React from 'react';
 import CreateAccount from './components/CreateAccount';
-import Form from './components/LoginForm';
 import ForgotPassword from './components/ForgotPassword';
+import Form from './components/Form';
 
 export default function Login() {
   return (

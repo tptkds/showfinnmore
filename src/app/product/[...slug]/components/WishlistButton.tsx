@@ -3,7 +3,6 @@ import React, { useContext } from 'react';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { setWishlist } from '@/slices/productSlict';
 import { Product, Wishlist } from '@/types/globalTypes';
-import { AuthContext } from '@/app/AuthProvider';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '@/app/firebaseConfig';
 import { PiHeartFill, PiHeartLight } from 'react-icons/pi';
@@ -17,7 +16,7 @@ const WishlistButton: React.FC<WishlistButtonProps> = ({
   product,
   wishlist,
 }) => {
-  const { currentUser } = useContext(AuthContext);
+  const currentUser = null;
   const dispatch = useAppDispatch();
 
   const toggleWishlist = async () => {

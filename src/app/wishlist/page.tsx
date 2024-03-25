@@ -2,11 +2,10 @@
 import React, { useContext, useEffect, useState, useLayoutEffect } from 'react';
 import List from './components/List';
 import { useRouter } from 'next/navigation';
-import { AuthContext } from '../AuthProvider';
 
 const WishlistComponent: React.FC = () => {
   const router = useRouter();
-  const { currentUser } = useContext(AuthContext);
+  const currentUser = null;
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   useLayoutEffect(() => {
     if (isLoaded)

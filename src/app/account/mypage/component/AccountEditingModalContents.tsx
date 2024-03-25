@@ -1,4 +1,3 @@
-import { AuthContext } from '@/app/AuthProvider';
 import CloseModalButton from '@/app/components/CloseModalButton';
 import { auth } from '@/app/firebaseConfig';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
@@ -14,7 +13,7 @@ const AccountEditingModalContents: React.FC<AccountEditingModalContents> = ({
   toggleModal,
   selectedButton,
 }) => {
-  const { currentUser } = useContext(AuthContext);
+  const currentUser = null;
   const dispatch = useAppDispatch();
   const [name, setName] = useState<string>('');
   const [password, setPassword] = useState<string>('');

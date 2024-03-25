@@ -3,8 +3,9 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   onAuthStateChanged,
+  User,
 } from 'firebase/auth';
-import { auth } from '../firebaseConfig';
+import { auth } from '../../firebaseConfig';
 
 export const createUserOnFireBase = async (
   email: FormDataEntryValue,
@@ -21,7 +22,7 @@ export const createUserOnFireBase = async (
   return res;
 };
 
-export const getUserOnFireBase = async (
+export const signInUserWithEmailAndPass = async (
   email: FormDataEntryValue,
   password: FormDataEntryValue
 ) => {
@@ -36,3 +37,26 @@ export const getUserOnFireBase = async (
 };
 
 export const checkAuthStateChanged = () => {};
+
+export const firebaseSignIn = async (email: string, password: string) => {
+  try {
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    const user = userCredential.user;
+    if (user) {
+      return { id: user.uid, name: user.email, email: user.email };
+    }
+    return null;
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error('Authentication error:', error.message);
+      throw error;
+    } else {
+      console.error('Unexpected error:', error);
+      throw new Error('An unexpected error occurred');
+    }
+  }
+};

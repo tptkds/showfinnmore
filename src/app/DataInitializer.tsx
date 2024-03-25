@@ -1,19 +1,17 @@
 'use client';
 import React, { useContext, useEffect, useState } from 'react';
-import { getProductList } from './apis/product';
+import { getProductList } from './api/product';
 import { setCartItems, setProductList } from '@/slices/productSlict';
 import { CartItems, Product } from '@/types/globalTypes';
 import { getCartItemsLocalStorage } from '@/utilities/localstorage';
 import { AppDispatch } from '@/types/reduxTypes';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
-import { AuthContext } from './AuthProvider';
 
 export default function DataInitializer({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const { currentUser } = useContext(AuthContext);
   const dispatch: AppDispatch = useAppDispatch();
   const [loading, setLoading] = useState(true);
 
@@ -26,22 +24,22 @@ export default function DataInitializer({
         console.error('상품 리스트를 가져오는 것을 실패했습니다.:', error);
       }
 
-      try {
-        if (!currentUser) {
-          const cartItems: CartItems = getCartItemsLocalStorage();
-          dispatch(setCartItems(cartItems));
-        }
-      } catch (error) {
-        console.error(
-          '로컬 스토리지에서 장바구니 아이템을 가져오는 작업을 실패했습니다.:',
-          error
-        );
-      }
+      // try {
+      //   if (!currentUser) {
+      //     const cartItems: CartItems = getCartItemsLocalStorage();
+      //     dispatch(setCartItems(cartItems));
+      //   }
+      // } catch (error) {
+      //   console.error(
+      //     '로컬 스토리지에서 장바구니 아이템을 가져오는 작업을 실패했습니다.:',
+      //     error
+      //   );
+      // }
       setLoading(false);
     };
 
     fetchData();
-  }, [currentUser, dispatch]);
+  }, [dispatch]);
 
   if (loading) {
     return (

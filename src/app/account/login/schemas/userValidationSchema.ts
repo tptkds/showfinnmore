@@ -1,7 +1,6 @@
-'use server';
 import { z } from 'zod';
 
-const schema = z.object({
+export const schema = z.object({
   email: z.string().email({ message: '유효하지 않은 이메일 형식입니다.' }),
   password: z.string().min(6, {
     message: '패스워드는 최소 6글자 이상이어야 합니다.',
@@ -20,5 +19,3 @@ const schema = z.object({
   //     '패스워드에는 최소 1개 이상의 특수문자가 포함되어 있어야 합니다.',
   // }),
 });
-
-export default schema;

@@ -1,4 +1,3 @@
-import { AuthContext } from '@/app/AuthProvider';
 import { db } from '@/app/firebaseConfig';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
@@ -20,7 +19,7 @@ const PurchaseButton: React.FC<PurchaseButtonProps> = ({
 
   checkBoxes,
 }) => {
-  const { currentUser } = useContext(AuthContext);
+  const currentUser = null;
   const cartItems = useAppSelector((state) => state.product.cartItems);
   // const purchaseList = useAppSelector((state) => state.product.purchaseList);
   const dispatch = useAppDispatch();

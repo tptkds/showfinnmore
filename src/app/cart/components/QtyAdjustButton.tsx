@@ -1,4 +1,3 @@
-import { AuthContext } from '@/app/AuthProvider';
 import { db } from '@/app/firebaseConfig';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
@@ -22,7 +21,7 @@ const QtyAdjustButton: React.FC<QtyAdjustButtonProps> = ({
   setCheckAllBoxes,
 }) => {
   const dispatch = useAppDispatch();
-  const { currentUser } = useContext(AuthContext);
+  const currentUser = null;
   const cartItems: CartItems = useAppSelector(
     (state) => state.product.cartItems
   );

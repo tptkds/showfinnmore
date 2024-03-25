@@ -2,7 +2,6 @@
 import React, { useContext, useLayoutEffect, useState } from 'react';
 import Image from 'next/image';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { AuthContext } from '@/app/AuthProvider';
 import Modal from '@/app/components/Modal';
 import CartModalContents from './components/CartModalContents';
 import { toggleModal } from '@/utilities/modal';
@@ -23,7 +22,7 @@ interface DetailProps {
 const Detail: React.FC<DetailProps> = ({ params }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [curItem, setCurItem] = useState<Product | undefined>();
-  const { currentUser } = useContext(AuthContext);
+  const currentUser = null;
 
   const productList: Product[] = useAppSelector(
     (state) => state.product.productList

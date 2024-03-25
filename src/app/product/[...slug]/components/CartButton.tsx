@@ -3,7 +3,6 @@ import React, { useContext } from 'react';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { setCartItems } from '@/slices/productSlict';
 import { Product, CartItems } from '@/types/globalTypes';
-import { AuthContext } from '@/app/AuthProvider';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '@/app/firebaseConfig';
 import { PiShoppingBagFill, PiShoppingBagLight } from 'react-icons/pi';
@@ -18,7 +17,7 @@ interface CartButtonProps {
 }
 
 const CartButton: React.FC<CartButtonProps> = ({ product, cartItems }) => {
-  const { currentUser } = useContext(AuthContext);
+  const currentUser = null;
   const dispatch = useAppDispatch();
 
   const toggleCartItem = async () => {

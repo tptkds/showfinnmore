@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import React, { useContext, useRef } from 'react';
 import { auth } from '../firebaseConfig';
-import { AuthContext } from '../AuthProvider';
 import { useRouter } from 'next/navigation';
 import { RiLoginBoxFill, RiLogoutBoxFill } from 'react-icons/ri';
 import { getCartItemsLocalStorage } from '@/utilities/localstorage';
@@ -12,7 +11,7 @@ import { useAppDispatch } from '@/hooks/useAppDispatch';
 
 const User: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { currentUser, setCurrentUser } = useContext(AuthContext);
+  const currentUser = null;
   const router = useRouter();
   const modal = useRef<HTMLDivElement | null>(null);
   const logout = () => {

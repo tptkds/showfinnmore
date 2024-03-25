@@ -1,5 +1,4 @@
 'use client';
-import { AuthContext } from '@/app/AuthProvider';
 import { toggleModal } from '@/utilities/modal';
 import { useRouter } from 'next/navigation';
 import React, { useContext, useLayoutEffect, useState } from 'react';
@@ -8,7 +7,7 @@ import Modal from '@/app/components/Modal';
 
 const MyPage: React.FC = () => {
   const router = useRouter();
-  const { currentUser } = useContext(AuthContext);
+  const currentUser = null;
   const [selectedButton, setSelectedButton] = useState<string>('');
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
