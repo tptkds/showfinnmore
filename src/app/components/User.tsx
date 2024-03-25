@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import React, { useContext, useRef } from 'react';
+import React, { useRef } from 'react';
 import { auth } from '../firebaseConfig';
 import { useRouter } from 'next/navigation';
 import { RiLoginBoxFill, RiLogoutBoxFill } from 'react-icons/ri';
@@ -8,15 +8,16 @@ import { getCartItemsLocalStorage } from '@/utilities/localstorage';
 import { CartItems } from '@/types/globalTypes';
 import { setCartItems, setWishlist } from '@/slices/productSlict';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { signOut, useSession } from 'next-auth/react';
 
 const User: React.FC = () => {
   const dispatch = useAppDispatch();
-  const currentUser = null;
+  const { status } = useSession();
   const router = useRouter();
   const modal = useRef<HTMLDivElement | null>(null);
+
   const logout = () => {
-    setCurrentUser(null);
-    auth.signOut();
+    signOut();
 
     const cartItems: CartItems = getCartItemsLocalStorage();
     dispatch(setCartItems(cartItems));
@@ -29,11 +30,8 @@ const User: React.FC = () => {
   };
   return (
     <>
-      {currentUser ? (
-        <div
-          className=" flex items-center "
-          //data-tip="Logout"
-        >
+      {status === 'authenticated' ? (
+        <div className=" flex items-center ">
           <button
             onClick={logout}
             className="flex items-center"
@@ -44,10 +42,7 @@ const User: React.FC = () => {
           </button>
         </div>
       ) : (
-        <div
-          className=" flex items-center "
-          // data-tip="Login"
-        >
+        <div className=" flex items-center ">
           <Link href="/account/login" className="flex items-center">
             <RiLoginBoxFill className="xl:mr-2" style={{ fontSize: '20px' }} />
             <p className="hidden xl:block">Login</p>
