@@ -1,6 +1,6 @@
 import React from 'react';
-import Notice from './Notice';
-import Nav from './Nav';
+import Notice from './header/Notice';
+import Nav from './header/Nav';
 
 const Header: React.FC = () => {
   return (

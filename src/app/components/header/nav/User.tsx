@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import React, { useRef } from 'react';
-import { auth } from '../firebaseConfig';
+import { auth } from '../../../firebaseConfig';
 import { useRouter } from 'next/navigation';
 import { RiLoginBoxFill, RiLogoutBoxFill } from 'react-icons/ri';
 import { getCartItemsLocalStorage } from '@/utilities/localstorage';

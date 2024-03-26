@@ -1,4 +1,4 @@
-import CloseModalButton from '@/app/components/CloseModalButton';
+import CloseModalButton from '@/app/components/modal/CloseModalButton';
 import { ModalContentsProps } from '@/types/globalTypes';
 import { useRouter } from 'next/navigation';
 

@@ -3,7 +3,7 @@ import { useAppSelector } from '@/hooks/useAppSelector';
 import { ModalContentsProps, Product } from '@/types/globalTypes';
 import { useRef, useState } from 'react';
 import Link from 'next/link';
-import CloseModalButton from './CloseModalButton';
+import CloseModalButton from '../modal/CloseModalButton';
 
 const SearchModalContents: React.FC<ModalContentsProps> = ({ toggleModal }) => {
   const productList = useAppSelector((state) => state.product.productList);

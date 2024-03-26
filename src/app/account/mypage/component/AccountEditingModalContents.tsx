@@ -1,4 +1,4 @@
-import CloseModalButton from '@/app/components/CloseModalButton';
+import CloseModalButton from '@/app/components/modal/CloseModalButton';
 import { auth } from '@/app/firebaseConfig';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { setUserInfo } from '@/slices/userSlice';

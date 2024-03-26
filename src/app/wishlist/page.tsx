@@ -1,5 +1,5 @@
 'use client';
-import React, { useContext, useEffect, useState, useLayoutEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import List from './components/List';
 import { useRouter } from 'next/navigation';
 
@@ -11,7 +11,7 @@ const WishlistComponent: React.FC = () => {
     if (isLoaded)
       if (!currentUser) {
         alert('로그인이 필요한 서비스입니다.');
-        router.back();
+        router.push('/');
       }
     if (!isLoaded) setIsLoaded(true);
   }, [isLoaded, currentUser]);

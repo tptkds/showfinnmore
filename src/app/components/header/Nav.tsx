@@ -1,10 +1,10 @@
 import React from 'react';
-import User from './User';
-import LogoLink from './LogoLink';
-import Menu from './Menu';
-import WishlistLink from './WishlistLink';
-import CartLink from './CartLink';
-import MyPage from './MyPage';
+import User from './nav/User';
+import LogoLink from './nav/LogoLink';
+import Menu from './nav/Menu';
+import WishlistLink from './nav/WishlistLink';
+import CartLink from './nav/CartLink';
+import MyPage from './nav/MyPage';
 const Nav: React.FC = () => {
   return (
     <nav className="flex relative min-width-313 items-center m-4 header-bottom sticky h-16 shadow-lg rounded-xl bg-zinc-100	 bg-opacity-80 dark:bg-black dark:bg-opacity-60 dark:text-white">

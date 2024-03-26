@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
-import SearchModalContents from './SearchModalContents';
+import SearchModalContents from './search/SearchModalContents';
 import Modal from './Modal';
 import { toggleModal } from '@/utilities/modal';
 
