@@ -1,6 +1,8 @@
 import NextAuth, { AuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { firebaseSignIn } from '../firebase';
+import { FirebaseError } from 'firebase/app';
+import { FirebaseAuthError } from '@/error/firebaseAuthError';
 const handler: AuthOptions = NextAuth({
   jwt: {
     secret: process.env.NEXTAUTH_SECRET,
@@ -25,8 +27,15 @@ const handler: AuthOptions = NextAuth({
           }
           return null;
         } catch (error) {
-          console.error(error);
-          throw new Error('Authentication failed');
+          if (error instanceof Error) {
+            const firebaseError = error as FirebaseError;
+            const errorCode = firebaseError.code;
+            const message = firebaseError.message;
+
+            throw new FirebaseAuthError(errorCode, message);
+          } else {
+            throw new Error('알 수 없는 에러가 발생했습니다.');
+          }
         }
       },
     }),

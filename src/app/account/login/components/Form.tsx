@@ -1,13 +1,17 @@
 'use client';
 import React, { useState } from 'react';
 import { signIn } from 'next-auth/react';
-import { schema } from '../schemas/userValidationSchema';
+import { schema } from '../schema/userValidationSchema';
+import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 const Form: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [isSignIng, setIsSignIng] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
+
+  const rotuer = useRouter();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -21,7 +25,11 @@ const Form: React.FC = () => {
     });
 
     if (!validatedFields.success) {
-      setError('유효성 검사 실패');
+      const errorMessages = validatedFields.error.issues.map(
+        (issue) => issue.message
+      );
+      const combinedMessage = errorMessages.join('\n');
+      setError(combinedMessage);
       setIsSignIng(false);
       return;
     }
@@ -31,13 +39,18 @@ const Form: React.FC = () => {
       email: validatedFields.data.email,
       password: validatedFields.data.password,
     });
+    if (result?.status === 200) {
+      rotuer.push('/');
+    } else {
+      setError(result?.error || '');
+    }
 
     setIsSignIng(false);
   };
 
   return (
     <>
-      <div className="text-red-600  mb-4">{error}</div>
+      <div className="text-red-600  mb-4 errorMessage text-center">{error}</div>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col items-center w-full"

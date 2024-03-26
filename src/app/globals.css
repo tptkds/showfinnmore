@@ -178,3 +178,7 @@ svg {
     background-position: 468px 0;
   }
 }
+
+.errorMessage {
+  white-space: pre-line;
+}

@@ -26,3 +26,7 @@ export interface CheckBoxes {
 export interface ModalContentsProps {
   toggleModal: () => void;
 }
+
+export interface FirebaseError extends Error {
+  code: string;
+}
