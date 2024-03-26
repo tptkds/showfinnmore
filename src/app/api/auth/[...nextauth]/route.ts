@@ -47,6 +47,13 @@ const handler: AuthOptions = NextAuth({
     async redirect({ url, baseUrl }) {
       return baseUrl;
     },
+    async session({ session, user }) {
+      const customUser = user as any;
+      session.user = {
+        ...session.user,
+      };
+      return session;
+    },
   },
 });
 

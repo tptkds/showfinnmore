@@ -1,23 +1,25 @@
 'use client';
 import { toggleModal } from '@/utilities/modal';
 import { useRouter } from 'next/navigation';
-import React, { useContext, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AccountEditingModalContents from './component/AccountEditingModalContents';
 import Modal from '@/app/components/Modal';
+import { useSession } from 'next-auth/react';
 
 const MyPage: React.FC = () => {
   const router = useRouter();
-  const currentUser = null;
+  const { data: session, status } = useSession();
   const [selectedButton, setSelectedButton] = useState<string>('');
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [isLoaded, setIsLoaded] = useState<boolean>(false);
-  useLayoutEffect(() => {
-    if (isLoaded)
-      if (!currentUser) {
-        router.push('/account/login');
-      }
-    if (!isLoaded) setIsLoaded(true);
-  }, [isLoaded, currentUser]);
+  //const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  useEffect(() => {
+    // if (isLoaded)
+    if (status === 'unauthenticated') {
+      router.push('/account/login');
+    }
+    console.log(session);
+    // if (!isLoaded) setIsLoaded(true);
+  }, [status]);
 
   return (
     <>
@@ -29,11 +31,11 @@ const MyPage: React.FC = () => {
           <div className="mt-8">
             <div className="flex ">
               <p className="w-14">Name. </p>
-              <p>{currentUser?.displayName}</p>
+              <p>{session?.user.displayName}</p>
             </div>
             <div className="flex ">
               <p className="w-14">Email. </p>
-              <p>{currentUser?.email}</p>
+              <p>{session?.user.email}</p>
             </div>
           </div>
 
