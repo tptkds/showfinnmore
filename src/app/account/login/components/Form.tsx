@@ -27,20 +27,12 @@ const Form: React.FC = () => {
     }
 
     const result = await signIn('credentials', {
-      redirect: true,
+      redirect: false,
       email: validatedFields.data.email,
       password: validatedFields.data.password,
     });
 
     setIsSignIng(false);
-
-    // if (result?.error) {
-    //   setError(result.error);
-    // } else if (result?.url) {
-    //   window.location.href = result.url;
-    // } else {
-    //   window.location.href = '/';
-    // }
   };
 
   return (
