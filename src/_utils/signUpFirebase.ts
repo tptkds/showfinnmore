@@ -1,7 +1,7 @@
 import { auth } from '@/app/firebaseConfig';
 import { registerUserProps } from '@/types/globalTypes';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import initializeUserShoppingData from './initializeUserShoppingData';
+import initializeUserDataFireStore from './initializeUserDataFireStore';
 import updateDisplayNameFirebase from './updateDisplayNameFirebase';
 import { FirebaseError } from 'firebase/app';
 import { FirebaseAuthError } from '@/error/firebaseAuthError';
@@ -19,7 +19,7 @@ const signUpFirebase = async ({
     );
     const user = userCredential.user;
     if (displayName !== '') await updateDisplayNameFirebase(user, displayName);
-    await initializeUserShoppingData({ email });
+    await initializeUserDataFireStore({ email });
     return 'success';
   } catch (error) {
     if (error instanceof Error) {

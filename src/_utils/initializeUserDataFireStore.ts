@@ -1,6 +1,6 @@
 import { db } from '@/app/firebaseConfig';
 import { doc, setDoc } from 'firebase/firestore';
-const initializeUserShoppingData = async ({ email }: { email: string }) => {
+const initializeUserDataFireStore = async ({ email }: { email: string }) => {
   try {
     setDoc(doc(db, 'users', email), {
       wishlist: {},
@@ -12,4 +12,4 @@ const initializeUserShoppingData = async ({ email }: { email: string }) => {
   }
 };
 
-export default initializeUserShoppingData;
+export default initializeUserDataFireStore;
