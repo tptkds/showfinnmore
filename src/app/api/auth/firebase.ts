@@ -1,9 +1,6 @@
 import {
   createUserWithEmailAndPassword,
-  getAuth,
   signInWithEmailAndPassword,
-  onAuthStateChanged,
-  User,
 } from 'firebase/auth';
 import { auth } from '../../firebaseConfig';
 
@@ -48,7 +45,7 @@ export const firebaseSignIn = async (email: string, password: string) => {
     const user = userCredential.user;
     if (user) {
       return {
-        id: user.uid,
+        uid: user.uid,
         name: user.email,
         email: user.email,
         displayName: user.displayName,

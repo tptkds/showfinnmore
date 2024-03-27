@@ -22,7 +22,7 @@ const MyPage: React.FC = () => {
         <h2>마이페이지</h2>
         <div className="my-14 flex flex-col items-center min-w-64">
           <h3 className=" text-xl">내 정보</h3>
-          <div className="mt-8">
+          <div className="mt-8 w-full">
             <MyInfo />
           </div>
           <div className="flex flex-col items-center mt-6 w-full ">

@@ -1,8 +1,8 @@
 import NextAuth, { AuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { firebaseSignIn } from '../firebase';
 import { FirebaseError } from 'firebase/app';
 import { FirebaseAuthError } from '@/error/firebaseAuthError';
+import { signInFireBase } from '@/_utils/signInFireBase';
 const handler: AuthOptions = NextAuth({
   jwt: {
     secret: process.env.NEXTAUTH_SECRET,
@@ -18,12 +18,16 @@ const handler: AuthOptions = NextAuth({
         if (!credentials || !credentials.email || !credentials.password)
           return null;
         try {
-          const user = await firebaseSignIn(
+          const user = await signInFireBase(
             credentials.email,
             credentials.password
           );
           if (user) {
-            return user;
+            return {
+              id: user.id,
+              name: user.name,
+              email: user.email,
+            };
           }
           return null;
         } catch (error) {
@@ -46,13 +50,6 @@ const handler: AuthOptions = NextAuth({
   callbacks: {
     async redirect({ url, baseUrl }) {
       return baseUrl;
-    },
-    async session({ session, user }) {
-      const customUser = user as any;
-      session.user = {
-        ...session.user,
-      };
-      return session;
     },
   },
 });

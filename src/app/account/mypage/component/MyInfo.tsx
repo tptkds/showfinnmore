@@ -6,7 +6,7 @@ const MyInfo: React.FC = () => {
     <>
       <div className="flex ">
         <p className="w-14">Name. </p>
-        <p>{session?.user.displayName}</p>
+        <p>{session?.user.name}</p>
       </div>
       <div className="flex ">
         <p className="w-14">Email. </p>
