@@ -7,7 +7,6 @@ interface productState {
   category: string;
   cartItems: CartItems;
   wishlist: Wishlist;
-  //purchaseList: any;
 }
 
 export const productSlice = createSlice({

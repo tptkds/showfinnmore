@@ -50,7 +50,7 @@ const AccountEditingModalContents: React.FC<AccountEditingModalContents> = ({
         try {
           updateProfile(auth.currentUser, { displayName: name })
             .then(() => {
-              dispatch(setUserInfo(auth.currentUser));
+              // dispatch(setUserInfo(auth.currentUser));
               toggleModal();
             })
             .catch((error) => console.error(error));
@@ -78,7 +78,7 @@ const AccountEditingModalContents: React.FC<AccountEditingModalContents> = ({
           updatePassword(auth.currentUser, password)
             .then(() => {
               toggleModal();
-              dispatch(setUserInfo(null));
+              // dispatch(setUserInfo(null));
               alert(
                 'Password has been successfully changed. Please log in again'
               );
