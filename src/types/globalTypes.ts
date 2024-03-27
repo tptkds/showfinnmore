@@ -16,7 +16,7 @@ export interface CartItems {
   [productId: string]: { product: Product; count: number };
 }
 
-export interface Wishlist {
+export interface WishlistItems {
   [productId: string]: Product;
 }
 export interface CheckBoxes {
