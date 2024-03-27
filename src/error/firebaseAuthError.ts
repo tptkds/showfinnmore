@@ -5,6 +5,7 @@ export class FirebaseAuthError extends Error {
     'auth/network-request-failed': '네트워크 연결에 실패했습니다.',
     'auth/email-already-in-use': '이미 사용 중인 이메일 주소입니다.',
     'auth/too-many-requests': '1분 후에 다시 시도해 주시기 바랍니다.',
+    'auth/invalid-password': '패스워드는 6글자 이상이어야 합니다.',
   };
 
   code: string;

@@ -3,7 +3,7 @@ import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { setCartItems } from '@/slices/productSlict';
 import { CartItems } from '@/types/globalTypes';
-import { setCartItemsLocalStorage } from '@/utils/localstorage';
+import { setCartItemsLocalStorage } from '@/app/utils/localstorage';
 import { doc, updateDoc } from 'firebase/firestore';
 import { useContext } from 'react';
 

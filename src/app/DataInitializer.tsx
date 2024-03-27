@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { getProductList } from './api/product';
 import { setCartItems, setProductList } from '@/slices/productSlict';
 import { CartItems, Product } from '@/types/globalTypes';
-import { getCartItemsLocalStorage } from '@/utils/localstorage';
+import { getCartItemsLocalStorage } from '@/app/utils/localstorage';
 import { AppDispatch } from '@/types/reduxTypes';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 

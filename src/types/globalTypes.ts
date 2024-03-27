@@ -30,3 +30,9 @@ export interface ModalContentsProps {
 export interface FirebaseError extends Error {
   code: string;
 }
+
+export interface registerUserProps {
+  email: string;
+  password: string;
+  displayName: string;
+}

@@ -2,7 +2,8 @@ import NextAuth, { AuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { FirebaseError } from 'firebase/app';
 import { FirebaseAuthError } from '@/error/firebaseAuthError';
-import { signInFireBase } from '@/_utils/signInFireBase';
+import signInFirebase from '@/_utils/signInFireBase';
+
 const handler: AuthOptions = NextAuth({
   jwt: {
     secret: process.env.NEXTAUTH_SECRET,
@@ -18,7 +19,7 @@ const handler: AuthOptions = NextAuth({
         if (!credentials || !credentials.email || !credentials.password)
           return null;
         try {
-          const user = await signInFireBase(
+          const user = await signInFirebase(
             credentials.email,
             credentials.password
           );

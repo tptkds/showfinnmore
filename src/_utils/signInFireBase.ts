@@ -1,7 +1,7 @@
 import { auth } from '@/app/firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
-export const signInFireBase = async (email: string, password: string) => {
+const signInFirebase = async (email: string, password: string) => {
   try {
     const userCredential = await signInWithEmailAndPassword(
       auth,
@@ -27,3 +27,5 @@ export const signInFireBase = async (email: string, password: string) => {
     }
   }
 };
+
+export default signInFirebase;

@@ -1,6 +1,6 @@
 import AccountEditingModalContents from './modal/AccountEditingModalContents';
 import Modal from '@/app/components/Modal';
-import { toggleModal } from '@/utils/modal';
+import { toggleModal } from '@/app/utils/modal';
 import { useState } from 'react';
 const UserSettingsButtons: React.FC = () => {
   const [selectedButton, setSelectedButton] = useState<string>('');

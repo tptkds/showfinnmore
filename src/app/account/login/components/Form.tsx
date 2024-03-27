@@ -1,8 +1,9 @@
 'use client';
 import React, { useState } from 'react';
 import { signIn } from 'next-auth/react';
-import { schema } from '../schema/userValidationSchema';
+import { signInSchema } from '../../../../schema/userValidationSchema';
 import { useRouter } from 'next/navigation';
+import { SafeParseReturnType, ZodIssue } from 'zod';
 
 const Form: React.FC = () => {
   const [email, setEmail] = useState<string>('');
@@ -18,14 +19,14 @@ const Form: React.FC = () => {
     setIsSignIng(true);
     setError('');
 
-    const validatedFields = schema.safeParse({
+    const validatedFields = signInSchema.safeParse({
       email: email,
       password: password,
     });
 
     if (!validatedFields.success) {
       const errorMessages = validatedFields.error.issues.map(
-        (issue) => issue.message
+        (issue: ZodIssue) => issue.message
       );
       const combinedMessage = errorMessages.join('\n');
       setError(combinedMessage);

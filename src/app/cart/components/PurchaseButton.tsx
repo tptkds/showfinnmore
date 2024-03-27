@@ -6,7 +6,7 @@ import { CartItems, CheckBoxes } from '@/types/globalTypes';
 import {
   deleteCartItemsLocalStorage,
   getCartItemsLocalStorage,
-} from '@/utils/localstorage';
+} from '@/app/utils/localstorage';
 import { doc, updateDoc } from 'firebase/firestore';
 import { useContext } from 'react';
 interface PurchaseButtonProps {

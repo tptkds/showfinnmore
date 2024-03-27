@@ -9,7 +9,7 @@ import { PiShoppingBagFill, PiShoppingBagLight } from 'react-icons/pi';
 import {
   addCartItemsLocalStorage,
   deleteCartItemsLocalStorage,
-} from '@/utils/localstorage';
+} from '@/app/utils/localstorage';
 
 interface CartButtonProps {
   product: Product;
