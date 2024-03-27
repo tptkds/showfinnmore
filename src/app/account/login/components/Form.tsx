@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { schema } from '../schema/userValidationSchema';
-import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 
 const Form: React.FC = () => {

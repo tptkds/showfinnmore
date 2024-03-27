@@ -5,7 +5,7 @@ import { setUserInfo } from '@/slices/userSlice';
 import { ModalContentsProps } from '@/types/globalTypes';
 import { updatePassword, updateProfile } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 interface AccountEditingModalContents extends ModalContentsProps {
   selectedButton: string;
 }

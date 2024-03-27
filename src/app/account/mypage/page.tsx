@@ -1,24 +1,19 @@
 'use client';
-import { toggleModal } from '@/utilities/modal';
+
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
-import AccountEditingModalContents from './component/AccountEditingModalContents';
-import Modal from '@/app/components/Modal';
+import React, { useEffect } from 'react';
 import { useSession } from 'next-auth/react';
+import UserSettingsButtons from './component/UserSettingsButtons';
+import MyInfo from './component/MyInfo';
 
 const MyPage: React.FC = () => {
   const router = useRouter();
-  const { data: session, status } = useSession();
-  const [selectedButton, setSelectedButton] = useState<string>('');
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  //const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const { status } = useSession();
+
   useEffect(() => {
-    // if (isLoaded)
     if (status === 'unauthenticated') {
       router.push('/account/login');
     }
-    console.log(session);
-    // if (!isLoaded) setIsLoaded(true);
   }, [status]);
 
   return (
@@ -27,53 +22,14 @@ const MyPage: React.FC = () => {
         <h2>마이페이지</h2>
         <div className="my-14 flex flex-col items-center min-w-64">
           <h3 className=" text-xl">내 정보</h3>
-
           <div className="mt-8">
-            <div className="flex ">
-              <p className="w-14">Name. </p>
-              <p>{session?.user.displayName}</p>
-            </div>
-            <div className="flex ">
-              <p className="w-14">Email. </p>
-              <p>{session?.user.email}</p>
-            </div>
+            <MyInfo />
           </div>
-
           <div className="flex flex-col items-center mt-6 w-full ">
-            <button
-              type="button"
-              className="h-12  dark:bg-white dark:text-black dark:hover:bg-zinc-300  bg-zinc-900 hover:bg-zinc-700 text-white transition duration-200 ease-in-out w-full"
-              onClick={() => {
-                toggleModal(isModalOpen, setIsModalOpen);
-                setSelectedButton('changeName');
-              }}
-              aria-label="이름 변경하기"
-            >
-              이름 변경
-            </button>
-            <button
-              type="button"
-              className="mt-4 h-12  dark:bg-white dark:text-black dark:hover:bg-zinc-300  bg-zinc-900 hover:bg-zinc-700 text-white transition duration-200 ease-in-out w-full"
-              onClick={() => {
-                toggleModal(isModalOpen, setIsModalOpen);
-                setSelectedButton('changePassword');
-              }}
-              aria-label="패스워드 변경하기"
-            >
-              패스워드 변경
-            </button>
+            <UserSettingsButtons />
           </div>
         </div>
       </div>
-      <Modal
-        toggleModal={() => toggleModal(isModalOpen, setIsModalOpen)}
-        isModalOpen={isModalOpen}
-      >
-        <AccountEditingModalContents
-          toggleModal={() => toggleModal(isModalOpen, setIsModalOpen)}
-          selectedButton={selectedButton}
-        />
-      </Modal>
     </>
   );
 };
