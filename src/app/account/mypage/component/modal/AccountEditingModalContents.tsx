@@ -1,7 +1,6 @@
 import CloseModalButton from '@/app/components/modal/CloseModalButton';
 import { auth } from '@/app/firebaseConfig';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
-import { setUserInfo } from '@/slices/userSlice';
 import { ModalContentsProps } from '@/types/globalTypes';
 import { updatePassword, updateProfile } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
