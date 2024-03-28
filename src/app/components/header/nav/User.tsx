@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation';
 import { RiLoginBoxFill, RiLogoutBoxFill } from 'react-icons/ri';
 import { getCartItemsLocalStorage } from '@/app/utils/localstorage';
 import { CartItems } from '@/types/globalTypes';
-import { setCartItems, setWishlist } from '@/slices/productSlict';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { signOut, useSession } from 'next-auth/react';
 
@@ -20,8 +19,8 @@ const User: React.FC = () => {
     signOut();
 
     const cartItems: CartItems = getCartItemsLocalStorage();
-    dispatch(setCartItems(cartItems));
-    dispatch(setWishlist({}));
+    // dispatch(setCartItems(cartItems));
+    // dispatch(setWishlist({}));
     modal.current?.classList.remove('hidden');
     setTimeout(() => {
       modal.current?.classList.add('hidden');
