@@ -4,7 +4,7 @@ import React, { useRef } from 'react';
 import { auth } from '../../../firebaseConfig';
 import { useRouter } from 'next/navigation';
 import { RiLoginBoxFill, RiLogoutBoxFill } from 'react-icons/ri';
-import { getCartItemsLocalStorage } from '@/app/utils/localstorage';
+import { getCartItemsLocalStorage } from '../../../../utils/localstorage';
 import { CartItems } from '@/types/globalTypes';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { signOut, useSession } from 'next-auth/react';

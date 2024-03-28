@@ -4,14 +4,14 @@ import Image from 'next/image';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import Modal from '@/app/components/Modal';
 import CartModalContents from './components/CartModalContents';
-import { toggleModal } from '@/app/utils/modal';
+import { toggleModal } from '../../../../utils/modal';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 
 import { CartItems, Product } from '@/types/globalTypes';
 import {
   getCartItemsLocalStorage,
   addCartItemsLocalStorage,
-} from '@/app/utils/localstorage';
+} from '../../../../utils/localstorage';
 
 interface DetailProps {
   params: {

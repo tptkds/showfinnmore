@@ -1,6 +1,6 @@
 'use client';
 import useSignUpUser from '@/hooks/useSignUpUser';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
 const Form: React.FC = () => {
@@ -10,16 +10,19 @@ const Form: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const { status, signUpUser } = useSignUpUser();
   const router = useRouter();
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      await signUpUser(email, password, displayName);
-      await router.push('/');
+      await signUpUser(email, password, displayName).then(() =>
+        router.push('/')
+      );
     } catch (error) {
       const err = error as Error;
       setErrorMessage(err.message);
     }
   };
+
   return (
     <>
       <div className="text-red-600 mb-4 errorMessage text-center">

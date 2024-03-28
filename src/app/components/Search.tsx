@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import SearchModalContents from './search/SearchModalContents';
 import Modal from './Modal';
-import { toggleModal } from '@/app/utils/modal';
+import { toggleModal } from '../../utils/modal';
 
 const Search: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);

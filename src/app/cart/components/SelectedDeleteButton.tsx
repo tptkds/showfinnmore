@@ -6,7 +6,7 @@ import { AppDispatch } from '@/types/reduxTypes';
 import {
   deleteCartItemsLocalStorage,
   getCartItemsLocalStorage,
-} from '@/app/utils/localstorage';
+} from '../../../utils/localstorage';
 import { doc, updateDoc } from 'firebase/firestore';
 import { useContext } from 'react';
 
