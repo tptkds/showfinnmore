@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { auth } from '../../../firebaseConfig';
 import { useRouter } from 'next/navigation';
 import { RiLoginBoxFill, RiLogoutBoxFill } from 'react-icons/ri';
@@ -14,7 +14,6 @@ const User: React.FC = () => {
   const { status } = useSession();
   const router = useRouter();
   const modal = useRef<HTMLDivElement | null>(null);
-
   const logout = () => {
     signOut();
 

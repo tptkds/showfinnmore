@@ -1,6 +1,7 @@
 'use client';
 import useRouterPush from '@/hooks/useRouterPush';
 import useSignUpUser from '@/hooks/useSignUpUser';
+import signInUser from '@/utils/signInUser';
 import React, { useState } from 'react';
 
 const Form: React.FC = () => {
@@ -14,7 +15,8 @@ const Form: React.FC = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      await signUpUser(email, password, displayName).then(() => {
+      await signUpUser(email, password, displayName);
+      await signInUser(email, password).then(() => {
         resetStore();
         goHome();
       });
