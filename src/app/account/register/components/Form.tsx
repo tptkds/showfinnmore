@@ -1,6 +1,6 @@
 'use client';
+import useRouterPush from '@/hooks/useRouterPush';
 import useSignUpUser from '@/hooks/useSignUpUser';
-import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
 const Form: React.FC = () => {
@@ -8,15 +8,16 @@ const Form: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('');
-  const { status, signUpUser } = useSignUpUser();
-  const router = useRouter();
+  const { status, signUpUser, resetStore } = useSignUpUser();
+  const { goHome } = useRouterPush();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      await signUpUser(email, password, displayName).then(() =>
-        router.push('/')
-      );
+      await signUpUser(email, password, displayName).then(() => {
+        resetStore();
+        goHome();
+      });
     } catch (error) {
       const err = error as Error;
       setErrorMessage(err.message);
