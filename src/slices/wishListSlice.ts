@@ -11,14 +11,14 @@ const wishlistSlice = createSlice({
     wishlistItems: {},
   } as WishlistState,
   reducers: {
-    setWishlist: (state, action: PayloadAction<WishlistItems>) => {
+    setWishlistItems: (state, action: PayloadAction<WishlistItems>) => {
       state.wishlistItems = action.payload;
     },
-    resetWishlist: (state) => {
+    resetWishlistItems: (state) => {
       state.wishlistItems = {};
     },
   },
 });
 
-export const { setWishlist, resetWishlist } = wishlistSlice.actions;
+export const { setWishlistItems, resetWishlistItems } = wishlistSlice.actions;
 export const wishlistReducer = wishlistSlice.reducer;

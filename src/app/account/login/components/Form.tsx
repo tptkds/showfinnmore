@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { SafeParseReturnType, ZodIssue } from 'zod';
 import useSignInUser from '@/hooks/useSignInUser';
 import useRouterPush from '@/hooks/useRouterPush';
+import useStore from '@/hooks/useStore';
 
 const Form: React.FC = () => {
   const [email, setEmail] = useState<string>('');
@@ -13,13 +14,14 @@ const Form: React.FC = () => {
   const [isSignIng, setIsSignIng] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
   const { status: signInStatus, signInUser } = useSignInUser();
+  const { resetStore } = useStore();
   const { goHome } = useRouterPush();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
       await signInUser(email, password).then(() => {
-        // resetStore();
+        resetStore();
         // setUserStore();
         goHome();
       });
