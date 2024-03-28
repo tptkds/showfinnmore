@@ -1,5 +1,5 @@
 'use client';
-import useSignUpUser from '@/app/hooks/useSignUpUser';
+import useSignUpUser from '@/hooks/useSignUpUser';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 

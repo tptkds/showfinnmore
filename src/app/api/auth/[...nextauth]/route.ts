@@ -2,7 +2,7 @@ import NextAuth, { AuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { FirebaseError } from 'firebase/app';
 import { FirebaseAuthError } from '@/error/firebaseAuthError';
-import signInFirebase from '@/_utils/signInFirebase';
+import signInFirebase from '@/utils/signInFirebase';
 
 export const handler: AuthOptions = NextAuth({
   jwt: {

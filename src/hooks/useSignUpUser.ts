@@ -1,4 +1,4 @@
-import signUpFirebase from '@/_utils/signUpFirebase';
+import signUpFirebase from '@/utils/signUpFirebase';
 import { signUpSchema } from '@/schema/userValidationSchema';
 
 import { useState } from 'react';
