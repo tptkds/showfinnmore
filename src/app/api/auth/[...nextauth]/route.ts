@@ -1,10 +1,10 @@
-import NextAuth, { AuthOptions } from 'next-auth';
+import NextAuth, { AuthOptions, NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { FirebaseError } from 'firebase/app';
 import { FirebaseAuthError } from '@/error/firebaseAuthError';
 import signInFirebase from '@/utils/signInFirebase';
 
-const handler: AuthOptions = NextAuth({
+const authOptions: NextAuthOptions = NextAuth({
   jwt: {
     secret: process.env.NEXTAUTH_SECRET,
   },
@@ -54,4 +54,6 @@ const handler: AuthOptions = NextAuth({
     },
   },
 });
-export default handler;
+
+const handler = NextAuth(authOptions);
+export { handler as GET, handler as POST };
