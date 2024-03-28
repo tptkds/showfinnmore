@@ -10,9 +10,7 @@ import PurchaseButton from './PurchaseButton';
 const CartList: React.FC = () => {
   const [checkBoxes, setCheckBoxes] = useState<{ [key: string]: boolean }>({});
   const [checkAllBoxes, setCheckAllBoxes] = useState<boolean>(true);
-  const cartItems: CartItems = useAppSelector(
-    (state) => state.product.cartItems
-  );
+  const cartItems: CartItems = useAppSelector((state) => state.cart.cartItems);
   const cartItemKeys = useMemo(() => Object.keys(cartItems), [cartItems]);
 
   useEffect(() => {

@@ -5,9 +5,7 @@ interface SummaryProps {
   checkBoxes: CheckBoxes;
 }
 const Summary: React.FC<SummaryProps> = ({ checkBoxes }) => {
-  const cartItems: CartItems = useAppSelector(
-    (state) => state.product.cartItems
-  );
+  const cartItems: CartItems = useAppSelector((state) => state.cart.cartItems);
   return (
     <>
       <div className="flex">

@@ -10,9 +10,7 @@ import Link from 'next/link';
 import { useFilteredProductList } from '@/hooks/useFilteredProductList';
 
 const List: React.FC = () => {
-  const cartItems: CartItems = useAppSelector(
-    (state) => state.product.cartItems
-  );
+  const cartItems: CartItems = useAppSelector((state) => state.cart.cartItems);
   const wishlist: Wishlist = useAppSelector((state) => state.product.wishlist);
   const currentPage: number = useAppSelector(
     (state) => state.product.currentPage

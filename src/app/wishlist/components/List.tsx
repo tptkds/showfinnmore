@@ -10,9 +10,7 @@ import React from 'react';
 const WishlistComponent: React.FC = () => {
   const wishlist: Wishlist = useAppSelector((state) => state.product.wishlist);
   const keysOfWishlist = [...Object.keys(wishlist)];
-  const cartItems: CartItems = useAppSelector(
-    (state) => state.product.cartItems
-  );
+  const cartItems: CartItems = useAppSelector((state) => state.cart.cartItems);
 
   return keysOfWishlist.length !== 0 ? (
     <ul className="grid grid-cols-1 gap-8 h-full sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

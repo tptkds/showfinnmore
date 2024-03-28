@@ -22,9 +22,7 @@ const CartItem: React.FC<CartItemProps> = ({
   setCheckAllBoxes,
   setCheckBoxes,
 }) => {
-  const cartItems: CartItems = useAppSelector(
-    (state) => state.product.cartItems
-  );
+  const cartItems: CartItems = useAppSelector((state) => state.cart.cartItems);
   return (
     <li className="my-4 items-center flex flex-row mb-8">
       <input
