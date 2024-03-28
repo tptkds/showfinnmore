@@ -20,10 +20,10 @@ const WishlistButton: React.FC<WishlistButtonProps> = ({
   const dispatch = useAppDispatch();
 
   const toggleWishlist = async () => {
-    if (!currentUser || !currentUser.email) {
-      alert('로그인이 필요한 기능입니다.');
-      return;
-    }
+    // if (!currentUser || !currentUser.email) {
+    //   alert('로그인이 필요한 기능입니다.');
+    //   return;
+    // }
 
     const newWishlist = { ...wishlist };
     const productID = product.id.toString();
@@ -34,8 +34,8 @@ const WishlistButton: React.FC<WishlistButtonProps> = ({
       newWishlist[productID] = product;
     }
 
-    const userRef = doc(db, 'users', currentUser.email);
-    await updateDoc(userRef, { wishlist: newWishlist });
+    // const userRef = doc(db, 'users', currentUser.email);
+    // await updateDoc(userRef, { wishlist: newWishlist });
 
     // dispatch(setWishlist(newWishlist));
   };

@@ -1,5 +1,5 @@
 'use client';
-import React, { useContext, useLayoutEffect, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import Image from 'next/image';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import Modal from '@/app/components/Modal';
@@ -25,7 +25,7 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
   const currentUser = null;
 
   const productList: Product[] = useAppSelector(
-    (state) => state.product.productList
+    (state) => state.product.productItems
   );
 
   useLayoutEffect(() => {

@@ -24,9 +24,7 @@ const SelectedDeleteButton: React.FC<SelectedDeleteButtonProps> = ({
 }) => {
   const dispatch: AppDispatch = useAppDispatch();
   const currentUser = null;
-  const cartItems: CartItems = useAppSelector(
-    (state) => state.product.cartItems
-  );
+  const cartItems: CartItems = useAppSelector((state) => state.cart.cartItems);
   const deleteSelectedItems = (e: React.MouseEvent<HTMLButtonElement>) => {
     let newItems = { ...cartItems };
     const keys: string[] = Object.keys(checkBoxes).filter(
@@ -41,11 +39,11 @@ const SelectedDeleteButton: React.FC<SelectedDeleteButtonProps> = ({
       });
       newItems = newCartItems;
       let userRef = null;
-      if (currentUser?.email) userRef = doc(db, 'users', currentUser?.email);
-      if (userRef)
-        updateDoc(userRef, {
-          cartItems: newCartItems,
-        });
+      // if (currentUser?.email) userRef = doc(db, 'users', currentUser?.email);
+      // if (userRef)
+      //   updateDoc(userRef, {
+      //     cartItems: newCartItems,
+      //   });
 
       setCheckAllBoxes(true);
 

@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useLayoutEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
@@ -14,7 +14,7 @@ interface ProductProps {
 const Product: React.FC<ProductProps> = ({ params }) => {
   const dispatch: AppDispatch = useAppDispatch();
   const prevCategory: string = useAppSelector(
-    (state) => state.product.category
+    (state) => state.product.currentCategory
   );
   const curCategory: string = params.slug[0];
   const curPage: number = Number(params.slug[1]);

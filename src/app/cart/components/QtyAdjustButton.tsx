@@ -22,32 +22,32 @@ const QtyAdjustButton: React.FC<QtyAdjustButtonProps> = ({
 }) => {
   const dispatch = useAppDispatch();
   const currentUser = null;
-  const cartItems: CartItems = useAppSelector(
-    (state) => state.product.cartItems
-  );
+  // const cartItems: CartItems = useAppSelector(
+  //   (state) => state.product.cartItems
+  // );
   const changeQty = async () => {
     setCheckAllBoxes(true);
-    const currentCount = cartItems[itemKey]?.count;
-    const newCount = isIncrease
-      ? currentCount + 1
-      : Math.max(currentCount - 1, 0);
+    // const currentCount = cartItems[itemKey]?.count;
+    // const newCount = isIncrease
+    //   ? currentCount + 1
+    //   : Math.max(currentCount - 1, 0);
 
-    if (currentCount === newCount) return;
+    // if (currentCount === newCount) return;
 
-    const newItem = {
-      [itemKey]: {
-        product: cartItems[itemKey].product,
-        count: newCount,
-      },
-    };
-    const newCartItems: CartItems = { ...cartItems, ...newItem };
+    // const newItem = {
+    //   [itemKey]: {
+    //     product: cartItems[itemKey].product,
+    //     count: newCount,
+    //   },
+    // };
+    // const newCartItems: CartItems = { ...cartItems, ...newItem };
 
-    if (currentUser?.email) {
-      const userRef = doc(db, 'users', currentUser.email);
-      await updateDoc(userRef, { cartItems: newCartItems });
-    } else {
-      setCartItemsLocalStorage(newCartItems);
-    }
+    // if (currentUser?.email) {
+    //   const userRef = doc(db, 'users', currentUser.email);
+    //   await updateDoc(userRef, { cartItems: newCartItems });
+    // } else {
+    //   setCartItemsLocalStorage(newCartItems);
+    // }
     // dispatch(setCartItems(newCartItems));
   };
 

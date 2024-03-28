@@ -20,7 +20,7 @@ const PurchaseButton: React.FC<PurchaseButtonProps> = ({
   checkBoxes,
 }) => {
   const currentUser = null;
-  const cartItems = useAppSelector((state) => state.product.cartItems);
+  // const cartItems = useAppSelector((state) => state.product.cartItems);
   // const purchaseList = useAppSelector((state) => state.product.purchaseList);
   const dispatch = useAppDispatch();
   const purchase = () => {
@@ -49,13 +49,13 @@ const PurchaseButton: React.FC<PurchaseButtonProps> = ({
     //let purchases: any = {};
     // keys.forEach((key) => (purchases[key] = { ...cartItems[key] }));
 
-    let newCartItems: CartItems = {
-      ...cartItems,
-    };
+    // let newCartItems: CartItems = {
+    //   ...cartItems,
+    // };
 
-    keys.forEach((key) => {
-      delete newCartItems[key];
-    });
+    // keys.forEach((key) => {
+    //   delete newCartItems[key];
+    // });
 
     // let userRef = null;
     // if (currentUser?.email) userRef = doc(db, 'users', currentUser?.email);

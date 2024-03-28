@@ -25,9 +25,7 @@ const DeleteCartItem: React.FC<DeleteCartItemProps> = ({
 }) => {
   const dispatch: AppDispatch = useAppDispatch();
   const currentUser = null;
-  const cartItems: CartItems = useAppSelector(
-    (state) => state.product.cartItems
-  );
+  const cartItems: CartItems = useAppSelector((state) => state.cart.cartItems);
   const deleteItemInCart = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const target = e.target as HTMLButtonElement;
@@ -40,11 +38,11 @@ const DeleteCartItem: React.FC<DeleteCartItemProps> = ({
       delete newCartItems[target.id];
       newItems = newCartItems;
       let userRef = null;
-      if (currentUser?.email) userRef = doc(db, 'users', currentUser?.email);
-      if (userRef)
-        updateDoc(userRef, {
-          cartItems: newCartItems,
-        });
+      // if (currentUser?.email) userRef = doc(db, 'users', currentUser?.email);
+      // if (userRef)
+      //   updateDoc(userRef, {
+      //     cartItems: newCartItems,
+      //   });
       let checkBoxesData: { [key: string]: boolean } = {};
       Object.keys(newCartItems).forEach((key) => {
         checkBoxesData[key] = true;
