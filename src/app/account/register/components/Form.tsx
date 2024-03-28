@@ -1,7 +1,8 @@
 'use client';
 import useRouterPush from '@/hooks/useRouterPush';
+import useSignInUser from '@/hooks/useSignInUser';
 import useSignUpUser from '@/hooks/useSignUpUser';
-import signInUser from '@/utils/signInUser';
+
 import React, { useState } from 'react';
 
 const Form: React.FC = () => {
@@ -9,7 +10,8 @@ const Form: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('');
-  const { status, signUpUser, resetStore } = useSignUpUser();
+  const { status: signUpStatus, signUpUser, resetStore } = useSignUpUser();
+  const { signInUser } = useSignInUser();
   const { goHome } = useRouterPush();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -68,10 +70,10 @@ const Form: React.FC = () => {
           <button
             type="submit"
             className="dark:bg-white dark:text-black dark:hover:bg-zinc-300 h-12 bg-zinc-900   text-white  transition duration-200 ease-in-out  w-11/12 sm:w-4/5 md:w-1/2 lg:w-2/5 xl:w-1/3"
-            disabled={status === 'loading'}
+            disabled={signUpStatus === 'loading'}
             aria-label="회원가입하기"
           >
-            {status === 'loading' ? '회원가입 중...' : '회원가입하기'}
+            {signUpStatus === 'loading' ? '회원가입 중...' : '회원가입하기'}
           </button>
         </div>
       </form>

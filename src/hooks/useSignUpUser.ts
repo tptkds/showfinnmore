@@ -20,6 +20,7 @@ const useSignUpUser = () => {
     displayName: string
   ) => {
     try {
+      setStatus('loading');
       const validatedFields = signUpSchema.safeParse({
         email: email,
         password: password,
@@ -33,8 +34,6 @@ const useSignUpUser = () => {
         const combinedMessage = errorMessages.join('\n');
         throw new Error(combinedMessage);
       }
-
-      setStatus('loading');
       await signUpFirebase({ email, password, displayName });
       setStatus('success');
     } catch (error) {
