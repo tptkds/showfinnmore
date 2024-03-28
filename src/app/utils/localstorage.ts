@@ -1,4 +1,4 @@
-import { CartItems, Product, Wishlist } from '@/types/globalTypes';
+import { CartItems, Product } from '@/types/globalTypes';
 
 export const addCartItemsLocalStorage = (item: Product) => {
   const cartItems: CartItems | never[] = getCartItemsLocalStorage();

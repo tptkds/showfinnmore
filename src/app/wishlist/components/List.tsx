@@ -2,13 +2,13 @@
 import CartButton from '@/app/product/[...slug]/components/CartButton';
 import WishlistButton from '@/app/product/[...slug]/components/WishlistButton';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { CartItems, Wishlist } from '@/types/globalTypes';
+import { CartItems, WishlistItems } from '@/types/globalTypes';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
 const WishlistComponent: React.FC = () => {
-  const wishlist: Wishlist = useAppSelector(
+  const wishlist: WishlistItems = useAppSelector(
     (state) => state.wishlist.wishlistItems
   );
   const keysOfWishlist = [...Object.keys(wishlist)];
