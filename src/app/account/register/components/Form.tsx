@@ -2,7 +2,7 @@
 import useRouterPush from '@/hooks/useRouterPush';
 import useSignInUser from '@/hooks/useSignInUser';
 import useSignUpUser from '@/hooks/useSignUpUser';
-
+import useStore from '@/hooks/useStore';
 import React, { useState } from 'react';
 
 const Form: React.FC = () => {
@@ -10,8 +10,9 @@ const Form: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('');
-  const { status: signUpStatus, signUpUser, resetStore } = useSignUpUser();
+  const { status: signUpStatus, signUpUser } = useSignUpUser();
   const { signInUser } = useSignInUser();
+  const { resetStore } = useStore();
   const { goHome } = useRouterPush();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {

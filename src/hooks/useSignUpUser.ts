@@ -1,19 +1,13 @@
 import signUpFirebase from '@/_utils/signUpFirebase';
 import { signUpSchema } from '@/schema/userValidationSchema';
-import { resetCartItems } from '@/slices/cartSlice';
-import { resetWishlist } from '@/slices/wishListSlice';
 
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+
 import { ZodIssue } from 'zod';
 
 const useSignUpUser = () => {
   const [status, setStatus] = useState('idle');
-  const dispatch = useDispatch();
-  const resetStore = () => {
-    dispatch(resetCartItems());
-    dispatch(resetWishlist());
-  };
+
   const signUpUser = async (
     email: string,
     password: string,
@@ -42,6 +36,6 @@ const useSignUpUser = () => {
     }
   };
 
-  return { status, signUpUser, resetStore };
+  return { status, signUpUser };
 };
 export default useSignUpUser;

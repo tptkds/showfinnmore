@@ -4,53 +4,36 @@ import { signIn } from 'next-auth/react';
 import { signInSchema } from '../../../../schema/userValidationSchema';
 import { useRouter } from 'next/navigation';
 import { SafeParseReturnType, ZodIssue } from 'zod';
+import useSignInUser from '@/hooks/useSignInUser';
+import useRouterPush from '@/hooks/useRouterPush';
 
 const Form: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [isSignIng, setIsSignIng] = useState<boolean>(false);
-  const [error, setError] = useState<string>('');
-
-  const rotuer = useRouter();
+  const [errorMessage, setErrorMessage] = useState<string>('');
+  const { status: signInStatus, signInUser } = useSignInUser();
+  const { goHome } = useRouterPush();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    setIsSignIng(true);
-    setError('');
-
-    const validatedFields = signInSchema.safeParse({
-      email: email,
-      password: password,
-    });
-
-    if (!validatedFields.success) {
-      const errorMessages = validatedFields.error.issues.map(
-        (issue: ZodIssue) => issue.message
-      );
-      const combinedMessage = errorMessages.join('\n');
-      setError(combinedMessage);
-      setIsSignIng(false);
-      return;
+    try {
+      await signInUser(email, password).then(() => {
+        // resetStore();
+        // setUserStore();
+        goHome();
+      });
+    } catch (error) {
+      const err = error as Error;
+      setErrorMessage(err.message);
     }
-
-    const result = await signIn('credentials', {
-      redirect: false,
-      email: validatedFields.data.email,
-      password: validatedFields.data.password,
-    });
-    if (result?.status === 200) {
-      rotuer.push('/');
-    } else {
-      setError(result?.error || '');
-    }
-
-    setIsSignIng(false);
   };
 
   return (
     <>
-      <div className="text-red-600  mb-4 errorMessage text-center">{error}</div>
+      <div className="text-red-600  mb-4 errorMessage text-center">
+        {errorMessage}
+      </div>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col items-center w-full"
