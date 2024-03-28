@@ -1,7 +1,6 @@
 'use client';
 import React, { useContext } from 'react';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
-import { setCartItems } from '@/slices/productSlict';
 import { Product, CartItems } from '@/types/globalTypes';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '@/app/firebaseConfig';
@@ -43,7 +42,7 @@ const CartButton: React.FC<CartButtonProps> = ({ product, cartItems }) => {
       }
     }
 
-    dispatch(setCartItems(newCartItems));
+    // dispatch(setCartItems(newCartItems));
   };
 
   return (

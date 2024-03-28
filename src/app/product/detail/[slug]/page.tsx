@@ -6,7 +6,7 @@ import Modal from '@/app/components/Modal';
 import CartModalContents from './components/CartModalContents';
 import { toggleModal } from '@/app/utils/modal';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
-import { setCartItems } from '@/slices/productSlict';
+
 import { CartItems, Product } from '@/types/globalTypes';
 import {
   getCartItemsLocalStorage,
@@ -52,8 +52,8 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
     if (curItem) {
       addCartItemsLocalStorage(curItem);
       const newCartItems: CartItems | undefined = getCartItemsLocalStorage();
-      if (newCartItems !== undefined) dispatch(setCartItems(newCartItems));
-      else dispatch(setCartItems({}));
+      //  if (newCartItems !== undefined) dispatch(setCartItems(newCartItems));
+      // else dispatch(setCartItems({}));
     }
   };
 

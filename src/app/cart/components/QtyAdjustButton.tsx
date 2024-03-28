@@ -1,7 +1,7 @@
 import { db } from '@/app/firebaseConfig';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { setCartItems } from '@/slices/productSlict';
+
 import { CartItems } from '@/types/globalTypes';
 import { setCartItemsLocalStorage } from '@/app/utils/localstorage';
 import { doc, updateDoc } from 'firebase/firestore';
@@ -48,7 +48,7 @@ const QtyAdjustButton: React.FC<QtyAdjustButtonProps> = ({
     } else {
       setCartItemsLocalStorage(newCartItems);
     }
-    dispatch(setCartItems(newCartItems));
+    // dispatch(setCartItems(newCartItems));
   };
 
   return (

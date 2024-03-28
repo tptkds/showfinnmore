@@ -1,15 +1,15 @@
 'use client';
 import React, { useContext } from 'react';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
-import { setWishlist } from '@/slices/productSlict';
-import { Product, Wishlist } from '@/types/globalTypes';
+
+import { Product, WishlistItems } from '@/types/globalTypes';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '@/app/firebaseConfig';
 import { PiHeartFill, PiHeartLight } from 'react-icons/pi';
 
 interface WishlistButtonProps {
   product: Product;
-  wishlist: Wishlist;
+  wishlist: WishlistItems;
 }
 
 const WishlistButton: React.FC<WishlistButtonProps> = ({
@@ -37,7 +37,7 @@ const WishlistButton: React.FC<WishlistButtonProps> = ({
     const userRef = doc(db, 'users', currentUser.email);
     await updateDoc(userRef, { wishlist: newWishlist });
 
-    dispatch(setWishlist(newWishlist));
+    // dispatch(setWishlist(newWishlist));
   };
 
   return (

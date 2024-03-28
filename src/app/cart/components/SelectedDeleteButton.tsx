@@ -1,7 +1,6 @@
 import { db } from '@/app/firebaseConfig';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { setCartItems } from '@/slices/productSlict';
 import { CartItems, CheckBoxes } from '@/types/globalTypes';
 import { AppDispatch } from '@/types/reduxTypes';
 import {
@@ -50,11 +49,11 @@ const SelectedDeleteButton: React.FC<SelectedDeleteButtonProps> = ({
 
       setCheckAllBoxes(true);
 
-      dispatch(setCartItems(newItems));
+      //  dispatch(setCartItems(newItems));
     } else {
       deleteCartItemsLocalStorage(keys);
       newItems = getCartItemsLocalStorage();
-      dispatch(setCartItems(newItems));
+      //  dispatch(setCartItems(newItems));
 
       setCheckAllBoxes(true);
     }

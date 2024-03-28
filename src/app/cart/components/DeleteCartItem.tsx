@@ -2,7 +2,7 @@
 import { db } from '@/app/firebaseConfig';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { setCartItems } from '@/slices/productSlict';
+
 import { CartItems, CheckBoxes } from '@/types/globalTypes';
 import { AppDispatch } from '@/types/reduxTypes';
 import {
@@ -52,11 +52,11 @@ const DeleteCartItem: React.FC<DeleteCartItemProps> = ({
       setCheckBoxes(checkBoxesData);
       setCheckAllBoxes(true);
 
-      dispatch(setCartItems(newItems));
+      // dispatch(setCartItems(newItems));
     } else {
       deleteCartItemsLocalStorage([target.id]);
       newItems = getCartItemsLocalStorage();
-      dispatch(setCartItems(newItems));
+      //  dispatch(setCartItems(newItems));
       let checkBoxesData: { [key: string]: boolean } = {};
       Object.keys(newItems).forEach((key) => {
         checkBoxesData[key] = true;

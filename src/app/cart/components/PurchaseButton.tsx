@@ -1,7 +1,7 @@
 import { db } from '@/app/firebaseConfig';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { setCartItems } from '@/slices/productSlict';
+
 import { CartItems, CheckBoxes } from '@/types/globalTypes';
 import {
   deleteCartItemsLocalStorage,
@@ -71,7 +71,7 @@ const PurchaseButton: React.FC<PurchaseButtonProps> = ({
     //       },
     //     },
     //   });
-    dispatch(setCartItems({ ...newCartItems }));
+    //dispatch(setCartItems({ ...newCartItems }));
     setCheckAllBoxes(true);
     alert('구매가 완료되었습니다. (구매 내역은 개발 중입니다...)');
   };

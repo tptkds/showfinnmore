@@ -1,9 +1,7 @@
 'use client';
 import React, { useContext, useEffect, useState } from 'react';
 import { getProductList } from './api/product';
-import { setCartItems, setProductList } from '@/slices/productSlict';
 import { CartItems, Product } from '@/types/globalTypes';
-import { getCartItemsLocalStorage } from '@/app/utils/localstorage';
 import { AppDispatch } from '@/types/reduxTypes';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 
@@ -19,7 +17,7 @@ export default function DataInitializer({
     const fetchData = async () => {
       try {
         const productList: Product[] = await getProductList();
-        dispatch(setProductList(productList));
+        //dispatch(setProductList(productList));
       } catch (error) {
         console.error('상품 리스트를 가져오는 것을 실패했습니다.:', error);
       }

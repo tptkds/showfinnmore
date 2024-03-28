@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useLayoutEffect } from 'react';
-import { setCurrentPage, setCategory } from '@/slices/productSlict';
+
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { AppDispatch } from '@/types/reduxTypes';
@@ -20,9 +20,9 @@ const Product: React.FC<ProductProps> = ({ params }) => {
   const curPage: number = Number(params.slug[1]);
 
   useLayoutEffect(() => {
-    if (prevCategory !== curCategory) dispatch(setCategory(curCategory));
-    if (curPage === undefined || curPage === null) dispatch(setCurrentPage(1));
-    dispatch(setCurrentPage(curPage));
+    //   if (prevCategory !== curCategory) dispatch(setCategory(curCategory));
+    //  if (curPage === undefined || curPage === null) dispatch(setCurrentPage(1));
+    //dispatch(setCurrentPage(curPage));
   }, [curCategory, curPage]);
 
   return (
