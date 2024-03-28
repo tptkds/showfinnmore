@@ -6,7 +6,7 @@ import Link from 'next/link';
 import CloseModalButton from '../modal/CloseModalButton';
 
 const SearchModalContents: React.FC<ModalContentsProps> = ({ toggleModal }) => {
-  const productList = useAppSelector((state) => state.product.productList);
+  const productList = useAppSelector((state) => state.product.productItems);
   const [searchText, setSearchText] = useState<string>('');
   const [searchedData, setSearchedData] = useState<Product[]>([]);
   const input = useRef<HTMLInputElement | null>(null);

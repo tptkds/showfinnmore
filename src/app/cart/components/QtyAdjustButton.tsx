@@ -22,9 +22,7 @@ const QtyAdjustButton: React.FC<QtyAdjustButtonProps> = ({
 }) => {
   const dispatch = useAppDispatch();
   const currentUser = null;
-  // const cartItems: CartItems = useAppSelector(
-  //   (state) => state.product.cartItems
-  // );
+  const cartItems: CartItems = useAppSelector((state) => state.cart.cartItems);
   const changeQty = async () => {
     setCheckAllBoxes(true);
     // const currentCount = cartItems[itemKey]?.count;

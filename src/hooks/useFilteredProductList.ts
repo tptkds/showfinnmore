@@ -4,7 +4,9 @@ import { CATEGIRIES, CATEGIRIES_MATCH } from '@/constants/product';
 import { Product } from '@/types/globalTypes';
 
 export const useFilteredProductList = (): Product[] => {
-  const curCategory: string = useAppSelector((state) => state.product.category);
+  const curCategory: string = useAppSelector(
+    (state) => state.product.currentCategory
+  );
   const productList: Product[] = useAppSelector(
     (state) => state.product.productItems
   );

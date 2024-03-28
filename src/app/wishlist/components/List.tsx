@@ -8,7 +8,9 @@ import Link from 'next/link';
 import React from 'react';
 
 const WishlistComponent: React.FC = () => {
-  const wishlist: Wishlist = useAppSelector((state) => state.product.wishlist);
+  const wishlist: Wishlist = useAppSelector(
+    (state) => state.wishlist.wishlistItems
+  );
   const keysOfWishlist = [...Object.keys(wishlist)];
   const cartItems: CartItems = useAppSelector((state) => state.cart.cartItems);
 
