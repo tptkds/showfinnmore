@@ -35,11 +35,11 @@ const AccountEditingModalContents: React.FC<AccountEditingModalContents> = ({
         setIsUpdating(false);
         return;
       }
-      if (name == currentUser?.displayName) {
-        setError('기존과 다른 이름을 입력해 주세요.');
-        setIsUpdating(false);
-        return;
-      }
+      // if (name == currentUser?.displayName) {
+      //   setError('기존과 다른 이름을 입력해 주세요.');
+      //   setIsUpdating(false);
+      //   return;
+      // }
       if (name.length > 6) {
         setError('6글자 이하의 이름을 입력해 주세요.');
         setIsUpdating(false);
