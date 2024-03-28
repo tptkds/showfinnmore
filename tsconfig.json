@@ -29,7 +29,8 @@
     "src/app/product/detail/api/route.ts",
     "src/app/api/auth/[...nextauth].js",
     "src/app/.AuthProvider.tsx",
-    "src/app/account/login/components/.LoginForm.tsx"
+    "src/app/account/login/components/.LoginForm.tsx",
+    "src/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }
