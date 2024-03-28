@@ -8,10 +8,10 @@ import { useAppSelector } from '@/hooks/useAppSelector';
 import { Product } from '@/types/globalTypes';
 
 const Pagination: React.FC = () => {
-  const curCategory = useAppSelector((state) => state.product.category);
+  const curCategory = useAppSelector((state) => state.product.currentCategory);
   const curProductList: Product[] = useFilteredProductList();
   const currentPage: number = useAppSelector(
-    (state) => state.product.currentPage
+    (state) => state.product.currentProductListPage
   );
   const router = useRouter();
 

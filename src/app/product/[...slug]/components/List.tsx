@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import { CartItems, Product, Wishlist } from '@/types/globalTypes';
+import { CartItems, Product, WishlistItems } from '@/types/globalTypes';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { ITEMSPERPAGE } from '@/constants/product';
 import CartButton from './CartButton';
@@ -11,9 +11,11 @@ import { useFilteredProductList } from '@/hooks/useFilteredProductList';
 
 const List: React.FC = () => {
   const cartItems: CartItems = useAppSelector((state) => state.cart.cartItems);
-  const wishlist: Wishlist = useAppSelector((state) => state.product.wishlist);
+  const wishlist: WishlistItems = useAppSelector(
+    (state) => state.wishlist.wishlistItems
+  );
   const currentPage: number = useAppSelector(
-    (state) => state.product.currentPage
+    (state) => state.product.currentProductListPage
   );
   const curProductList: Product[] = useFilteredProductList();
 

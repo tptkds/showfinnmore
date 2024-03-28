@@ -6,7 +6,7 @@ import { Product } from '@/types/globalTypes';
 export const useFilteredProductList = (): Product[] => {
   const curCategory: string = useAppSelector((state) => state.product.category);
   const productList: Product[] = useAppSelector(
-    (state) => state.product.productList
+    (state) => state.product.productItems
   );
 
   const filteredProductList: Product[] = useMemo(() => {
