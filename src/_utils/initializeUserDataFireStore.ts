@@ -3,7 +3,7 @@ import { doc, setDoc } from 'firebase/firestore';
 const initializeUserDataFireStore = async ({ email }: { email: string }) => {
   try {
     setDoc(doc(db, 'users', email), {
-      wishlist: {},
+      wishlistItems: {},
       cartItems: {},
     });
     return 'success';

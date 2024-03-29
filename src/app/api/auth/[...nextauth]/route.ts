@@ -25,8 +25,8 @@ const authOptions: NextAuthOptions = {
           );
           if (user) {
             return {
-              id: user.id,
-              name: user.name,
+              id: user.uid,
+              name: user.displayName,
               email: user.email,
             };
           }
