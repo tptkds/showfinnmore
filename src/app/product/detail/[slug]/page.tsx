@@ -24,17 +24,15 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
   const [curItem, setCurItem] = useState<Product | undefined>();
   const currentUser = null;
 
-  const productList: Product[] = useAppSelector(
-    (state) => state.product.productItems
-  );
+  const products: Product[] = useAppSelector((state) => state.product.products);
 
   useLayoutEffect(() => {
     const slugAsNumber = Number(params.slug);
-    const item = productList.find((product) => product.id === slugAsNumber);
+    const item = products.find((products) => products.id === slugAsNumber);
     setCurItem(item);
 
     window.scrollTo(0, 0);
-  }, [productList, params.slug]);
+  }, [products, params.slug]);
 
   const purchase = () => {
     if (!currentUser) {

@@ -6,7 +6,7 @@ declare module 'next-auth' {
   interface Session {
     user: {
       name: string | null;
-      email: string | null;
+      email: string;
       id: string | null;
     };
   }

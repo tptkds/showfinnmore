@@ -1,5 +1,5 @@
 import { DocumentData } from 'firebase/firestore';
-import getUserDataFireStore from '../_utils/getUserDataFireStore';
+import getUserDataFireStore from './getUserDataFireStore';
 import { WishlistItems } from '@/types/globalTypes';
 
 const getUserWishlistItems = async (email: string) => {

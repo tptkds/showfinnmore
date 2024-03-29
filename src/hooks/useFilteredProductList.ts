@@ -7,22 +7,20 @@ export const useFilteredProductList = (): Product[] => {
   const curCategory: string = useAppSelector(
     (state) => state.product.currentCategory
   );
-  const productList: Product[] = useAppSelector(
-    (state) => state.product.productItems
-  );
+  const products: Product[] = useAppSelector((state) => state.product.products);
 
   const filteredProductList: Product[] = useMemo(() => {
     if (curCategory === 'all') {
-      return productList;
+      return products;
     } else {
       const categoryIndex: number = CATEGIRIES.findIndex(
         (category) => category === curCategory
       );
-      return productList.filter(
+      return products.filter(
         (product) => product.category === CATEGIRIES_MATCH[categoryIndex]
       );
     }
-  }, [productList, curCategory]);
+  }, [products, curCategory]);
 
   return filteredProductList;
 };

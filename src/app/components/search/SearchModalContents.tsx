@@ -6,13 +6,13 @@ import Link from 'next/link';
 import CloseModalButton from '../modal/CloseModalButton';
 
 const SearchModalContents: React.FC<ModalContentsProps> = ({ toggleModal }) => {
-  const productList = useAppSelector((state) => state.product.productItems);
+  const products = useAppSelector((state) => state.product.products);
   const [searchText, setSearchText] = useState<string>('');
   const [searchedData, setSearchedData] = useState<Product[]>([]);
   const input = useRef<HTMLInputElement | null>(null);
 
   const searchData = (text: string) => {
-    const datas: Product[] = productList.filter((item) => {
+    const datas: Product[] = products.filter((item) => {
       return item.title.toLowerCase().includes(text.toLowerCase());
     });
     setSearchedData(datas ? datas : []);

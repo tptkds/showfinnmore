@@ -17,6 +17,7 @@ const List: React.FC = () => {
   const currentPage: number = useAppSelector(
     (state) => state.product.currentProductListPage
   );
+
   const curProductList: Product[] = useFilteredProductList();
 
   const startIndex: number = ITEMSPERPAGE * (currentPage - 1);

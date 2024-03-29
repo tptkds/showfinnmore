@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Search from './components/Search';
 import { Metadata } from '@/types/globalTypes';
 import AuthProvider from './AuthProvider';
+import DataInitializer from './DataInitializer';
 
 export const metadata: Metadata = {
   title: 'showfinnmore',
@@ -23,19 +24,21 @@ const RootLayout = ({ children }: RootLayoutProps) => {
       <body className="overflow-x-hidden h-dvh relative">
         <AppProviders>
           <AuthProvider>
-            <div className="relative h-dvh dark:bg-zinc-900 dark:text-white">
-              <div className="min-h-full dark:bg-zinc-900 dark:text-white">
-                <Header />
-                <main className="z-40 px-4 sm:px-12">
-                  {children}
-                  <SpeedInsights />
-                </main>
+            <DataInitializer>
+              <div className="relative h-dvh dark:bg-zinc-900 dark:text-white">
+                <div className="min-h-full dark:bg-zinc-900 dark:text-white">
+                  <Header />
+                  <main className="z-40 px-4 sm:px-12">
+                    {children}
+                    <SpeedInsights />
+                  </main>
+                </div>
+                <Footer />
+                <div className="fixed bottom-10 right-10 bg-white shadow-lg rounded-full bg-opacity-80 dark:bg-opacity-80 z-20 dark:bg-zinc-700">
+                  <Search />
+                </div>
               </div>
-              <Footer />
-              <div className="fixed bottom-10 right-10 bg-white shadow-lg rounded-full bg-opacity-80 dark:bg-opacity-80 z-20 dark:bg-zinc-700">
-                <Search />
-              </div>
-            </div>
+            </DataInitializer>
           </AuthProvider>
         </AppProviders>
       </body>

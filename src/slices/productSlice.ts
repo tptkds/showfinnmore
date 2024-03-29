@@ -2,13 +2,13 @@ import { Product } from '@/types/globalTypes';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface ProductState {
-  productItems: Product[];
+  products: Product[];
   currentCategory: string;
   currentProductListPage: number;
 }
 
 const initialProductState: ProductState = {
-  productItems: [],
+  products: [],
   currentCategory: 'all',
   currentProductListPage: 0,
 };
@@ -17,8 +17,8 @@ const productSlice = createSlice({
   name: 'product',
   initialState: initialProductState,
   reducers: {
-    setProductItems: (state, action: PayloadAction<Product[]>) => {
-      state.productItems = action.payload;
+    setProducts: (state, action: PayloadAction<Product[]>) => {
+      state.products = action.payload;
     },
     setCurrentCategory: (state, action: PayloadAction<string>) => {
       state.currentCategory = action.payload;
@@ -31,7 +31,7 @@ const productSlice = createSlice({
 });
 
 export const {
-  setProductItems,
+  setProducts,
   setCurrentCategory,
   setCurrentProductListPage,
   resetProductState,
