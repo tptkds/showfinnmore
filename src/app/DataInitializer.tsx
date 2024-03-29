@@ -78,11 +78,7 @@ const DataInitializer: React.FC<DataInitializerProps> = ({ children }) => {
     setProductsStore();
   }, []);
 
-  if (status === 'loading') {
-    return <LoadingSpinner />;
-  }
-
-  return <>{children}</>;
+  return status === 'loading' ? <LoadingSpinner /> : <>{children}</>;
 };
 
 export default DataInitializer;
