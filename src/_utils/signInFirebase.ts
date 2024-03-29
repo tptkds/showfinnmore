@@ -1,19 +1,22 @@
 import { auth } from '@/app/firebaseConfig';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-
-const signInFirebase = async (email: string, password: string) => {
+import { User, signInWithEmailAndPassword } from 'firebase/auth';
+interface SignInResponse {
+  user: User;
+}
+const signInFirebase = async (
+  email: string,
+  password: string
+): Promise<SignInResponse | null> => {
   try {
     const userCredential = await signInWithEmailAndPassword(
       auth,
       email,
       password
     );
-    const user = userCredential.user;
+    const user: User = userCredential.user;
     if (user) {
       return {
-        id: user.uid,
-        name: user.displayName,
-        email: user.email,
+        user,
       };
     }
     return null;

@@ -19,18 +19,20 @@ const authOptions: NextAuthOptions = {
         if (!credentials || !credentials.email || !credentials.password)
           return null;
         try {
-          const user = await signInFirebase(
+          const result = await signInFirebase(
             credentials.email,
             credentials.password
           );
-          if (user) {
+          if (result) {
+            const { user } = result;
             return {
               id: user.uid,
               name: user.displayName,
               email: user.email,
             };
+          } else {
+            return null;
           }
-          return null;
         } catch (error) {
           if (error instanceof Error) {
             const firebaseError = error as FirebaseError;
