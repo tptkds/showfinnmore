@@ -1,10 +1,9 @@
 'use client';
-import React, { useContext } from 'react';
+import React from 'react';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 
 import { Product, WishlistItems } from '@/types/globalTypes';
-import { doc, updateDoc } from 'firebase/firestore';
-import { db } from '@/app/firebaseConfig';
+
 import { PiHeartFill, PiHeartLight } from 'react-icons/pi';
 
 interface WishlistButtonProps {
@@ -41,12 +40,7 @@ const WishlistButton: React.FC<WishlistButtonProps> = ({
   };
 
   return (
-    <button
-      onClick={toggleWishlist}
-      aria-label="찜"
-      // data-tip="찜"
-      // className="tooltip"
-    >
+    <button onClick={toggleWishlist} aria-label="찜">
       {wishlist[product.id] ? (
         <PiHeartFill style={{ fontSize: '28px' }} />
       ) : (
