@@ -1,3 +1,5 @@
+import { CATEGORIES } from '@/constants/product';
+
 export interface Metadata {
   title: string;
   description: string;
@@ -44,3 +46,5 @@ export interface Categories {
   jewelery: string;
   electronics: string;
 }
+
+export type CategoryKey = keyof typeof CATEGORIES;

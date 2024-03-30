@@ -1,16 +1,16 @@
-import { Product } from '@/types/globalTypes';
+import { CategoryKey, Product } from '@/types/globalTypes';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface ProductState {
   products: Product[];
-  currentCategory: string;
-  currentProductListPage: number;
+  currentCategory: CategoryKey;
+  currentPage: number;
 }
 
 const initialProductState: ProductState = {
   products: [],
   currentCategory: 'all',
-  currentProductListPage: 0,
+  currentPage: 0,
 };
 
 const productSlice = createSlice({
@@ -20,11 +20,11 @@ const productSlice = createSlice({
     setProducts: (state, action: PayloadAction<Product[]>) => {
       state.products = action.payload;
     },
-    setCurrentCategory: (state, action: PayloadAction<string>) => {
+    setCurrentCategory: (state, action: PayloadAction<CategoryKey>) => {
       state.currentCategory = action.payload;
     },
     setCurrentPage: (state, action: PayloadAction<number>) => {
-      state.currentProductListPage = action.payload;
+      state.currentPage = action.payload;
     },
     resetProductState: () => initialProductState,
   },

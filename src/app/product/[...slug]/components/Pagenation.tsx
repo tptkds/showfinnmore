@@ -1,58 +1,67 @@
 'use client';
-import useProduct from '@/hooks/useProduct';
+import React from 'react';
+import { useFilteredProductList } from '@/hooks/useFilteredProductList';
+import { useRouter } from 'next/navigation';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { ITEMS_PER_PAGE } from '@/constants/product';
+import { useAppSelector } from '@/hooks/useAppSelector';
+import { Product } from '@/types/globalTypes';
 
 const Pagenation: React.FC = () => {
-  const {
-    currentTotalPage,
-    currentPage,
-    incrementPageNumber,
-    decrementPageNumber,
-    setPageNumber,
-  } = useProduct();
+  const curCategory = useAppSelector((state) => state.product.currentCategory);
+  const curProductList: Product[] = useFilteredProductList();
+  const currentPage: number = useAppSelector(
+    (state) => state.product.currentPage
+  );
+  const router = useRouter();
+
+  const totalPages: number = Math.ceil(curProductList.length / ITEMS_PER_PAGE);
+
+  const movePage = (page: number): void => {
+    router.push(`/product/${curCategory}/${page}`);
+  };
 
   return (
-    <>
-      <div className="flex justify-center">
+    <ul className="flex justify-center ">
+      <li className="p-2.5">
         <button
           name="newer"
-          className="p-2.5 flex items-center disabled:opacity-20 "
-          onClick={() => incrementPageNumber()}
+          className="flex items-center disabled:opacity-20 "
+          onClick={() => movePage(currentPage - 1)}
           disabled={currentPage === 1}
           style={{ fontSize: '20px' }}
           aria-label="다음 페이지"
         >
           <FiChevronLeft />
         </button>
-        <ul className="flex justify-center ">
-          {Array.from(
-            { length: currentTotalPage },
-            (_, index) => index + 1
-          ).map((page) => (
-            <li key={page} className="p-2.5">
-              <button
-                className="disabled:text-zinc-300 text-black  text-base dark:text-white dark:disabled:text-zinc-300"
-                onClick={() => setPageNumber(page, true)}
-                disabled={page === currentPage}
-                aria-label={`${page} page`}
-              >
-                {page}
-              </button>
-            </li>
-          ))}
-        </ul>
+      </li>
+      {Array.from({ length: totalPages }, (_, index) => index + 1).map(
+        (page) => (
+          <li key={page} className="p-2.5">
+            <button
+              className="disabled:text-zinc-300 text-black  text-base dark:text-white dark:disabled:text-zinc-300"
+              onClick={() => movePage(page)}
+              disabled={page === currentPage}
+              aria-label={`${page} page`}
+            >
+              {page}
+            </button>
+          </li>
+        )
+      )}
+      <li className="p-2.5">
         <button
           name="older"
-          className="flex items-center disabled:opacity-20 p-2.5"
-          onClick={() => decrementPageNumber()}
-          disabled={currentPage === currentTotalPage}
+          className="flex items-center disabled:opacity-20"
+          onClick={() => movePage(currentPage + 1)}
+          disabled={currentPage === totalPages}
           style={{ fontSize: '20px' }}
           aria-label="이전 페이지"
         >
           <FiChevronRight />
         </button>
-      </div>
-    </>
+      </li>
+    </ul>
   );
 };
 

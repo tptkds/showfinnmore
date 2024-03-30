@@ -13,6 +13,7 @@ const useRouterPush = () => {
   ) => {
     router.push(`/product/${category}/${page}`);
   };
+
   return { goHome, navigateToSelectedProductListPage };
 };
 
