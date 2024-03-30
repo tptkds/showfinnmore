@@ -2,8 +2,9 @@
 import React, { useRef } from 'react';
 import DarkModeToggleButton from './DarkModeToggleButton';
 import Link from 'next/link';
-import { CATEGIRIES } from '@/constants/product';
+import { CATEGORIES } from '@/constants/product';
 import { GrMenu } from 'react-icons/gr';
+import useProduct from '@/hooks/useProduct';
 
 const Menu: React.FC = () => {
   const menu = useRef<HTMLUListElement>(null);
@@ -22,11 +23,7 @@ const Menu: React.FC = () => {
   };
   return (
     <>
-      <div
-        className="h-full"
-        //className="tooltip"
-        //data-tip="Menu"
-      >
+      <div className="h-full">
         <button
           type="button"
           className="flex lg:hidden ml-8 lg:m-0 h-full items-center "
@@ -46,10 +43,15 @@ const Menu: React.FC = () => {
         onMouseOver={openMenu}
         onMouseLeave={hiddenMenu}
       >
-        {CATEGIRIES.map((v) => (
-          <li key={v} className="p-2 lg:p-0">
-            <Link href={`/product/${v}/1`} onClick={toggleMenu}>
-              {v.replace(/\b\w/g, (match) => match.toUpperCase())}
+        {[...Object.keys(CATEGORIES)].map((catrgory) => (
+          <li key={catrgory} className="p-2 lg:p-0">
+            <Link
+              href={`/product/${catrgory}/1`}
+              onClick={() => {
+                toggleMenu();
+              }}
+            >
+              {catrgory.replace(/\b\w/g, (match) => match.toUpperCase())}
             </Link>
           </li>
         ))}

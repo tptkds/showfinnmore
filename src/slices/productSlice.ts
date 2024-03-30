@@ -23,17 +23,17 @@ const productSlice = createSlice({
     setCurrentCategory: (state, action: PayloadAction<string>) => {
       state.currentCategory = action.payload;
     },
-    setCurrentProductListPage: (state, action: PayloadAction<number>) => {
+    setCurrentPage: (state, action: PayloadAction<number>) => {
       state.currentProductListPage = action.payload;
     },
-    resetProductState: (state) => initialProductState,
+    resetProductState: () => initialProductState,
   },
 });
 
 export const {
   setProducts,
   setCurrentCategory,
-  setCurrentProductListPage,
+  setCurrentPage,
   resetProductState,
 } = productSlice.actions;
 export const productReducer = productSlice.reducer;

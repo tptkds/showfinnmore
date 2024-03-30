@@ -1,6 +1,6 @@
 'use client';
-import CartButton from '@/app/product/[...slug]/components/CartButton';
-import WishlistButton from '@/app/product/[...slug]/components/WishlistButton';
+import CartButton from '@/app/product/[...slug]/components/productList/CartButton';
+import WishlistButton from '@/app/product/[...slug]/components/productList/WishlistButton';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { CartItems, WishlistItems } from '@/types/globalTypes';
 import Image from 'next/image';

@@ -51,7 +51,6 @@
 // }
 
 'use client';
-import getAllProductsFakeStore from '@/_utils/getAllProductsFakeStore';
 import useProduct from '@/hooks/useProduct';
 import useStore from '@/hooks/useStore';
 import { useSession } from 'next-auth/react';

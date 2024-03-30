@@ -1,9 +1,11 @@
-export const ITEMSPERPAGE: number = 12;
-export const CATEGIRIES = ['all', 'women', 'men', 'jewelery', 'electronics'];
-export const CATEGIRIES_MATCH = [
-  'all',
-  `women's clothing`,
-  `men's clothing`,
-  'jewelery',
-  'electronics',
-];
+import { Categories } from '@/types/globalTypes';
+
+export const ITEMS_PER_PAGE: number = 12;
+
+export const CATEGORIES: Categories = {
+  all: 'all',
+  women: `women's clothing`,
+  men: `men's clothing`,
+  jewelery: 'jewelery',
+  electronics: 'electronics',
+};

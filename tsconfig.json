@@ -30,7 +30,8 @@
     "src/app/api/auth/[...nextauth].js",
     "src/app/.AuthProvider.tsx",
     "src/app/account/login/components/.LoginForm.tsx",
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "src/app/product/[...slug]/components/.Pagenation.tsx"
   ],
   "exclude": ["node_modules"]
 }

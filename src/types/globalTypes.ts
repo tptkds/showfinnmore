@@ -36,3 +36,11 @@ export interface registerUserProps {
   password: string;
   displayName: string;
 }
+
+export interface Categories {
+  all: string;
+  women: string;
+  men: string;
+  jewelery: string;
+  electronics: string;
+}

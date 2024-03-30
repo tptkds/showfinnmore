@@ -5,9 +5,12 @@ import { resetWishlistItems, setWishlistItems } from '@/slices/wishListSlice';
 import getUserCartItems from '@/_utils/getUserCartItems';
 import getUserWishlistItems from '@/_utils/getUserWishlistItems';
 import getCartItemsLocalStorage from '@/_utils/getCartItemsLocalStorage';
+import { useAppSelector } from './useAppSelector';
 
 const useStore = () => {
   const dispatch = useAppDispatch();
+  const cartItems = useAppSelector((state) => state.cart.cartItems);
+  const wishlistItems = useAppSelector((state) => state.wishlist.wishlistItems);
 
   const resetStore = () => {
     dispatch(resetCartItems());
@@ -26,7 +29,13 @@ const useStore = () => {
     dispatch(setCartItems(cartItems));
   };
 
-  return { resetStore, initializeUserStore, initializeStore };
+  return {
+    resetStore,
+    initializeUserStore,
+    initializeStore,
+    cartItems,
+    wishlistItems,
+  };
 };
 
 export default useStore;
