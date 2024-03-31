@@ -1,6 +1,6 @@
 import { CATEGORIES, ITEMS_PER_PAGE } from '@/constants/product';
 import { CategoryKey, Product } from '@/types/globalTypes';
-import getFilteredProducts from '@/utils/getFilteredProducts';
+import filteredProductsByCategory from '@/utils/filteredProductsByCategory';
 
 const getProductsInPage = (
   category: CategoryKey,
@@ -8,9 +8,7 @@ const getProductsInPage = (
   products: Product[]
 ) => {
   let filteredProducts: Product[] = products;
-  if (category !== 'all')
-    filteredProducts = getFilteredProducts(products, CATEGORIES[category]);
-
+  filteredProducts = filteredProductsByCategory(products, CATEGORIES[category]);
   const total = filteredProducts.length;
   const startIndex = ITEMS_PER_PAGE * (page - 1);
   const endIndex = startIndex + ITEMS_PER_PAGE;

@@ -48,3 +48,8 @@ export interface Categories {
 }
 
 export type CategoryKey = keyof typeof CATEGORIES;
+
+export interface ProductProps {
+  category: CategoryKey;
+  page: number;
+}

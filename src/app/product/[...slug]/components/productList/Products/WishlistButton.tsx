@@ -1,10 +1,9 @@
 'use client';
 import React from 'react';
-import { useAppDispatch } from '@/hooks/useAppDispatch';
-
 import { Product, WishlistItems } from '@/types/globalTypes';
-
 import { PiHeartFill, PiHeartLight } from 'react-icons/pi';
+import { useSession } from 'next-auth/react';
+import useStore from '@/hooks/useStore';
 
 interface WishlistButtonProps {
   product: Product;
@@ -15,32 +14,20 @@ const WishlistButton: React.FC<WishlistButtonProps> = ({
   product,
   wishlist,
 }) => {
-  const currentUser = null;
-  const dispatch = useAppDispatch();
-
-  const toggleWishlist = async () => {
-    // if (!currentUser || !currentUser.email) {
-    //   alert('로그인이 필요한 기능입니다.');
-    //   return;
-    // }
-
-    const newWishlist = { ...wishlist };
-    const productID = product.id.toString();
-
-    if (wishlist[productID]) {
-      delete newWishlist[productID];
-    } else {
-      newWishlist[productID] = product;
-    }
-
-    // const userRef = doc(db, 'users', currentUser.email);
-    // await updateDoc(userRef, { wishlist: newWishlist });
-
-    // dispatch(setWishlist(newWishlist));
-  };
+  const { toggleWishlistItems } = useStore();
+  const { status } = useSession();
 
   return (
-    <button onClick={toggleWishlist} aria-label="찜">
+    <button
+      onClick={() => {
+        if (status === 'unauthenticated') {
+          alert('로그인이 필요한 기능입니다.');
+          return;
+        }
+        toggleWishlistItems(product);
+      }}
+      aria-label="찜"
+    >
       {wishlist[product.id] ? (
         <PiHeartFill style={{ fontSize: '28px' }} />
       ) : (
