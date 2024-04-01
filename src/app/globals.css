@@ -182,3 +182,12 @@ svg {
 .errorMessage {
   white-space: pre-line;
 }
+
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; /* 긴 텍스트가 포함된 경우를 위해 */
+}

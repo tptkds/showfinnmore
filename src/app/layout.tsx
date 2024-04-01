@@ -25,15 +25,18 @@ const RootLayout = ({ children }: RootLayoutProps) => {
         <AppProviders>
           <AuthProvider>
             <DataInitializer>
-              <div className="relative h-dvh dark:bg-zinc-900 dark:text-white">
-                <div className="min-h-full dark:bg-zinc-900 dark:text-white">
+              <div className="relative h-dvh dark:bg-zinc-900 dark:text-white ">
+                <div className="min-h-full dark:bg-zinc-900 dark:text-white pb-8">
                   <Header />
-                  <main className="z-40 px-4 sm:px-12">
+                  <main className="z-40 mt-12 px-12 sm:px-16 ">
                     {children}
                     <SpeedInsights />
                   </main>
                 </div>
-                <Footer />
+                <div className="border-t ">
+                  <Footer />
+                </div>
+
                 <div className="fixed bottom-10 right-10 bg-white shadow-lg rounded-full bg-opacity-80 dark:bg-opacity-80 z-20 dark:bg-zinc-700">
                   <Search />
                 </div>

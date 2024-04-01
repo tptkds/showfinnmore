@@ -1,44 +1,41 @@
-import useStore from '@/hooks/useStore';
-import { CartItems } from '@/types/globalTypes';
+import { Product } from '@/types/globalTypes';
+import QuantityAdjuster from './cartItemDetails/QuantityAdjuster';
+import Image from 'next/image';
 
 interface CartItemDetailsProps {
-  itemId: string;
-  cartItems: CartItems;
+  product: Product;
+  count: number;
 }
 const CartItemDetails: React.FC<CartItemDetailsProps> = ({
-  itemId,
-  cartItems,
+  product,
+  count,
 }) => {
-  const { incrementQuantity, decrementQuantity, changeQuantity } = useStore();
   return (
     <div>
-      <div>
-        <div>{/* <Image /> */}</div>
-      </div>
-      <div>
-        <p>{cartItems[itemId].product.title}</p>
-      </div>
-      <div>
-        <div>
-          <button
-            type="button"
-            onClick={() => decrementQuantity(cartItems[itemId].product)}
-          >
-            -
-          </button>
-          <input
-            type="number"
-            value={Number(cartItems[itemId].count ?? 0)}
-            onChange={(e) =>
-              changeQuantity(cartItems[itemId].product, Number(e.target.value))
-            }
+      <div className="mb-4 flex items-center ">
+        <div className="relative w-20 h-20 bg-white rounded mr-4">
+          <Image
+            src={product.image}
+            alt={product.title}
+            style={{ padding: '6px' }}
+            objectFit="contain"
+            priority
+            fill
           />
-          <button
-            type="button"
-            onClick={() => incrementQuantity(cartItems[itemId].product)}
-          >
-            +
-          </button>
+        </div>
+        <div>
+          <p className="text-sm">{product.title}</p>
+        </div>
+      </div>
+
+      <div className="flex items-center justify-between	w-full">
+        <div className="flex dark:text-black">
+          <QuantityAdjuster product={product} count={count} />
+        </div>
+        <div>
+          <p aria-label="price" className="font-semibold mr-6">
+            ${(product.price * count).toFixed(2)}
+          </p>
         </div>
       </div>
     </div>

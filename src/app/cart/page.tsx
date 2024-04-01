@@ -1,9 +1,11 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import CartSummary from './CartSummary';
+import CartSummary from './components/CartSummary';
 import PurchaseButton1 from './components/PurchaseButton1';
 import CartList1 from './components/CartList1';
 import useStore from '@/hooks/useStore';
+import CartItems from './components/cartList/CartItems';
+import ProductListNavigator from './components/ProductListNavigator';
 
 const Cart: React.FC = () => {
   const { cartItems } = useStore();
@@ -22,24 +24,30 @@ const Cart: React.FC = () => {
 
   return (
     <>
-      <div className="mt-14 flex flex-col justify-center w-full items-center mb-8">
-        <h2>장바구니</h2>
-      </div>
+      <h2 className="visually-hidden">장바구니</h2>
       <div className="flex flex-col md:flex-row">
-        <div className="md:w-4/6">
-          <CartList1
-            cartItems={cartItems}
-            isCheckedItems={isCheckedItems}
-            setIsCheckedItems={setIsCheckedItems}
-          />
-        </div>
-        <div className="md:w-2/6">
-          <CartSummary
-            cartItems={cartItems}
-            isCheckedItems={isCheckedItems}
-            setIsCheckedItems={setIsCheckedItems}
-          />
-        </div>
+        {Object.keys(cartItems).length === 0 ? (
+          <div className="w-full flex justify-center mt-16">
+            <ProductListNavigator />
+          </div>
+        ) : (
+          <>
+            <div className="md:w-7/12">
+              <CartList1
+                cartItems={cartItems}
+                isCheckedItems={isCheckedItems}
+                setIsCheckedItems={setIsCheckedItems}
+              />
+            </div>
+            <div className="md:w-4/12">
+              <CartSummary
+                cartItems={cartItems}
+                isCheckedItems={isCheckedItems}
+                setIsCheckedItems={setIsCheckedItems}
+              />
+            </div>
+          </>
+        )}
       </div>
       <PurchaseButton1 />
     </>
