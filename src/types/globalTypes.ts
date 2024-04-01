@@ -1,4 +1,5 @@
 import { CATEGORIES } from '@/constants/product';
+import { Dispatch, SetStateAction } from 'react';
 
 export interface Metadata {
   title: string;
@@ -53,3 +54,15 @@ export interface ProductProps {
   category: CategoryKey;
   page: number;
 }
+
+export interface CartProps {
+  cartItems: CartItems;
+  isCheckedItems: IsCheckedItems;
+  setIsCheckedItems: SetIsCheckedItems;
+}
+export type IsCheckedItems = {
+  [key: string]: boolean;
+};
+export type SetIsCheckedItems = Dispatch<
+  SetStateAction<{ [key: string]: boolean }>
+>;

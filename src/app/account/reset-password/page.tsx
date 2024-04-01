@@ -32,7 +32,6 @@ const ResetPassword = () => {
         .catch((error) => {
           setIsResetting(false);
           const errorCode = error.code;
-          console.log(errorCode);
           switch (errorCode) {
             case 'auth/network-request-failed':
               setError(

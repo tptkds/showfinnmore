@@ -68,6 +68,48 @@ const useStore = () => {
     }
   };
 
+  const incrementQuantity = (product: Product) => {
+    const newCartItem = {
+      product: product,
+      count: cartItems[product.id].count + 1,
+    };
+    const newCartItems = { ...cartItems, [product.id]: newCartItem };
+    if (status === 'unauthenticated') {
+      setCartItemsLocalStorage(newCartItems);
+    } else {
+      if (session?.user.email)
+        setCartItemsFireStore(newCartItems, session?.user.email);
+    }
+  };
+
+  const decrementQuantity = (product: Product) => {
+    const newCartItem = {
+      product: product,
+      count: cartItems[product.id].count - 1,
+    };
+    const newCartItems = { ...cartItems, [product.id]: newCartItem };
+    if (status === 'unauthenticated') {
+      setCartItemsLocalStorage(newCartItems);
+    } else {
+      if (session?.user.email)
+        setCartItemsFireStore(newCartItems, session?.user.email);
+    }
+  };
+
+  const changeQuantity = (product: Product, newCount: number) => {
+    const newCartItem = {
+      product: product,
+      count: newCount,
+    };
+    const newCartItems = { ...cartItems, [product.id]: newCartItem };
+    if (status === 'unauthenticated') {
+      setCartItemsLocalStorage(newCartItems);
+    } else {
+      if (session?.user.email)
+        setCartItemsFireStore(newCartItems, session?.user.email);
+    }
+  };
+
   const toggleWishlistItems = (product: Product) => {
     if (checkItemExistsById(product.id, wishlistItems)) {
       removeWishlistItem(product);
@@ -101,6 +143,9 @@ const useStore = () => {
     wishlistItems,
     toggleCartItem,
     toggleWishlistItems,
+    incrementQuantity,
+    decrementQuantity,
+    changeQuantity,
   };
 };
 
