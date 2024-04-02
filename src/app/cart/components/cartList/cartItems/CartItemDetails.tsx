@@ -34,7 +34,7 @@ const CartItemDetails: React.FC<CartItemDetailsProps> = ({
         </div>
         <div>
           <p aria-label="price" className="font-semibold mr-6">
-            ${(product.price * count).toFixed(2)}
+            {(product.price * 1000 * count).toLocaleString()}원
           </p>
         </div>
       </div>

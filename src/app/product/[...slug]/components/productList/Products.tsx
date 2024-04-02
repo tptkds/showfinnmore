@@ -36,7 +36,7 @@ const Products: React.FC<ProductsProps> = ({ products }) => {
           </div>
           <div>
             <Link href={`/product/detail/${product.id}`}>{product.title}</Link>
-            <p className="my-2">${product.price}</p>
+            <p className="my-2">{(product.price * 1000).toLocaleString()}원</p>
           </div>
           <div className="flex">
             <div className="mr-2">

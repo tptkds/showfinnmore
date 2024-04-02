@@ -74,6 +74,7 @@ const useStore = () => {
       count: cartItems[product.id].count + 1,
     };
     const newCartItems = { ...cartItems, [product.id]: newCartItem };
+    dispatch(setCartItems(newCartItems));
     if (status === 'unauthenticated') {
       setCartItemsLocalStorage(newCartItems);
     } else {
@@ -88,12 +89,14 @@ const useStore = () => {
       count: cartItems[product.id].count - 1,
     };
     const newCartItems = { ...cartItems, [product.id]: newCartItem };
+    dispatch(setCartItems(newCartItems));
     if (status === 'unauthenticated') {
       setCartItemsLocalStorage(newCartItems);
     } else {
       if (session?.user.email)
         setCartItemsFireStore(newCartItems, session?.user.email);
     }
+    setCartItems(newCartItems);
   };
 
   const changeQuantity = (product: Product, newCount: number) => {
@@ -102,6 +105,7 @@ const useStore = () => {
       count: newCount,
     };
     const newCartItems = { ...cartItems, [product.id]: newCartItem };
+    dispatch(setCartItems(newCartItems));
     if (status === 'unauthenticated') {
       setCartItemsLocalStorage(newCartItems);
     } else {

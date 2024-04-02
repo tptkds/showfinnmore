@@ -84,7 +84,7 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
           >
             <p>{curItem?.title}</p>
             <p className="py-2.5">{curItem?.description}</p>
-            <p>${curItem?.price}</p>
+            <p>{(Number(curItem?.price) * 1000).toLocaleString()}원</p>
             <div className="flex flex-col mt-4 text-sm sm:mt-16 items-center">
               <button
                 aria-label="바로 구매하기"

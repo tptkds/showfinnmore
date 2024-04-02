@@ -4,7 +4,6 @@ import CartItemDetails from './cartItems/CartItemDetails';
 import { IoCloseSharp } from 'react-icons/io5';
 
 const CartItems: React.FC<CartProps> = (props) => {
-  console.log([...Object.keys(props.cartItems)]);
   return (
     <>
       {[...Object.keys(props.cartItems)].map((itemId) => (
