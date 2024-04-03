@@ -37,7 +37,7 @@ const useStore = () => {
 
   const toggleCartItem = (product: Product) => {
     if (checkItemExistsById(product.id, cartItems)) {
-      removeCartItem(product);
+      removeCartItem(product.id);
     } else {
       addCartItem(product);
     }
@@ -57,8 +57,8 @@ const useStore = () => {
     }
   };
 
-  const removeCartItem = (product: Product) => {
-    const { [product.id]: removeItem, ...newCartItems } = cartItems;
+  const removeCartItem = (itemId: string | number) => {
+    const { [itemId]: removeItem, ...newCartItems } = cartItems;
     dispatch(setCartItems(newCartItems));
     if (status === 'unauthenticated') {
       setCartItemsLocalStorage(newCartItems);
@@ -68,10 +68,11 @@ const useStore = () => {
     }
   };
 
-  const incrementQuantity = (product: Product) => {
+  const incrementQuantity = (product: Product, count: number) => {
+    if (count + 1 >= 10000) return;
     const newCartItem = {
       product: product,
-      count: cartItems[product.id].count + 1,
+      count: count + 1,
     };
     const newCartItems = { ...cartItems, [product.id]: newCartItem };
     dispatch(setCartItems(newCartItems));
@@ -83,10 +84,11 @@ const useStore = () => {
     }
   };
 
-  const decrementQuantity = (product: Product) => {
+  const decrementQuantity = (product: Product, count: number) => {
+    if (count - 1 < 1) return;
     const newCartItem = {
       product: product,
-      count: cartItems[product.id].count - 1,
+      count: count - 1,
     };
     const newCartItems = { ...cartItems, [product.id]: newCartItem };
     dispatch(setCartItems(newCartItems));
@@ -150,6 +152,7 @@ const useStore = () => {
     incrementQuantity,
     decrementQuantity,
     changeQuantity,
+    removeCartItem,
   };
 };
 

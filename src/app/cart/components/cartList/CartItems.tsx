@@ -1,7 +1,7 @@
 import { CartProps } from '@/types/globalTypes';
 import ToggleSelectButton from './cartItems/ToggleSelectButton';
 import CartItemDetails from './cartItems/CartItemDetails';
-import { IoCloseSharp } from 'react-icons/io5';
+import RemoveButton from './cartItems/RemoveButton';
 
 const CartItems: React.FC<CartProps> = (props) => {
   return (
@@ -25,7 +25,7 @@ const CartItems: React.FC<CartProps> = (props) => {
             />
           </div>
           <div>
-            <IoCloseSharp />
+            <RemoveButton itemId={itemId} />
           </div>
         </li>
       ))}

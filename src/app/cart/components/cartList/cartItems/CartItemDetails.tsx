@@ -17,9 +17,8 @@ const CartItemDetails: React.FC<CartItemDetailsProps> = ({
           <Image
             src={product.image}
             alt={product.title}
-            style={{ padding: '6px' }}
-            objectFit="contain"
-            priority
+            style={{ padding: '6px', objectFit: 'contain' }}
+            sizes="150px"
             fill
           />
         </div>

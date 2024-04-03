@@ -26,9 +26,9 @@ const RootLayout = ({ children }: RootLayoutProps) => {
           <AuthProvider>
             <DataInitializer>
               <div className="relative h-dvh dark:bg-zinc-900 dark:text-white ">
-                <div className="min-h-full dark:bg-zinc-900 dark:text-white pb-8">
+                <div className="bg-neutral-100	min-h-full dark:bg-zinc-900 dark:text-white pb-8">
                   <Header />
-                  <main className="z-40 mt-12 px-12 sm:px-16 ">
+                  <main className="z-40 mt-12 px-6 sm:px-16 ">
                     {children}
                     <SpeedInsights />
                   </main>
