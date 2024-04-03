@@ -23,9 +23,11 @@ const Cart: React.FC = () => {
               <CartList cartItems={cartItems} />
             </div>
             <div className="md:w-4/12 ">
-              <CartSummary cartItems={cartItems} />
-
-              <PurchaseButton cartItemCount={Object.keys(cartItems).length} />
+              <div className="md:sticky md:top-24">
+                {' '}
+                <CartSummary cartItems={cartItems} />
+                <PurchaseButton cartItemCount={Object.keys(cartItems).length} />
+              </div>
             </div>
           </>
         )}

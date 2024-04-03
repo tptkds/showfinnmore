@@ -12,7 +12,7 @@ const CartSummary: React.FC<CartProps> = ({ cartItems }) => {
 
   return (
     <>
-      <div className="shadow bg-zinc-50 dark:bg-zinc-950 mb-6 rounded flex flex-row py-6 px-4 md:sticky md:top-24">
+      <div className="shadow bg-zinc-50 dark:bg-zinc-950 mb-6 rounded flex flex-row py-6 px-4 ">
         <div className="w-full text-sm">
           <div className="flex justify-between ">
             <p>총 상품금액</p>
