@@ -1,4 +1,3 @@
-import CloseModalButton from '@/app/components/modal/CloseModalButton';
 import useStore from '@/hooks/useStore';
 import { ModalContentsProps, Product } from '@/types/globalTypes';
 import { useEffect, useState } from 'react';
@@ -6,10 +5,11 @@ import { useEffect, useState } from 'react';
 interface QuantityAdjusterModalContentsProps extends ModalContentsProps {
   product: Product;
   count: number;
+  isChecked: boolean;
 }
 const QuantityAdjusterModalContents: React.FC<
   QuantityAdjusterModalContentsProps
-> = ({ toggleModal, product, count }) => {
+> = ({ toggleModal, product, count, isChecked }) => {
   const [countInput, setCountInput] = useState<number>(0);
   useEffect(() => {
     setCountInput(count);
@@ -59,7 +59,7 @@ const QuantityAdjusterModalContents: React.FC<
             aria-label="변경"
             name="continueShopping"
             onClick={() => {
-              changeQuantity(product, countInput);
+              changeQuantity(product, countInput, isChecked);
               toggleModal();
             }}
             className="w-1/2 bg-zinc-900 dark:hover:bg-zinc-200 dark:bg-white dark:disabled:bg-zinc-400 py-2 px-4 text-white dark:text-black  rounded hover:bg-zinc-700 transition disabled:bg-zinc-400"

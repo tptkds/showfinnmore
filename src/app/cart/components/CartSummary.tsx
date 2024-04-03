@@ -1,23 +1,14 @@
-import { CartItems } from '@/types/globalTypes';
+import { CartProps } from '@/types/globalTypes';
 import calculateTotal from '@/utils/calculateTotal';
 import { useEffect, useState } from 'react';
 
-interface CartSummaryProps {
-  cartItems: CartItems;
-  isCheckedItems: {
-    [key: string]: boolean;
-  };
-}
-
-const CartSummary: React.FC<CartSummaryProps> = ({
-  cartItems,
-  isCheckedItems,
-}) => {
+const CartSummary: React.FC<CartProps> = ({ cartItems }) => {
   const [total, setTotal] = useState<number>(0);
+
   useEffect(() => {
-    const newTotal = calculateTotal(cartItems, isCheckedItems);
+    const newTotal = calculateTotal(cartItems);
     setTotal(newTotal);
-  }, [cartItems, isCheckedItems]);
+  }, [cartItems]);
 
   return (
     <>

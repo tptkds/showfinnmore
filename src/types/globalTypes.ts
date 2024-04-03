@@ -16,7 +16,7 @@ export interface Product {
 }
 
 export interface CartItems {
-  [productId: string]: { product: Product; count: number };
+  [productId: string]: { product: Product; count: number; isChecked: boolean };
 }
 
 export interface WishlistItems {
@@ -57,12 +57,9 @@ export interface ProductProps {
 
 export interface CartProps {
   cartItems: CartItems;
-  isCheckedItems: IsCheckedItems;
-  setIsCheckedItems: SetIsCheckedItems;
 }
-export type IsCheckedItems = {
-  [key: string]: boolean;
-};
-export type SetIsCheckedItems = Dispatch<
-  SetStateAction<{ [key: string]: boolean }>
->;
+export interface CartItemProps {
+  cartItems: CartItems;
+  itemId: number | string;
+  isChecked: boolean;
+}

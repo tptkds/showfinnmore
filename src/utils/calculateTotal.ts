@@ -1,11 +1,8 @@
-import { CartItems, IsCheckedItems } from '@/types/globalTypes';
+import { CartItems } from '@/types/globalTypes';
 
-const calculateTotal = (
-  cartItems: CartItems,
-  isCheckedItems: IsCheckedItems
-): number => {
+const calculateTotal = (cartItems: CartItems): number => {
   const total = Object.keys(cartItems)
-    .filter((key) => isCheckedItems[key])
+    .filter((itemId) => cartItems[itemId].isChecked === true)
     .reduce((prev, current) => {
       return (
         prev +

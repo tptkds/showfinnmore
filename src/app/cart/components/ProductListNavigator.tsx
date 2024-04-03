@@ -4,7 +4,7 @@ const ProductListNavigator: React.FC = () => {
   const { navigateToSelectedProductListPage } = useRouterPush();
   return (
     <button
-      className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg"
+      className="btn btn-md bg-zinc-200"
       type="button"
       onClick={() => navigateToSelectedProductListPage('all', 1)}
     >

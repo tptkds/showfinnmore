@@ -5,10 +5,12 @@ import Image from 'next/image';
 interface CartItemDetailsProps {
   product: Product;
   count: number;
+  isChecked: boolean;
 }
 const CartItemDetails: React.FC<CartItemDetailsProps> = ({
   product,
   count,
+  isChecked,
 }) => {
   return (
     <div>
@@ -29,7 +31,11 @@ const CartItemDetails: React.FC<CartItemDetailsProps> = ({
 
       <div className="flex items-center justify-between	w-full">
         <div className="flex dark:text-black">
-          <QuantityAdjuster product={product} count={count} />
+          <QuantityAdjuster
+            product={product}
+            count={count}
+            isChecked={isChecked}
+          />
         </div>
         <div>
           <p aria-label="price" className="font-semibold mr-6">

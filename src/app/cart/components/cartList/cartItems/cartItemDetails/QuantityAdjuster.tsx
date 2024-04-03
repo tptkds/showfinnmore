@@ -8,10 +8,12 @@ import QuantityAdjusterModalContents from './quantityAdjuster/QuantityAdjusterMo
 interface QuantityAdjusterProps {
   product: Product;
   count: number;
+  isChecked: boolean;
 }
 const QuantityAdjuster: React.FC<QuantityAdjusterProps> = ({
   product,
   count,
+  isChecked,
 }) => {
   const { incrementQuantity, decrementQuantity } = useStore();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -22,7 +24,7 @@ const QuantityAdjuster: React.FC<QuantityAdjusterProps> = ({
         <button
           className="w-6 hover:bg-zinc-100 disabled:"
           type="button"
-          onClick={() => decrementQuantity(product, count)}
+          onClick={() => decrementQuantity(product, count, isChecked)}
           disabled={count === 1}
         >
           -
@@ -37,7 +39,7 @@ const QuantityAdjuster: React.FC<QuantityAdjusterProps> = ({
         <button
           className="w-6 hover:bg-zinc-100"
           type="button"
-          onClick={() => incrementQuantity(product, count)}
+          onClick={() => incrementQuantity(product, count, isChecked)}
           disabled={count === 9999}
         >
           +
@@ -50,6 +52,7 @@ const QuantityAdjuster: React.FC<QuantityAdjusterProps> = ({
         <QuantityAdjusterModalContents
           product={product}
           count={count}
+          isChecked={isChecked}
           toggleModal={() => toggleModal(isModalOpen, setIsModalOpen)}
         />
       </Modal>

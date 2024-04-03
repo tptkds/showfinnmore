@@ -43,77 +43,98 @@ const useStore = () => {
     }
   };
 
+  const updateCartItems = (cartItems: CartItems) => {
+    dispatch(setCartItems(cartItems));
+    if (status === 'unauthenticated') {
+      setCartItemsLocalStorage(cartItems);
+    } else {
+      if (session?.user.email)
+        setCartItemsFireStore(cartItems, session?.user.email);
+    }
+  };
+
   const addCartItem = (product: Product) => {
     const newCartItems: CartItems = {
       ...cartItems,
-      [product.id]: { product: product, count: 1 },
+      [product.id]: { product: product, count: 1, isChecked: true },
     };
-    dispatch(setCartItems(newCartItems));
-    if (status === 'unauthenticated') {
-      setCartItemsLocalStorage(newCartItems);
-    } else {
-      if (session?.user.email)
-        setCartItemsFireStore(newCartItems, session?.user.email);
-    }
+    updateCartItems(newCartItems);
+  };
+
+  const removeCartItems = (itemIds: string[] | number[]) => {
+    let newCartItems = { ...cartItems };
+    itemIds.forEach((itemId) => {
+      delete newCartItems[Number(itemId)];
+    });
+    updateCartItems(newCartItems);
   };
 
   const removeCartItem = (itemId: string | number) => {
     const { [itemId]: removeItem, ...newCartItems } = cartItems;
-    dispatch(setCartItems(newCartItems));
-    if (status === 'unauthenticated') {
-      setCartItemsLocalStorage(newCartItems);
-    } else {
-      if (session?.user.email)
-        setCartItemsFireStore(newCartItems, session?.user.email);
-    }
+    updateCartItems(newCartItems);
   };
 
-  const incrementQuantity = (product: Product, count: number) => {
+  const incrementQuantity = (
+    product: Product,
+    count: number,
+    isChecked: boolean
+  ) => {
     if (count + 1 >= 10000) return;
     const newCartItem = {
       product: product,
       count: count + 1,
+      isChecked: isChecked,
     };
     const newCartItems = { ...cartItems, [product.id]: newCartItem };
-    dispatch(setCartItems(newCartItems));
-    if (status === 'unauthenticated') {
-      setCartItemsLocalStorage(newCartItems);
-    } else {
-      if (session?.user.email)
-        setCartItemsFireStore(newCartItems, session?.user.email);
-    }
+    updateCartItems(newCartItems);
   };
 
-  const decrementQuantity = (product: Product, count: number) => {
+  const decrementQuantity = (
+    product: Product,
+    count: number,
+    isChecked: boolean
+  ) => {
     if (count - 1 < 1) return;
     const newCartItem = {
       product: product,
       count: count - 1,
+      isChecked: isChecked,
     };
     const newCartItems = { ...cartItems, [product.id]: newCartItem };
-    dispatch(setCartItems(newCartItems));
-    if (status === 'unauthenticated') {
-      setCartItemsLocalStorage(newCartItems);
-    } else {
-      if (session?.user.email)
-        setCartItemsFireStore(newCartItems, session?.user.email);
-    }
-    setCartItems(newCartItems);
+    updateCartItems(newCartItems);
   };
 
-  const changeQuantity = (product: Product, newCount: number) => {
+  const changeQuantity = (
+    product: Product,
+    newCount: number,
+    isChecked: boolean
+  ) => {
     const newCartItem = {
       product: product,
       count: newCount,
+      isChecked: isChecked,
     };
     const newCartItems = { ...cartItems, [product.id]: newCartItem };
-    dispatch(setCartItems(newCartItems));
-    if (status === 'unauthenticated') {
-      setCartItemsLocalStorage(newCartItems);
-    } else {
-      if (session?.user.email)
-        setCartItemsFireStore(newCartItems, session?.user.email);
-    }
+    updateCartItems(newCartItems);
+  };
+
+  const toggleAllChecked = (cartItems: CartItems, isChecked: boolean) => {
+    const newCartItems = JSON.parse(JSON.stringify(cartItems));
+    Object.keys(newCartItems).forEach((itemId) => {
+      newCartItems[itemId].isChecked = isChecked;
+    });
+    updateCartItems(newCartItems);
+  };
+
+  const toggleChecked = (cartItems: CartItems, itemId: number | string) => {
+    const newCartItem = {
+      product: cartItems[itemId].product,
+      count: cartItems[itemId].count,
+      isChecked: !cartItems[itemId].isChecked,
+    };
+    const newCartItems = { ...cartItems, [itemId]: newCartItem };
+
+    updateCartItems(newCartItems);
   };
 
   const toggleWishlistItems = (product: Product) => {
@@ -153,6 +174,9 @@ const useStore = () => {
     decrementQuantity,
     changeQuantity,
     removeCartItem,
+    removeCartItems,
+    toggleAllChecked,
+    toggleChecked,
   };
 };
 

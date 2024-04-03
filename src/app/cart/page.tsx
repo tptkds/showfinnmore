@@ -1,24 +1,13 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import CartSummary from './components/CartSummary';
-import PurchaseButton1 from './components/PurchaseButton1';
-import CartList1 from './components/CartList1';
+import PurchaseButton from './components/PurchaseButton';
+import CartList from './components/CartList';
 import useStore from '@/hooks/useStore';
 import ProductListNavigator from './components/ProductListNavigator';
 
 const Cart: React.FC = () => {
   const { cartItems } = useStore();
-  const [isCheckedItems, setIsCheckedItems] = useState<{
-    [key: string]: boolean;
-  }>({});
-
-  useEffect(() => {
-    const cartItemsIds = Object.keys(cartItems);
-    let newIsCheckedItems = cartItemsIds.reduce((prev, cur) => {
-      return { ...prev, [cur]: true };
-    }, {});
-    setIsCheckedItems(newIsCheckedItems);
-  }, [cartItems]);
 
   return (
     <>
@@ -31,19 +20,12 @@ const Cart: React.FC = () => {
         ) : (
           <>
             <div className="md:w-7/12">
-              <CartList1
-                cartItems={cartItems}
-                isCheckedItems={isCheckedItems}
-                setIsCheckedItems={setIsCheckedItems}
-              />
+              <CartList cartItems={cartItems} />
             </div>
             <div className="md:w-4/12 ">
-              <CartSummary
-                cartItems={cartItems}
-                isCheckedItems={isCheckedItems}
-              />
+              <CartSummary cartItems={cartItems} />
 
-              <PurchaseButton1 cartItemCount={Object.keys(cartItems).length} />
+              <PurchaseButton cartItemCount={Object.keys(cartItems).length} />
             </div>
           </>
         )}
