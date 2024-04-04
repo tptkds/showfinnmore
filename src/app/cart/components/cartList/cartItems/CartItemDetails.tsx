@@ -22,6 +22,7 @@ const CartItemDetails: React.FC<CartItemDetailsProps> = ({
             style={{ padding: '6px', objectFit: 'contain' }}
             sizes="150px"
             fill
+            loading="lazy"
           />
         </div>
         <div>

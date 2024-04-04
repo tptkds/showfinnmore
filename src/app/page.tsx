@@ -12,7 +12,6 @@ export default function Home() {
           objectFit: 'cover',
         }}
         priority
-        quality="100"
       />
     </div>
   );

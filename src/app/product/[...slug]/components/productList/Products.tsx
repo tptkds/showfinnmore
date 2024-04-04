@@ -30,7 +30,7 @@ const Products: React.FC<ProductsProps> = ({ products }) => {
                   height: 'auto',
                   padding: '20%',
                 }}
-                priority
+                loading="lazy"
               />
             </Link>
           </div>
