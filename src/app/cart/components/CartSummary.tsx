@@ -18,9 +18,16 @@ const CartSummary: React.FC<CartProps> = ({ cartItems }) => {
             <p>총 상품금액</p>
             <p className="font-semibold	">{total.toLocaleString()}원</p>
           </div>
-          <div className="flex justify-between mt-2 my-4">
+          <div className="flex justify-between mt-2 mt-4">
             <p>배송비</p>
-            <p className="font-semibold	">+ {total < 100000 ? '3,000' : 0}원</p>
+            <p className="font-semibold	">
+              + {total < 100000 && total !== 0 ? '3,000' : 0}원
+            </p>
+          </div>
+          <div className="mb-4 mt-2">
+            <p className="text-xs text-right">
+              (10만원 이상 구매 시 배송비 무료)
+            </p>
           </div>
           <div className="flex justify-between border-t pt-4">
             <p className="font-semibold	">결제금액</p>
