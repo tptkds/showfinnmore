@@ -20,9 +20,9 @@ const CartButton: React.FC<CartButtonProps> = ({ product, cartItems }) => {
       aria-label="장바구니"
     >
       {cartItems[product.id] ? (
-        <PiShoppingBagFill style={{ fontSize: '28px' }} />
+        <PiShoppingBagFill className="text-xl" />
       ) : (
-        <PiShoppingBagLight style={{ fontSize: '28px' }} />
+        <PiShoppingBagLight className="text-xl" />
       )}
     </button>
   );

@@ -19,8 +19,8 @@ const Product: React.FC<ProductsProps> = ({
   wishlistItems,
 }) => {
   return (
-    <li key={product.id} className="h-full">
-      <div className="h-4/5">
+    <li key={product.id} className="border p-2 bg-white rounded-md">
+      <div className="w-full  aspect-square	 bg-white border mb-3">
         <Link
           href={`/product/detail/${product.id}`}
           className="flex items-center w-full h-full relative"
@@ -28,23 +28,23 @@ const Product: React.FC<ProductsProps> = ({
           <Image
             src={product.image}
             alt={product.title}
-            width={0}
-            height={0}
             sizes="100vw"
             style={{
-              width: '100%',
-              height: 'auto',
-              padding: '20%',
+              objectFit: 'contain',
+              padding: '10px',
             }}
+            fill
             loading="lazy"
           />
         </Link>
       </div>
-      <div>
-        <Link href={`/product/detail/${product.id}`}>{product.title}</Link>
-        <p className="my-2">{(product.price * 1000).toLocaleString()}원</p>
+      <div className="overflow-hidden	px-2 text-sm">
+        <Link href={`/product/detail/${product.id}`} className="truncate block	">
+          {product.title}
+        </Link>
+        <p className="">{(product.price * 1000).toLocaleString()}원</p>
       </div>
-      <div className="flex">
+      <div className="flex mt-2 px-2">
         <div className="mr-2">
           <WishlistButton product={product} wishlist={wishlistItems} />
         </div>

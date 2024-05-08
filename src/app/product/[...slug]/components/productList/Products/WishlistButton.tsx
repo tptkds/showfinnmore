@@ -29,9 +29,9 @@ const WishlistButton: React.FC<WishlistButtonProps> = ({
       aria-label="찜"
     >
       {wishlist[product.id] ? (
-        <PiHeartFill style={{ fontSize: '28px' }} />
+        <PiHeartFill className="text-xl" />
       ) : (
-        <PiHeartLight style={{ fontSize: '28px' }} />
+        <PiHeartLight className="text-xl" />
       )}
     </button>
   );
