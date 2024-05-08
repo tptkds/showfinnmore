@@ -15,8 +15,19 @@ export interface Product {
   image: string;
 }
 
+export interface CartItem {
+  product: Product;
+  count: number;
+  isChecked: boolean;
+}
+export interface CartItemProps {
+  cartItems: CartItems;
+  itemId: string;
+  cartItem: CartItem;
+}
+
 export interface CartItems {
-  [productId: string]: { product: Product; count: number; isChecked: boolean };
+  [productId: string]: CartItem;
 }
 
 export interface WishlistItems {
@@ -57,9 +68,4 @@ export interface ProductProps {
 
 export interface CartProps {
   cartItems: CartItems;
-}
-export interface CartItemProps {
-  cartItems: CartItems;
-  itemId: number | string;
-  isChecked: boolean;
 }

@@ -1,16 +1,16 @@
 import useStore from '@/hooks/useStore';
-import { CartItemProps, CartItems } from '@/types/globalTypes';
+import { CartItemProps } from '@/types/globalTypes';
 
 const ToggleSelectButton: React.FC<CartItemProps> = ({
   cartItems,
+  cartItem,
   itemId,
-  isChecked = false,
 }) => {
   const { toggleChecked } = useStore();
   return (
     <input
       type="checkbox"
-      checked={isChecked}
+      checked={cartItem.isChecked}
       onChange={() => {
         toggleChecked(cartItems, itemId);
       }}

@@ -1,6 +1,6 @@
 import { CartProps } from '@/types/globalTypes';
-import CartItems from './cartList/CartItems';
 import CartListHeader from './cartList/CartListHeader';
+import CartItem from './cartList/CartItem';
 
 const CartList: React.FC<CartProps> = ({ cartItems }) => {
   return (
@@ -12,7 +12,14 @@ const CartList: React.FC<CartProps> = ({ cartItems }) => {
         <CartListHeader cartItems={cartItems} />
       </div>
       <ul className="flex flex-col">
-        <CartItems cartItems={cartItems} />
+        {[...Object.keys(cartItems)].map((itemId) => (
+          <CartItem
+            key={itemId}
+            itemId={itemId}
+            cartItem={cartItems[itemId]}
+            cartItems={cartItems}
+          />
+        ))}
       </ul>
     </>
   );
