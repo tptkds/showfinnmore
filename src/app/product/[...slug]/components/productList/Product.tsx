@@ -39,7 +39,11 @@ const Product: React.FC<ProductsProps> = ({
         </Link>
       </div>
       <div className="overflow-hidden	px-2 text-sm">
-        <Link href={`/product/detail/${product.id}`} className="truncate block	">
+        <Link
+          href={`/product/detail/${product.id}`}
+          className="truncate block"
+          title={product.title}
+        >
           {product.title}
         </Link>
         <p className="">{(product.price * 1000).toLocaleString()}원</p>
