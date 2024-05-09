@@ -46,7 +46,12 @@ const Product: React.FC<ProductsProps> = ({
         >
           {product.title}
         </Link>
-        <p className="">{(product.price * 1000).toLocaleString()}원</p>
+        <p
+          className="truncate block"
+          title={(product.price * 1000).toLocaleString() + '원'}
+        >
+          {(product.price * 1000).toLocaleString()}원
+        </p>
       </div>
       <div className="flex mt-2 px-2">
         <div className="mr-2">
