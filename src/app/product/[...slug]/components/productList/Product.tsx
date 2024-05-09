@@ -38,22 +38,22 @@ const Product: React.FC<ProductsProps> = ({
           />
         </Link>
       </div>
-      <div className="overflow-hidden	px-2 text-sm">
+      <div className="overflow-hidden	px-2  space-y-2 mt-4">
         <Link
           href={`/product/detail/${product.id}`}
-          className="truncate block"
+          className="truncate block text-xs"
           title={product.title}
         >
           {product.title}
         </Link>
-        <p
-          className="truncate block"
-          title={(product.price * 1000).toLocaleString() + '원'}
+        <strong
+          className="truncate block text-sm"
+          title={(product.price * 1000).toLocaleString()}
         >
-          {(product.price * 1000).toLocaleString()}원
-        </p>
+          {(product.price * 1000).toLocaleString()}
+        </strong>
       </div>
-      <div className="flex mt-2 px-2">
+      <div className="flex mt-4   px-2">
         <div className="mr-2">
           <WishlistButton product={product} wishlist={wishlistItems} />
         </div>

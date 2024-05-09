@@ -8,6 +8,13 @@ import Search from './components/Search';
 import { Metadata } from '@/types/globalTypes';
 import AuthProvider from './AuthProvider';
 import DataInitializer from './DataInitializer';
+import { Noto_Sans_KR } from 'next/font/google';
+
+const notoSansKr = Noto_Sans_KR({
+  // preload: true, 기본값
+  subsets: ['latin'], // 또는 preload: false
+  weight: ['100', '400', '700', '900'], // 가변 폰트가 아닌 경우, 사용할 fontWeight 배열
+});
 
 export const metadata: Metadata = {
   title: 'showfinnmore',
@@ -21,7 +28,9 @@ interface RootLayoutProps {
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang="ko" suppressHydrationWarning>
-      <body className="overflow-x-hidden h-dvh relative">
+      <body
+        className={'overflow-x-hidden h-dvh relative ' + notoSansKr.className}
+      >
         <AppProviders>
           <AuthProvider>
             <DataInitializer>
