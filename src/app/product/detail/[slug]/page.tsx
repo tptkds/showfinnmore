@@ -12,6 +12,7 @@ import {
   getCartItemsLocalStorage,
   addCartItemsLocalStorage,
 } from '../../../../utils/localstorage';
+import { Skeleton } from '@/components/ui/skeleton';
 
 interface DetailProps {
   params: {
@@ -57,25 +58,63 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
 
   return (
     <>
-      <div className="mt-14 flex flex-col justify-center w-full items-center">
-        <div className="h-full flex p-20 justify-center w800-max-padding  sm-max-textsize-12">
-          <div className="w-3/6 flex justify-center items-start h-80svh ">
-            <div className=" flex justify-center">
-              <div className="relative w-full md:w-2/3 lg:w-1/2">
-                {curItem ? (
-                  <Image
-                    src={curItem?.image}
-                    alt={curItem?.title}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    style={{ width: '100%', height: 'auto', padding: '1%' }}
-                    priority
-                  />
-                ) : (
-                  <div className="skeleton w-full h-full"></div>
-                )}
-              </div>
+      <div className="mt-14 mx-20 flex space-x-12 bg-white px-10 py-8">
+        <div className="relative w-1/2 aspect-square bg-white">
+          {curItem ? (
+            <Image
+              src={curItem?.image}
+              alt={curItem?.title}
+              fill
+              sizes="100vw"
+              style={{ objectFit: 'contain', padding: '16px' }}
+              priority
+            />
+          ) : (
+            <Skeleton className="w-1/2 aspect-square rounded-xl" />
+          )}
+        </div>
+        <div className="w-1/2 space-y-8">
+          <h2 className="text-2xl font-bold">{curItem?.title}</h2>
+          <p className="text-sm max-h-[260px] block overflow-hidden">
+            {curItem?.description}
+          </p>
+          <strong className="block text-xl">
+            {(Number(curItem?.price) * 1000).toLocaleString() + '원'}
+          </strong>
+          <div className="flex flex-col mt-4 text-sm sm:mt-16 items-center">
+            <button
+              aria-label="바로 구매하기"
+              onClick={purchase}
+              className="mt-4 w-full bg-zinc-900 dark:hover:bg-zinc-200 dark:bg-white dark:disabled:bg-zinc-400 p-4 text-white dark:text-black  rounded hover:bg-zinc-700 transition disabled:bg-zinc-400"
+            >
+              바로 구매하기
+            </button>
+            <button
+              aria-label="장바구니에 담기"
+              onClick={addToCart}
+              className="mt-4 w-full bg-zinc-900 dark:hover:bg-zinc-200 dark:bg-white dark:disabled:bg-zinc-400 p-4 text-white dark:text-black  rounded hover:bg-zinc-700 transition disabled:bg-zinc-400"
+            >
+              장바구니에 담기
+            </button>
+          </div>
+        </div>
+      </div>
+      {/* <div className="mt-14 flex flex-col justify-center w-full items-center">
+        <div className="flex p-20 justify-center w800-max-padding  sm-max-textsize-12">
+          <div className="w-3/6 flex justify-center items-start bg-white items-center mx-4 ">
+            <div className="relative w-full md:w-2/3 lg:w-1/2 aspect-square h-full">
+              {curItem ? (
+                <Image
+                  src={curItem?.image}
+                  alt={curItem?.title}
+                  fill
+                  sizes="100vw"
+                  style={{ objectFit: 'contain' }}
+                  priority
+                />
+              ) : (
+                <div className="skeleton w-full h-full"></div>
+              )}
             </div>
           </div>
           <div
@@ -111,7 +150,7 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
         <CartModalContents
           toggleModal={() => toggleModal(isModalOpen, setIsModalOpen)}
         />
-      </Modal>
+      </Modal> */}
     </>
   );
 };
