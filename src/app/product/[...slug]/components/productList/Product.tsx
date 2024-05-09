@@ -19,7 +19,10 @@ const Product: React.FC<ProductsProps> = ({
   wishlistItems,
 }) => {
   return (
-    <li key={product.id} className="border p-2 bg-white rounded-md">
+    <li
+      key={product.id}
+      className="border p-2 bg-white rounded-md dark:bg-black"
+    >
       <div className="w-full  aspect-square	 bg-white border mb-3">
         <Link
           href={`/product/detail/${product.id}`}
