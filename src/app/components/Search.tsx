@@ -14,8 +14,7 @@ const Search: React.FC = () => {
         <button
           aria-label="검색"
           onClick={() => toggleModal(isModalOpen, setIsModalOpen)}
-          className="p-4"
-          style={{ fontSize: '46px' }}
+          className="p-4 text-xl sm:text-[46px]"
         >
           <FiSearch />
         </button>
