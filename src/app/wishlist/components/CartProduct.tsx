@@ -1,23 +1,18 @@
-import {
-  CartItems,
-  Product as ProductType,
-  WishlistItems,
-} from '@/types/globalTypes';
+import CartButton from '@/app/product/[...slug]/components/productList/Products/CartButton';
+import WishlistButton from '@/app/product/[...slug]/components/productList/Products/WishlistButton';
+import { CartItems, Product, WishlistItems } from '@/types/globalTypes';
 import Image from 'next/image';
 import Link from 'next/link';
-import WishlistButton from './Products/WishlistButton';
-import CartButton from './Products/CartButton';
 
-interface ProductsProps {
-  product: ProductType;
-  cartItems: CartItems;
-  wishlistItems: WishlistItems;
-}
-const Product: React.FC<ProductsProps> = ({
+export default function CartProduct({
   product,
+  wishlist,
   cartItems,
-  wishlistItems,
-}) => {
+}: {
+  product: Product;
+  wishlist: WishlistItems;
+  cartItems: CartItems;
+}) {
   return (
     <li
       key={product.id}
@@ -58,7 +53,7 @@ const Product: React.FC<ProductsProps> = ({
       </div>
       <div className="flex mt-4   px-2">
         <div className="mr-2">
-          <WishlistButton product={product} wishlist={wishlistItems} />
+          <WishlistButton product={product} wishlist={wishlist} />
         </div>
         <div>
           <CartButton product={product} cartItems={cartItems} />
@@ -66,5 +61,4 @@ const Product: React.FC<ProductsProps> = ({
       </div>
     </li>
   );
-};
-export default Product;
+}
