@@ -4,7 +4,6 @@ import DarkModeToggleButton from './DarkModeToggleButton';
 import Link from 'next/link';
 import { CATEGORIES } from '@/constants/product';
 import { GrMenu } from 'react-icons/gr';
-import useProduct from '@/hooks/useProduct';
 
 const Menu: React.FC = () => {
   const menu = useRef<HTMLUListElement>(null);

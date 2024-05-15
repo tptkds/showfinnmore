@@ -18,7 +18,7 @@ const Nav: React.FC = () => {
         <Menu />
       </div>
 
-      <div className="flex basis-1/3 justify-end items-center order-2 text-sm">
+      <div className="flex basis-1/3 justify-end items-center order-2 text-sm text-sm">
         <div className="mr-2 sm:mr-4">
           <MyPage />
         </div>
