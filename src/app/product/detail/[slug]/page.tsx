@@ -58,7 +58,7 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
 
   return (
     <>
-      <div className="mt-14 mx-20 flex space-x-12 bg-white px-10 py-8">
+      <div className="mt-14 mx-20 flex space-x-12 bg-white dark:bg-zinc-900 px-10 py-8 border">
         <div className="relative w-1/2 aspect-square bg-white">
           {curItem ? (
             <Image
@@ -81,20 +81,18 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
           <strong className="block text-xl">
             {(Number(curItem?.price) * 1000).toLocaleString() + '원'}
           </strong>
-          <div className="flex flex-col mt-4 text-sm sm:mt-16 items-center">
+          <div className="flex flex-row space-x-2 mt-4 text-sm sm:mt-16 items-center">
             <button
-              aria-label="바로 구매하기"
+              onClick={addToCart}
+              className="mt-4 w-full border bg-white dark:hover:bg-zinc-200 dark:bg-white dark:disabled:bg-zinc-400 p-4 text-black dark:text-black  rounded hover:bg-zinc-700 transition disabled:bg-zinc-400"
+            >
+              장바구니에 담기
+            </button>
+            <button
               onClick={purchase}
               className="mt-4 w-full bg-zinc-900 dark:hover:bg-zinc-200 dark:bg-white dark:disabled:bg-zinc-400 p-4 text-white dark:text-black  rounded hover:bg-zinc-700 transition disabled:bg-zinc-400"
             >
               바로 구매하기
-            </button>
-            <button
-              aria-label="장바구니에 담기"
-              onClick={addToCart}
-              className="mt-4 w-full bg-zinc-900 dark:hover:bg-zinc-200 dark:bg-white dark:disabled:bg-zinc-400 p-4 text-white dark:text-black  rounded hover:bg-zinc-700 transition disabled:bg-zinc-400"
-            >
-              장바구니에 담기
             </button>
           </div>
         </div>
