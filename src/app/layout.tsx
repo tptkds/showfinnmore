@@ -43,7 +43,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
                   <Footer />
                 </div>
 
-                <div className="absolute top-[6px] sm:top-auto left-1/2 sm:left-auto transform -translate-x-1/2 sm:transform-none sm:translate-x-0 sm:fixed sm:bottom-10 sm:right-10 sm:bg-white sm:shadow-lg rounded-full bg-opacity-80 dark:bg-opacity-80 z-20 sm:dark:bg-zinc-700">
+                <div className="fixed bottom-10 right-10 bg-white shadow-lg rounded-full bg-opacity-80 dark:bg-opacity-80 z-20 dark:bg-zinc-700">
                   <Search />
                 </div>
               </div>
