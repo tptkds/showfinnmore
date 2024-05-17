@@ -23,7 +23,7 @@ const ProductList: React.FC<ProductProps> = ({ category, page }) => {
       {productsInPage.length === 0 ? (
         <ProductListSkeleton />
       ) : (
-        <ul className="grid grid-cols-2 gap-2 h-full lg:grid-cols-4 ">
+        <ul className="grid grid-cols-2 gap-4 xl:gap-6 h-full lg:grid-cols-4 ">
           {productsInPage.map((product) => (
             <Product
               key={product.id}
