@@ -51,15 +51,13 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
     if (curItem) {
       addCartItemsLocalStorage(curItem);
       const newCartItems: CartItems | undefined = getCartItemsLocalStorage();
-      //  if (newCartItems !== undefined) dispatch(setCartItems(newCartItems));
-      // else dispatch(setCartItems({}));
     }
   };
 
   return (
     <>
-      <div className="mt-14 mx-20 flex space-x-12 bg-white dark:bg-zinc-900 px-10 py-8 border dark:border-none">
-        <div className="relative w-1/2 aspect-square bg-white">
+      <div className=" mt-14 lg:mx-20 flex flex-col items-center md:flex-row md:space-x-12 bg-white dark:bg-zinc-900 px-10 py-8 border dark:border-none">
+        <div className="relative w-3/4 md:w-1/2 aspect-square bg-white">
           {curItem ? (
             <Image
               src={curItem?.image}
@@ -73,82 +71,34 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
             <Skeleton className="w-1/2 aspect-square rounded-xl" />
           )}
         </div>
-        <div className="w-1/2 space-y-8">
-          <h2 className="text-2xl font-bold">{curItem?.title}</h2>
-          <p className="text-sm max-h-[260px] block overflow-hidden">
-            {curItem?.description}
-          </p>
-          <strong className="block text-xl">
-            {(Number(curItem?.price) * 1000).toLocaleString() + '원'}
-          </strong>
-          <div className="flex flex-row space-x-2 mt-4 text-sm sm:mt-16 items-center">
+        <div className=" flex flex-col md:w-1/2 h-full">
+          <div className="space-y-4 md:space-y-8">
+            <h2 className="text-base md:text-2xl font-bold">
+              {curItem?.title}
+            </h2>
+            <p className="text-sm max-h-[260px] block overflow-hidden">
+              {curItem?.description}
+            </p>
+            <strong className="block text-xl">
+              {(Number(curItem?.price) * 1000).toLocaleString() + '원'}
+            </strong>
+          </div>
+          <div className="md:mx-0 mt-8 float-right sticky md:static  w-full flex flex-col md:flex-row items-center md:space-x-2 text-sm ">
             <button
               onClick={addToCart}
-              className="mt-4 w-full border bg-white dark:hover:bg-zinc-200 dark:bg-white dark:disabled:bg-zinc-400 p-4 text-black dark:text-black  rounded hover:bg-zinc-700 transition disabled:bg-zinc-400"
+              className=" w-full md:w-1/2 border bg-white dark:hover:bg-zinc-200 dark:bg-white dark:disabled:bg-zinc-400 p-4 text-black dark:text-black  rounded hover:bg-zinc-700 transition disabled:bg-zinc-400"
             >
-              장바구니에 담기
+              장바구니
             </button>
             <button
               onClick={purchase}
-              className="mt-4 w-full bg-zinc-900 dark:hover:bg-zinc-200 dark:bg-white dark:disabled:bg-zinc-400 p-4 text-white dark:text-black  rounded hover:bg-zinc-700 transition disabled:bg-zinc-400"
+              className="my-2 md:my-0 order-first	md:order-last w-full md:w-1/2 bg-zinc-900 dark:hover:bg-zinc-200 dark:bg-white dark:disabled:bg-zinc-400 p-4 text-white dark:text-black  rounded hover:bg-zinc-700 transition disabled:bg-zinc-400"
             >
-              바로 구매하기
+              바로 구매
             </button>
           </div>
         </div>
       </div>
-      {/* <div className="mt-14 flex flex-col justify-center w-full items-center">
-        <div className="flex p-20 justify-center w800-max-padding  sm-max-textsize-12">
-          <div className="w-3/6 flex justify-center items-start bg-white items-center mx-4 ">
-            <div className="relative w-full md:w-2/3 lg:w-1/2 aspect-square h-full">
-              {curItem ? (
-                <Image
-                  src={curItem?.image}
-                  alt={curItem?.title}
-                  fill
-                  sizes="100vw"
-                  style={{ objectFit: 'contain' }}
-                  priority
-                />
-              ) : (
-                <div className="skeleton w-full h-full"></div>
-              )}
-            </div>
-          </div>
-          <div
-            className="w-3/6 h-full  sm-max-textsize-12"
-            style={{ padding: '1%' }}
-          >
-            <p>{curItem?.title}</p>
-            <p className="py-2.5">{curItem?.description}</p>
-            <p>{(Number(curItem?.price) * 1000).toLocaleString()}원</p>
-            <div className="flex flex-col mt-4 text-sm sm:mt-16 items-center">
-              <button
-                aria-label="바로 구매하기"
-                onClick={purchase}
-                className="mt-4 w-full lg:w-1/2 bg-zinc-900 dark:hover:bg-zinc-200 dark:bg-white dark:disabled:bg-zinc-400 p-4 text-white dark:text-black  rounded hover:bg-zinc-700 transition disabled:bg-zinc-400"
-              >
-                바로 구매하기
-              </button>
-              <button
-                aria-label="장바구니에 담기"
-                onClick={addToCart}
-                className="mt-4 w-full lg:w-1/2  bg-zinc-900 dark:hover:bg-zinc-200 dark:bg-white dark:disabled:bg-zinc-400 p-4 text-white dark:text-black  rounded hover:bg-zinc-700 transition disabled:bg-zinc-400"
-              >
-                장바구니에 담기
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <Modal
-        isModalOpen={isModalOpen}
-        toggleModal={() => toggleModal(isModalOpen, setIsModalOpen)}
-      >
-        <CartModalContents
-          toggleModal={() => toggleModal(isModalOpen, setIsModalOpen)}
-        />
-      </Modal> */}
     </>
   );
 };
