@@ -7,7 +7,7 @@ const PurchaseButton1: React.FC<PurchaseButtonProps> = ({ cartItemCount }) => {
     <>
       <div>
         <button
-          className="text-center w-full rounded bg-zinc-900 hover:bg-zinc-700 text-white py-4 disabled:bg-zinc-500 	   "
+          className="w-full rounded bg-zinc-900 py-4 text-center text-white hover:bg-zinc-700 disabled:bg-zinc-500 	   "
           disabled={cartItemCount === 0}
         >
           {cartItemCount}개 상품 구매하기

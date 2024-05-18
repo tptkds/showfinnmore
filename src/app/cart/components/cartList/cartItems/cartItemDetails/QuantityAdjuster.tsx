@@ -20,9 +20,9 @@ const QuantityAdjuster: React.FC<QuantityAdjusterProps> = ({
 
   return (
     <>
-      <span className="h-8 bg-white flex rounded border">
+      <span className="flex h-8 rounded border bg-white">
         <button
-          className="w-6 hover:bg-zinc-100 disabled:"
+          className="disabled: w-6 hover:bg-zinc-100"
           type="button"
           onClick={() => decrementQuantity(product, count, isChecked)}
           disabled={count === 1}

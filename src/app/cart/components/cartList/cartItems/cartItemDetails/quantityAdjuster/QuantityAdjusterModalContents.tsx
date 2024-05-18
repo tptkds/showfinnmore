@@ -18,7 +18,7 @@ const QuantityAdjusterModalContents: React.FC<
   return (
     <>
       <div
-        className="absolute dark:bg-black flex flex-col modal-center shadow-md items-center pt-8 z-30  w-96 "
+        className="modal-center absolute z-30 flex w-96 flex-col items-center pt-8 shadow-md  dark:bg-black "
         aria-modal="true"
         role="alertdialog"
       >
@@ -38,10 +38,10 @@ const QuantityAdjusterModalContents: React.FC<
               }
               setCountInput(Number(e.target.value));
             }}
-            className="px-4   h-14 bg-gray-50  dark:text-black border-gray-200 border mb-6 outline-none w-full "
+            className="mb-6   h-14 w-full  border border-gray-200 bg-gray-50 px-4 outline-none dark:text-black "
           />
         </div>
-        <div className="flex flex-row w-full">
+        <div className="flex w-full flex-row">
           <button
             type="button"
             aria-label="취소"
@@ -50,7 +50,7 @@ const QuantityAdjusterModalContents: React.FC<
               toggleModal();
               setCountInput(count);
             }}
-            className="w-1/2 bg-zinc-50  hover:bg-zinc-100 border text-black dark:hover:bg-zinc-200 dark:bg-white dark:disabled:bg-zinc-400 py-2 px-4 t dark:text-black  rounded  transition disabled:bg-zinc-400 mr-2"
+            className="t mr-2  w-1/2 rounded border bg-zinc-50 px-4 py-2 text-black transition hover:bg-zinc-100 disabled:bg-zinc-400  dark:bg-white  dark:text-black dark:hover:bg-zinc-200 dark:disabled:bg-zinc-400"
           >
             취소
           </button>
@@ -62,7 +62,7 @@ const QuantityAdjusterModalContents: React.FC<
               changeQuantity(product, countInput, isChecked);
               toggleModal();
             }}
-            className="w-1/2 bg-zinc-900 dark:hover:bg-zinc-200 dark:bg-white dark:disabled:bg-zinc-400 py-2 px-4 text-white dark:text-black  rounded hover:bg-zinc-700 transition disabled:bg-zinc-400"
+            className="w-1/2 rounded bg-zinc-900 px-4 py-2 text-white transition hover:bg-zinc-700 disabled:bg-zinc-400  dark:bg-white dark:text-black dark:hover:bg-zinc-200 dark:disabled:bg-zinc-400"
           >
             변경
           </button>

@@ -13,7 +13,7 @@ const WishlistComponent: React.FC = () => {
   const cartItems: CartItems = useAppSelector((state) => state.cart.cartItems);
 
   return keysOfWishlist.length !== 0 ? (
-    <ul className="grid grid-cols-2 gap-2 h-full lg:grid-cols-4 ">
+    <ul className="grid h-full grid-cols-2 gap-2 lg:grid-cols-4 ">
       {keysOfWishlist.map((key) => (
         <CartProduct
           key={key}
@@ -24,8 +24,8 @@ const WishlistComponent: React.FC = () => {
       ))}
     </ul>
   ) : (
-    <div className="flex justify-center items-center w-full">
-      <p className="text-center  p-14 ">There are no favorite items</p>
+    <div className="flex w-full items-center justify-center">
+      <p className="p-14  text-center ">There are no favorite items</p>
     </div>
   );
 };

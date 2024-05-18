@@ -15,11 +15,11 @@ const Product: React.FC<ProductProps> = ({ params }) => {
 
   return (
     <>
-      <div className="mt-14 mb-4 flex flex-col justify-center w-full items-center">
+      <div className="mb-4 mt-14 flex w-full flex-col items-center justify-center">
         <h2>{category.charAt(0).toUpperCase() + category.slice(1)}</h2>
       </div>
 
-      <div className="flex flex-col mb-12">
+      <div className="mb-12 flex flex-col">
         <ProductList category={category} page={page} />
       </div>
       <div className="mt-14">

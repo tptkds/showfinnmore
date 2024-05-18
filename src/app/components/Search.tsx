@@ -10,7 +10,7 @@ const Search: React.FC = () => {
 
   return (
     <>
-      <div className="flex items-center relative w-full " role="search">
+      <div className="relative flex w-full items-center " role="search">
         <button
           aria-label="검색"
           onClick={() => toggleModal(isModalOpen, setIsModalOpen)}

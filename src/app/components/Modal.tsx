@@ -29,7 +29,7 @@ const Modal: React.FC<ModalProps> = ({
   return (
     <div
       ref={modalRef}
-      className={`bg-black bg-opacity-30 w-full h-full fixed top-0 left-0 z-50 ${
+      className={`fixed left-0 top-0 z-50 h-full w-full bg-black bg-opacity-30 ${
         isModalOpen ? '' : 'hidden'
       } dark:bg-white dark:bg-opacity-30`}
       onClick={closeModal}

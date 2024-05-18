@@ -21,7 +21,7 @@ const DarkModeToggleButton: React.FC = () => {
   return (
     <>
       <div
-        className=" flex itesm-center"
+        className=" itesm-center flex"
         //data-tip="Dark Mode"
       >
         <button onClick={themeToggle} aria-label="다크모드 테마 변경">

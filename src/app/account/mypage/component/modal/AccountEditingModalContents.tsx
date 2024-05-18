@@ -101,16 +101,16 @@ const AccountEditingModalContents: React.FC<AccountEditingModalContents> = ({
   return (
     <div
       aria-modal="true"
-      className="absolute z-50 top-10  shadow-md search-modal-center bg-white w-96 h-96  overflow-y-auto dark:bg-zinc-800"
+      className="search-modal-center absolute top-10  z-50 h-96 w-96 overflow-y-auto bg-white  shadow-md dark:bg-zinc-800"
     >
       <span onClick={resetState}>
         <CloseModalButton toggleModal={toggleModal} />
       </span>
-      <div className="flex flex-col justify-center items-center h-full w-full">
+      <div className="flex h-full w-full flex-col items-center justify-center">
         <h4 className="mb-8">
           {selectedButton === 'changeName' ? '이름 변경' : '패스워드 변경'}
         </h4>
-        <div className="text-red-600  mb-4">{error}</div>
+        <div className="mb-4  text-red-600">{error}</div>
         <label className="mb-4 w-full">
           {selectedButton === 'changeName' ? '이름' : '패스워드'}
           {selectedButton === 'changeName' ? (
@@ -119,7 +119,7 @@ const AccountEditingModalContents: React.FC<AccountEditingModalContents> = ({
               value={name}
               placeholder="여섯 글자 이하"
               onChange={(e) => setName(e.target.value)}
-              className="mt-2 px-4 dark:text-black   h-14 bg-gray-50 border-gray-200 border outline-none w-full"
+              className="mt-2 h-14 w-full   border border-gray-200 bg-gray-50 px-4 outline-none dark:text-black"
             />
           ) : (
             <input
@@ -127,13 +127,13 @@ const AccountEditingModalContents: React.FC<AccountEditingModalContents> = ({
               value={password}
               placeholder="여섯 글자 이상"
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-2 px-4 dark:text-black  h-14 bg-gray-50 border-gray-200 border outline-none w-full"
+              className="mt-2 h-14 w-full  border border-gray-200 bg-gray-50 px-4 outline-none dark:text-black"
             />
           )}
         </label>
         <button
           type="button"
-          className="h-12 mt-4 dark:bg-white dark:text-black dark:hover:bg-zinc-300    bg-zinc-900 hover:bg-zinc-700 text-white transition duration-200 ease-in-out w-full"
+          className="mt-4 h-12 w-full bg-zinc-900 text-white    transition duration-200 ease-in-out hover:bg-zinc-700 dark:bg-white dark:text-black dark:hover:bg-zinc-300"
           onClick={changeSomething}
           disabled={isUpdating}
           aria-label="변경하기"

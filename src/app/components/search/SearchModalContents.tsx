@@ -21,7 +21,7 @@ const SearchModalContents: React.FC<ModalContentsProps> = ({ toggleModal }) => {
   return (
     <div
       aria-modal="true"
-      className="absolute top-10 search-modal-center  bg-white w-11/12 sm:w-8/12 xl:w-1/2 h-80svh overflow-y-auto dark:bg-zinc-900 "
+      className="search-modal-center h-80svh absolute  top-10 w-11/12 overflow-y-auto bg-white dark:bg-zinc-900 sm:w-8/12 xl:w-1/2 "
     >
       <CloseModalButton toggleModal={toggleModal} />
       <input
@@ -36,7 +36,7 @@ const SearchModalContents: React.FC<ModalContentsProps> = ({ toggleModal }) => {
           }
         }}
         placeholder="Search..."
-        className="px-2 border-b border-solid border-black focus:outline-none dark:border-white w-full pb-2 dark:bg-white dark:text-black mt-4 pt-2"
+        className="mt-4 w-full border-b border-solid border-black px-2 pb-2 pt-2 focus:outline-none dark:border-white dark:bg-white dark:text-black"
         ref={input}
       />
       <ul className="mt-4 bg-white dark:bg-zinc-900 dark:text-white ">

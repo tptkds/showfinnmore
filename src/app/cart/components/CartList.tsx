@@ -6,7 +6,7 @@ const CartList: React.FC<CartProps> = ({ cartItems }) => {
   return (
     <>
       <div
-        className="flex items-center justify-between mb-2 sticky bg-zinc-50 shadow py-2 px-4 z-20 rounded"
+        className="sticky z-20 mb-2 flex items-center justify-between rounded bg-zinc-50 px-4 py-2 shadow"
         style={{ top: '75px' }}
       >
         <CartListHeader cartItems={cartItems} />

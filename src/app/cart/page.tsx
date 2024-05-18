@@ -14,7 +14,7 @@ const Cart: React.FC = () => {
       <h2 className="visually-hidden">장바구니</h2>
       <div className="flex flex-col md:flex-row md:justify-between">
         {Object.keys(cartItems).length === 0 ? (
-          <div className="w-full flex justify-center mt-16">
+          <div className="mt-16 flex w-full justify-center">
             <ProductListNavigator />
           </div>
         ) : (

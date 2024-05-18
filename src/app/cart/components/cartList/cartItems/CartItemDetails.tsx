@@ -6,7 +6,7 @@ const CartItemDetails: React.FC<CartItemProps> = ({ cartItem }) => {
   return (
     <div>
       <div className="mb-4 flex items-center ">
-        <div className="relative w-20 h-20 bg-white rounded mr-4">
+        <div className="relative mr-4 h-20 w-20 rounded bg-white">
           <Image
             src={cartItem.product.image}
             alt={cartItem.product.title}
@@ -21,7 +21,7 @@ const CartItemDetails: React.FC<CartItemProps> = ({ cartItem }) => {
         </div>
       </div>
 
-      <div className="flex items-center justify-between	w-full">
+      <div className="flex w-full items-center	justify-between">
         <div className="flex dark:text-black">
           <QuantityAdjuster
             product={cartItem.product}
@@ -30,7 +30,7 @@ const CartItemDetails: React.FC<CartItemProps> = ({ cartItem }) => {
           />
         </div>
         <div>
-          <p aria-label="price" className="font-semibold mr-6">
+          <p aria-label="price" className="mr-6 font-semibold">
             {(cartItem.product.price * 1000 * cartItem.count).toLocaleString()}
             원
           </p>

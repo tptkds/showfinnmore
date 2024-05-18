@@ -5,7 +5,7 @@ const CreateAccount: React.FC = () => {
   return (
     <Link
       href="/account/register"
-      className="underline underline-offset-4  mb-4"
+      className="mb-4 underline  underline-offset-4"
     >
       회원가입
     </Link>

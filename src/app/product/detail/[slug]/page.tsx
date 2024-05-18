@@ -56,8 +56,8 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
 
   return (
     <>
-      <div className=" mt-14 lg:mx-20 flex flex-col items-center md:flex-row md:space-x-12 bg-white dark:bg-zinc-900 px-10 py-8 border dark:border-none">
-        <div className="relative w-3/4 md:w-1/2 aspect-square bg-white">
+      <div className=" mt-14 flex flex-col items-center border bg-white px-10 py-8 dark:border-none dark:bg-zinc-900 md:flex-row md:space-x-12 lg:mx-20">
+        <div className="relative aspect-square w-3/4 bg-white md:w-1/2">
           {curItem ? (
             <Image
               src={curItem?.image}
@@ -68,31 +68,31 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
               priority
             />
           ) : (
-            <Skeleton className="w-1/2 aspect-square rounded-xl" />
+            <Skeleton className="aspect-square w-1/2 rounded-xl" />
           )}
         </div>
-        <div className=" flex flex-col md:w-1/2 h-full">
+        <div className=" flex h-full flex-col md:w-1/2">
           <div className="space-y-4 md:space-y-8">
-            <h2 className="text-base md:text-2xl font-bold">
+            <h2 className="text-base font-bold md:text-2xl">
               {curItem?.title}
             </h2>
-            <p className="text-sm max-h-[260px] block overflow-hidden">
+            <p className="block max-h-[260px] overflow-hidden text-sm">
               {curItem?.description}
             </p>
             <strong className="block text-xl">
               {(Number(curItem?.price) * 1000).toLocaleString() + '원'}
             </strong>
           </div>
-          <div className="md:mx-0 mt-8 float-right sticky md:static  w-full flex flex-col md:flex-row items-center md:space-x-2 text-sm ">
+          <div className="sticky float-right mt-8 flex w-full  flex-col items-center text-sm md:static md:mx-0 md:flex-row md:space-x-2 ">
             <button
               onClick={addToCart}
-              className=" w-full md:w-1/2 border bg-white dark:hover:bg-zinc-200 dark:bg-white p-4 text-black dark:text-black  rounded hover:bg-zinc-100 transition disabled:bg-zinc-400"
+              className=" w-full rounded border bg-white p-4 text-black transition hover:bg-zinc-100 disabled:bg-zinc-400  dark:bg-white dark:text-black dark:hover:bg-zinc-200 md:w-1/2"
             >
               장바구니
             </button>
             <button
               onClick={purchase}
-              className="my-2 md:my-0 order-first	md:order-last w-full md:w-1/2 bg-zinc-900 dark:hover:bg-zinc-200 dark:bg-white dark:disabled:bg-zinc-400 p-4 text-white dark:text-black  rounded hover:bg-zinc-700 transition disabled:bg-zinc-400"
+              className="order-first my-2 w-full	rounded bg-zinc-900 p-4 text-white transition hover:bg-zinc-700 disabled:bg-zinc-400 dark:bg-white dark:text-black dark:hover:bg-zinc-200  dark:disabled:bg-zinc-400 md:order-last md:my-0 md:w-1/2"
             >
               바로 구매
             </button>

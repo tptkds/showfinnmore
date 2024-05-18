@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function Home() {
   return (
-    <div className="absolute top-0 left-0 h-svh w-full">
+    <div className="absolute left-0 top-0 h-svh w-full">
       <Image
         src="/backgrounds/home-bg.jpg"
         alt="garage"

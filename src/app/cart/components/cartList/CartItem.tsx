@@ -7,7 +7,7 @@ const CartItem: React.FC<CartItemProps> = ({ itemId, cartItem, cartItems }) => {
   return (
     <li
       key={itemId}
-      className="shadow bg-zinc-50 dark:bg-zinc-950 mb-6 rounded flex flex-row py-6 px-4"
+      className="mb-6 flex flex-row rounded bg-zinc-50 px-4 py-6 shadow dark:bg-zinc-950"
     >
       <div className="mr-4">
         <ToggleSelectButton

@@ -37,7 +37,7 @@ const Pagenation: React.FC<ProductProps> = ({ category, page }) => {
           (pageNumber) => (
             <li key={pageNumber} className="p-2.5">
               <button
-                className="disabled:text-zinc-300 text-black  text-base dark:text-white dark:disabled:text-zinc-300"
+                className="text-base text-black  disabled:text-zinc-300 dark:text-white dark:disabled:text-zinc-300"
                 onClick={() =>
                   navigateToSelectedProductListPage(category, pageNumber)
                 }

@@ -59,26 +59,26 @@ const ResetPassword = () => {
   };
   return (
     <>
-      <div className="mt-14 flex flex-col justify-center w-full items-center">
+      <div className="mt-14 flex w-full flex-col items-center justify-center">
         <div className="my-8 ">
           <h2>패스워드 찾기</h2>
         </div>
-        <div className="text-red-600  mb-4">{error}</div>
+        <div className="mb-4  text-red-600">{error}</div>
         <form
           onSubmit={sendEmail}
-          className="flex flex-col items-center w-full"
+          className="flex w-full flex-col items-center"
         >
           <input
             type="email"
             placeholder="이메일"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="px-4   h-14 bg-gray-50  dark:text-black border-gray-200 border mb-6 outline-none w-11/12 sm:w-4/5 md:w-1/2 lg:w-2/5 xl:w-1/3 "
+            className="mb-6   h-14 w-11/12  border border-gray-200 bg-gray-50 px-4 outline-none dark:text-black sm:w-4/5 md:w-1/2 lg:w-2/5 xl:w-1/3 "
           />
           <button
             type="submit"
             disabled={isResetting}
-            className="h-12  bg-zinc-900 dark:bg-white dark:text-black dark:hover:bg-zinc-300  text-white transition duration-200 ease-in-out  w-11/12 sm:w-4/5 md:w-1/2 lg:w-2/5 xl:w-1/3"
+            className="h-12  w-11/12 bg-zinc-900 text-white transition  duration-200 ease-in-out dark:bg-white dark:text-black  dark:hover:bg-zinc-300 sm:w-4/5 md:w-1/2 lg:w-2/5 xl:w-1/3"
             aria-label="비밀번호 재설정하기"
           >
             {isResetting ? '이메일 보내는 중..' : '비밀번호 재설정'}
@@ -86,12 +86,12 @@ const ResetPassword = () => {
         </form>
       </div>
       <div
-        className="w-full h-full fixed top-0 left-0 hidden transition-all"
+        className="fixed left-0 top-0 hidden h-full w-full transition-all"
         ref={modal}
         role="alertdialog"
         aria-modal="true"
       >
-        <div className="absolute z-50 top-10  shadow-md search-modal-center bg-white w-96 h-32 shadow-lg flex items-center justify-center  overflow-y-auto dark:text-white  dark:bg-zinc-900">
+        <div className="search-modal-center absolute top-10  z-50 flex h-32 w-96 items-center justify-center overflow-y-auto bg-white shadow-lg  shadow-md dark:bg-zinc-900  dark:text-white">
           <p>비밀번호 재설정 이메일이 전송되었습니다.</p>
         </div>
       </div>

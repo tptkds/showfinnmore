@@ -5,7 +5,7 @@ export default function ForgotPassword() {
   return (
     <Link
       href="/account/reset-password"
-      className="underline underline-offset-4  mb-4"
+      className="mb-4 underline  underline-offset-4"
     >
       패스워드 찾기
     </Link>

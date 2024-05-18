@@ -9,7 +9,7 @@ const UserSettingsButtons: React.FC = () => {
     <>
       <button
         type="button"
-        className="py-2 dark:bg-white dark:text-black dark:hover:bg-zinc-300  bg-white hover:bg-zinc-100 text-white transition duration-200 ease-in-out w-[240px] md:w-full rounded"
+        className="w-[240px] rounded border bg-white py-2 text-sm text-black transition duration-200 ease-in-out hover:bg-zinc-100 md:w-full"
         onClick={() => {
           toggleModal(isModalOpen, setIsModalOpen);
           setSelectedButton('changeName');
@@ -20,7 +20,7 @@ const UserSettingsButtons: React.FC = () => {
       </button>
       <button
         type="button"
-        className="py-2 mt-4  dark:bg-white dark:text-black dark:hover:bg-zinc-300  bg-white hover:bg-zinc-100 text-white transition duration-200 ease-in-out w-[240px] md:w-full rounded"
+        className="mt-4 w-[240px]  rounded border bg-white py-2 text-sm text-black transition duration-200 ease-in-out hover:bg-zinc-100 md:w-full"
         onClick={() => {
           toggleModal(isModalOpen, setIsModalOpen);
           setSelectedButton('changePassword');

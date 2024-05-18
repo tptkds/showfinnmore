@@ -48,12 +48,12 @@ const User: React.FC = () => {
         </div>
       )}
       <div
-        className="w-full h-full fixed top-0 left-0 hidden transition-all"
+        className="fixed left-0 top-0 hidden h-full w-full transition-all"
         ref={modal}
         role="alertdialog"
         aria-modal="true"
       >
-        <div className="absolute z-50 top-10  shadow-md search-modal-center bg-white w-80 h-32 shadow-lg flex items-center justify-center  overflow-y-auto dark:text-white  dark:bg-zinc-900">
+        <div className="search-modal-center absolute top-10  z-50 flex h-32 w-80 items-center justify-center overflow-y-auto bg-white shadow-lg  shadow-md dark:bg-zinc-900  dark:text-white">
           <p>정상적으로 로그아웃 되었습니다.</p>
         </div>
       </div>

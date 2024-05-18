@@ -3,7 +3,7 @@ import React from 'react';
 
 const ReturnToLogin: React.FC = () => {
   return (
-    <Link href="/account/login" className="underline underline-offset-4 mb-4">
+    <Link href="/account/login" className="mb-4 underline underline-offset-4">
       로그인 페이지
     </Link>
   );

@@ -27,14 +27,14 @@ interface RootLayoutProps {
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang="ko" suppressHydrationWarning>
-      <body className={'overflow-x-hidden h-dvh relative ' + roboto.className}>
+      <body className={'relative h-dvh overflow-x-hidden ' + roboto.className}>
         <AppProviders>
           <AuthProvider>
             <DataInitializer>
               <div className="relative h-dvh dark:bg-zinc-900 dark:text-white ">
-                <div className="bg-neutral-100	min-h-full dark:bg-zinc-900 dark:text-white pb-8">
+                <div className="min-h-full	bg-neutral-100 pb-8 dark:bg-zinc-900 dark:text-white">
                   <Header />
-                  <main className="z-40 mt-12 px-6 lg:px-16 min-w-[360px] max-w-[1550px] mx-auto">
+                  <main className="z-40 mx-auto mt-12 min-w-[360px] max-w-[1550px] px-6 lg:px-16">
                     {children}
                     <SpeedInsights />
                   </main>
@@ -43,7 +43,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
                   <Footer />
                 </div>
 
-                <div className="fixed bottom-10 right-10 bg-white shadow-lg rounded-full bg-opacity-80 dark:bg-opacity-80 z-20 dark:bg-zinc-700">
+                <div className="fixed bottom-10 right-10 z-20 rounded-full bg-white bg-opacity-80 shadow-lg dark:bg-zinc-700 dark:bg-opacity-80">
                   <Search />
                 </div>
               </div>

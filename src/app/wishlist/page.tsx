@@ -15,7 +15,7 @@ const WishlistComponent: React.FC = () => {
   }, [status]);
   return (
     <div className="pb-24">
-      <div className="mt-14 mb-4 flex flex-col justify-center w-full items-center">
+      <div className="mb-4 mt-14 flex w-full flex-col items-center justify-center">
         <h2>Wish List</h2>
       </div>
       <List />

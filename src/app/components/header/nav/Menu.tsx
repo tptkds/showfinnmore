@@ -25,7 +25,7 @@ const Menu: React.FC = () => {
       <div className="h-full">
         <button
           type="button"
-          className="flex lg:hidden ml-8 lg:m-0 h-full items-center "
+          className="ml-8 flex h-full items-center lg:m-0 lg:hidden "
           onClick={toggleMenu}
           onMouseOver={openMenu}
           onMouseLeave={hiddenMenu}
@@ -37,7 +37,7 @@ const Menu: React.FC = () => {
       </div>
 
       <ul
-        className=" hidden text-sm dark:bg-opacity-60 bg-opacity-80 font-normal	 shadow-md absolute bg-zinc-100 dark:bg-black dark:lg:bg-transparent dark:text-white p-4 top-full left-4 lg:basis-5/6 lg:shadow-none lg:bg-transparent lg:static lg:p-0 lg:flex lg:justify-between   lg:w-full lg:min-w-220"
+        className=" lg:min-w-220 absolute left-4 top-full hidden	 bg-zinc-100 bg-opacity-80 p-4 text-sm font-normal shadow-md dark:bg-black dark:bg-opacity-60 dark:text-white lg:static lg:flex lg:w-full lg:basis-5/6 lg:justify-between lg:bg-transparent lg:p-0   lg:shadow-none dark:lg:bg-transparent"
         ref={menu}
         onMouseOver={openMenu}
         onMouseLeave={hiddenMenu}
@@ -55,7 +55,7 @@ const Menu: React.FC = () => {
           </li>
         ))}
       </ul>
-      <div className="flex p-2 lg:p-0 lg:basis-1/6">
+      <div className="flex p-2 lg:basis-1/6 lg:p-0">
         <DarkModeToggleButton />
       </div>
     </>

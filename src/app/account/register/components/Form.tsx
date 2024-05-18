@@ -20,14 +20,14 @@ const Form: React.FC = () => {
 
   return (
     <>
-      <div className="text-red-600 mb-4 errorMessage text-center">
+      <div className="errorMessage mb-4 text-center text-red-600">
         {errorMessage}
       </div>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col items-center w-full"
+        className="flex w-full flex-col items-center"
       >
-        <div className="flex flex-col items-center w-full">
+        <div className="flex w-full flex-col items-center">
           <input
             name="displayName"
             type="displayName"
@@ -35,7 +35,7 @@ const Form: React.FC = () => {
             placeholder="이름 (6글자 이하)"
             autoComplete="username"
             onChange={(e) => setDisplayName(e.target.value)}
-            className="px-4   h-14 bg-gray-50  dark:text-black border-gray-200 border mb-6 outline-none w-11/12 sm:w-4/5 md:w-1/2 lg:w-2/5 xl:w-1/3 "
+            className="mb-6   h-14 w-11/12  border border-gray-200 bg-gray-50 px-4 outline-none dark:text-black sm:w-4/5 md:w-1/2 lg:w-2/5 xl:w-1/3 "
           />
           <input
             name="email"
@@ -44,7 +44,7 @@ const Form: React.FC = () => {
             placeholder="이메일"
             autoComplete="username"
             onChange={(e) => setEmail(e.target.value)}
-            className="px-4   h-14 bg-gray-50  dark:text-black border-gray-200 border mb-6 outline-none w-11/12 sm:w-4/5 md:w-1/2 lg:w-2/5 xl:w-1/3 "
+            className="mb-6   h-14 w-11/12  border border-gray-200 bg-gray-50 px-4 outline-none dark:text-black sm:w-4/5 md:w-1/2 lg:w-2/5 xl:w-1/3 "
           />
           <input
             name="password"
@@ -53,13 +53,13 @@ const Form: React.FC = () => {
             placeholder="패스워드 (6글자 이상)"
             autoComplete="current-password"
             onChange={(e) => setPassword(e.target.value)}
-            className="px-4  h-14 bg-gray-50  dark:text-black border-gray-200 border outline-none w-11/12 sm:w-4/5 md:w-1/2 lg:w-2/5 xl:w-1/3 "
+            className="h-14  w-11/12 border  border-gray-200 bg-gray-50 px-4 outline-none dark:text-black sm:w-4/5 md:w-1/2 lg:w-2/5 xl:w-1/3 "
           />
         </div>
-        <div className="flex flex-col items-center w-full my-8">
+        <div className="my-8 flex w-full flex-col items-center">
           <button
             type="submit"
-            className="dark:bg-white dark:text-black dark:hover:bg-zinc-300 h-12 bg-zinc-900   text-white  transition duration-200 ease-in-out  w-11/12 sm:w-4/5 md:w-1/2 lg:w-2/5 xl:w-1/3"
+            className="h-12 w-11/12 bg-zinc-900 text-white transition   duration-200  ease-in-out dark:bg-white dark:text-black  dark:hover:bg-zinc-300 sm:w-4/5 md:w-1/2 lg:w-2/5 xl:w-1/3"
             disabled={signUpStatus === 'loading'}
             aria-label="회원가입하기"
           >
