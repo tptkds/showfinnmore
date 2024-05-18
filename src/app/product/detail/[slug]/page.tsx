@@ -56,7 +56,7 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
 
   return (
     <>
-      <div className=" mt-14 flex flex-col items-center border bg-white px-10 py-8 dark:border-none dark:bg-zinc-900 md:flex-row md:space-x-12 lg:mx-20">
+      <div className=" flex flex-col items-center space-y-8 border bg-white px-10 dark:border-none dark:bg-zinc-900 md:flex-row md:space-x-12 md:space-y-0 md:py-8 lg:mx-20">
         <div className="relative aspect-square w-3/4 bg-white md:w-1/2">
           {curItem ? (
             <Image

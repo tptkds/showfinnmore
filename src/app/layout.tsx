@@ -39,7 +39,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
                     <SpeedInsights />
                   </main>
                 </div>
-                <div className="border-t ">
+                <div className="border-t dark:border-black">
                   <Footer />
                 </div>
 

@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <footer className=" relative flex flex-col items-center bg-white   px-4 py-14 shadow-md  dark:bg-zinc-900 dark:text-white sm:px-12">
+    <footer className=" relative flex flex-col items-center bg-white   px-4 py-14 shadow-md  dark:bg-zinc-700 dark:text-white sm:px-12">
       <ul className="mb-4 flex text-lg">
         <li
           className="mr-4 "

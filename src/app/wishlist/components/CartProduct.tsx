@@ -16,7 +16,7 @@ export default function CartProduct({
   return (
     <li
       key={product.id}
-      className="rounded-md border bg-white p-2 dark:bg-black"
+      className="rounded-md border bg-white p-4 dark:border-none dark:bg-black"
     >
       <div className="mb-3  aspect-square	 w-full border bg-white">
         <Link
