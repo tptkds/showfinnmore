@@ -15,7 +15,7 @@ const signUpFirebase = async ({
     const userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
-      password
+      password,
     );
     const user = userCredential.user;
     if (displayName !== '') await updateDisplayNameFirebase(user, displayName);

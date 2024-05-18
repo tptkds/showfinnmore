@@ -6,12 +6,12 @@ import { auth } from '../../firebaseConfig';
 
 export const createUserOnFireBase = async (
   email: FormDataEntryValue,
-  password: FormDataEntryValue
+  password: FormDataEntryValue,
 ) => {
   const res = await createUserWithEmailAndPassword(
     auth,
     email.toString(),
-    password.toString()
+    password.toString(),
   )
     .then((userCredential) => userCredential.user)
     .catch((error) => error);
@@ -21,7 +21,7 @@ export const createUserOnFireBase = async (
 
 export const signInUserWithEmailAndPass = async (
   email: FormDataEntryValue,
-  password: FormDataEntryValue
+  password: FormDataEntryValue,
 ) => {
   signInWithEmailAndPassword(auth, email.toString(), password.toString())
     .then((userCredential) => {
@@ -40,7 +40,7 @@ export const firebaseSignIn = async (email: string, password: string) => {
     const userCredential = await signInWithEmailAndPassword(
       auth,
       email,
-      password
+      password,
     );
     const user = userCredential.user;
     if (user) {

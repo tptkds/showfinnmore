@@ -5,13 +5,13 @@ interface SignInResponse {
 }
 const signInFirebase = async (
   email: string,
-  password: string
+  password: string,
 ): Promise<SignInResponse | null> => {
   try {
     const userCredential = await signInWithEmailAndPassword(
       auth,
       email,
-      password
+      password,
     );
     const user: User = userCredential.user;
     if (user) {

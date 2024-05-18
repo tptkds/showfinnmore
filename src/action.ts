@@ -40,7 +40,7 @@ export async function createUser(formData: FormData) {
 
   const res = await createUserOnFireBase(
     validatedFields.data.email,
-    validatedFields.data.password
+    validatedFields.data.password,
   )
     .then(redirect('/'))
     .catch((error) => error);

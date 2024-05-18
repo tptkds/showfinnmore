@@ -2,7 +2,7 @@ import { User, updateProfile } from 'firebase/auth';
 
 const updateDisplayNameFirebase = async (
   user: User,
-  displayName: string
+  displayName: string,
 ): Promise<Error | string> => {
   try {
     await updateProfile(user, {

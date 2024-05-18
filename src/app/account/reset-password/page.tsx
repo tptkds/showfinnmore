@@ -35,7 +35,7 @@ const ResetPassword = () => {
           switch (errorCode) {
             case 'auth/network-request-failed':
               setError(
-                '네트워크 연결에 실패했어요. 잠시 후에 다시 시도해 주세요.'
+                '네트워크 연결에 실패했어요. 잠시 후에 다시 시도해 주세요.',
               );
               return;
             case 'auth/invalid-email':

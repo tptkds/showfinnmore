@@ -1,5 +1,4 @@
 import { CATEGORIES } from '@/constants/product';
-import { Dispatch, SetStateAction } from 'react';
 
 export interface Metadata {
   title: string;

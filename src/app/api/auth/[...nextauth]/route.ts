@@ -21,7 +21,7 @@ const authOptions: NextAuthOptions = {
         try {
           const result = await signInFirebase(
             credentials.email,
-            credentials.password
+            credentials.password,
           );
           if (result) {
             const { user } = result;

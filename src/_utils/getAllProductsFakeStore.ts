@@ -6,7 +6,7 @@ export const getAllProductsFakeStore = async (): Promise<Product[]> => {
 
     if (!res.ok) {
       throw new Error(
-        `FakeStoreAPI Server responded with ${res.status}: ${res.statusText}`
+        `FakeStoreAPI Server responded with ${res.status}: ${res.statusText}`,
       );
     }
 

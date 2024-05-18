@@ -86,7 +86,7 @@ const Detail: React.FC<DetailProps> = ({ params }) => {
           <div className="md:mx-0 mt-8 float-right sticky md:static  w-full flex flex-col md:flex-row items-center md:space-x-2 text-sm ">
             <button
               onClick={addToCart}
-              className=" w-full md:w-1/2 border bg-white dark:hover:bg-zinc-200 dark:bg-white dark:disabled:bg-zinc-400 p-4 text-black dark:text-black  rounded hover:bg-zinc-700 transition disabled:bg-zinc-400"
+              className=" w-full md:w-1/2 border bg-white dark:hover:bg-zinc-200 dark:bg-white p-4 text-black dark:text-black  rounded hover:bg-zinc-100 transition disabled:bg-zinc-400"
             >
               장바구니
             </button>

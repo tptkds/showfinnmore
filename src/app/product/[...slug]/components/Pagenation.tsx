@@ -12,7 +12,7 @@ const Pagenation: React.FC<ProductProps> = ({ category, page }) => {
   const { products } = useProduct();
   const productsInCategory: Product[] = filteredProductsByCategory(
     products,
-    CATEGORIES[category]
+    CATEGORIES[category],
   );
   const total: number = Math.ceil(productsInCategory.length / ITEMS_PER_PAGE);
 
@@ -47,7 +47,7 @@ const Pagenation: React.FC<ProductProps> = ({ category, page }) => {
                 {pageNumber}
               </button>
             </li>
-          )
+          ),
         )}
         <li className="p-2.5">
           <button

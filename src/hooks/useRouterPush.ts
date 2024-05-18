@@ -9,7 +9,7 @@ const useRouterPush = () => {
 
   const navigateToSelectedProductListPage = (
     category: string,
-    page: number
+    page: number,
   ) => {
     router.push(`/product/${category}/${page}`);
   };

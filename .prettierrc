@@ -1,4 +1,5 @@
 {
   "semi": true,
-  "singleQuote": true
+  "singleQuote": true,
+  "twConfig": "./tailwind.config.js"
 }

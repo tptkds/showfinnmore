@@ -51,7 +51,7 @@ export default function CartProduct({
           {(product.price * 1000).toLocaleString()}
         </strong>
       </div>
-      <div className="flex mt-4   px-2">
+      <div className="flex mt-4 px-2">
         <div className="mr-2">
           <WishlistButton product={product} wishlist={wishlist} />
         </div>

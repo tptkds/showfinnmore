@@ -7,7 +7,7 @@ import CartProduct from './CartProduct';
 
 const WishlistComponent: React.FC = () => {
   const wishlist: WishlistItems = useAppSelector(
-    (state) => state.wishlist.wishlistItems
+    (state) => state.wishlist.wishlistItems,
   );
   const keysOfWishlist = [...Object.keys(wishlist)];
   const cartItems: CartItems = useAppSelector((state) => state.cart.cartItems);

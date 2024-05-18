@@ -10,7 +10,7 @@ const useSignUpUser = () => {
   const signUpUser = async (
     email: string,
     password: string,
-    displayName: string
+    displayName: string,
   ) => {
     setStatus('loading');
     const validatedFields = signUpSchema.safeParse({
@@ -21,7 +21,7 @@ const useSignUpUser = () => {
 
     if (!validatedFields.success) {
       const errorMessages = validatedFields.error.issues.map(
-        (issue: ZodIssue) => issue.message
+        (issue: ZodIssue) => issue.message,
       );
       setStatus('error');
       const combinedMessage = errorMessages.join('\n');

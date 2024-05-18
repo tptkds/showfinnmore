@@ -20,7 +20,7 @@ const useSignInUser = () => {
 
     if (!validatedFields.success) {
       const errorMessages = validatedFields.error.issues.map(
-        (issue) => issue.message
+        (issue) => issue.message,
       );
       const combinedMessage = errorMessages.join('\n');
       setStatus('error');

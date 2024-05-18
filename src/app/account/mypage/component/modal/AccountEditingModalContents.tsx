@@ -80,7 +80,7 @@ const AccountEditingModalContents: React.FC<AccountEditingModalContents> = ({
               toggleModal();
               // dispatch(setUserInfo(null));
               alert(
-                'Password has been successfully changed. Please log in again'
+                'Password has been successfully changed. Please log in again',
               );
               auth.signOut();
               router.push('/account/login');
@@ -141,8 +141,8 @@ const AccountEditingModalContents: React.FC<AccountEditingModalContents> = ({
           {isUpdating
             ? '변경 중...'
             : selectedButton === 'changeName'
-            ? '이름 변경하기'
-            : '패스워드 변경하기'}
+              ? '이름 변경하기'
+              : '패스워드 변경하기'}
         </button>
       </div>
     </div>

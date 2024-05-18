@@ -5,7 +5,7 @@ import filteredProductsByCategory from '@/utils/filteredProductsByCategory';
 const getProductsInPage = (
   category: CategoryKey,
   page: number,
-  products: Product[]
+  products: Product[],
 ) => {
   let filteredProducts: Product[] = products;
   filteredProducts = filteredProductsByCategory(products, CATEGORIES[category]);

@@ -77,7 +77,7 @@ const useStore = () => {
   const incrementQuantity = (
     product: Product,
     count: number,
-    isChecked: boolean
+    isChecked: boolean,
   ) => {
     if (count + 1 >= 10000) return;
     const newCartItem = {
@@ -92,7 +92,7 @@ const useStore = () => {
   const decrementQuantity = (
     product: Product,
     count: number,
-    isChecked: boolean
+    isChecked: boolean,
   ) => {
     if (count - 1 < 1) return;
     const newCartItem = {
@@ -107,7 +107,7 @@ const useStore = () => {
   const changeQuantity = (
     product: Product,
     newCount: number,
-    isChecked: boolean
+    isChecked: boolean,
   ) => {
     const newCartItem = {
       product: product,
