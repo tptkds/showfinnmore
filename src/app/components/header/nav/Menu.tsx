@@ -4,31 +4,28 @@ import DarkModeToggleButton from './DarkModeToggleButton';
 import Link from 'next/link';
 import { CATEGORIES } from '@/constants/product';
 import { GrMenu } from 'react-icons/gr';
+import { RiCloseLargeLine } from 'react-icons/ri';
 
 const Menu: React.FC = () => {
   const menu = useRef<HTMLUListElement>(null);
-  const toggleMenu = () => {
-    if (menu.current?.classList.contains('hidden')) {
-      menu.current?.classList.remove('hidden');
-    } else {
-      menu.current?.classList.add('hidden');
-    }
-  };
+
   const openMenu = () => {
-    menu.current?.classList.remove('hidden');
+    menu.current?.classList.remove('-translate-x-full');
+    menu.current?.classList.add('block', 'translate-x-0');
   };
+
   const hiddenMenu = () => {
-    menu.current?.classList.add('hidden');
+    menu.current?.classList.remove('block', 'translate-x-0');
+    menu.current?.classList.add('-translate-x-full');
   };
+
   return (
     <>
       <div className="h-full">
         <button
           type="button"
-          className="ml-8 flex h-full items-center lg:m-0 lg:hidden "
-          onClick={toggleMenu}
-          onMouseOver={openMenu}
-          onMouseLeave={hiddenMenu}
+          className="ml-8 flex h-full items-center lg:m-0 lg:hidden"
+          onClick={openMenu}
           style={{ fontSize: '20px' }}
           aria-label="메뉴"
         >
@@ -37,28 +34,33 @@ const Menu: React.FC = () => {
       </div>
 
       <ul
-        className=" lg:min-w-220 absolute left-4 top-full hidden	 bg-zinc-100 bg-opacity-80 p-4 text-sm font-normal shadow-md dark:bg-black dark:bg-opacity-60 dark:text-white lg:static lg:flex lg:w-full lg:basis-5/6 lg:justify-between lg:bg-transparent lg:p-0   lg:shadow-none dark:lg:bg-transparent"
+        className="fixed left-0 top-0  h-svh min-w-[240px] -translate-x-full transform bg-white bg-zinc-100 p-4 pt-12 text-sm font-normal shadow-md transition-transform duration-300 dark:bg-black  dark:text-white lg:static lg:flex lg:h-auto lg:w-full lg:basis-5/6 lg:justify-between lg:bg-transparent lg:bg-opacity-80 lg:p-0 lg:pt-0 lg:shadow-none dark:lg:bg-transparent"
         ref={menu}
-        onMouseOver={openMenu}
-        onMouseLeave={hiddenMenu}
       >
-        {[...Object.keys(CATEGORIES)].map((catrgory) => (
-          <li key={catrgory} className="p-2 lg:p-0">
+        <button className="absolute right-4 top-4 text-xl" onClick={hiddenMenu}>
+          <RiCloseLargeLine />
+        </button>
+        {Object.keys(CATEGORIES).map((category) => (
+          <li key={category} className="p-2 lg:p-0">
             <Link
-              href={`/product/${catrgory}/1`}
+              href={`/product/${category}/1`}
               onClick={() => {
-                toggleMenu();
+                hiddenMenu();
               }}
             >
-              {catrgory.replace(/\b\w/g, (match) => match.toUpperCase())}
+              {category.replace(/\b\w/g, (match) => match.toUpperCase())}
             </Link>
           </li>
         ))}
+        <div className="flex p-2 lg:basis-1/6 lg:p-0">
+          <DarkModeToggleButton />
+        </div>
       </ul>
-      <div className="flex p-2 lg:basis-1/6 lg:p-0">
+      <div className="flex hidden p-2 lg:basis-1/6 lg:p-0 xl:block">
         <DarkModeToggleButton />
       </div>
     </>
   );
 };
+
 export default Menu;

@@ -4,7 +4,7 @@ import Nav from './header/Nav';
 
 const Header: React.FC = () => {
   return (
-    <header className=" relative z-10 sm:sticky sm:top-[-37px]">
+    <header className="relative z-10 sm:sticky sm:top-[-37px]">
       <Notice />
       <Nav />
     </header>

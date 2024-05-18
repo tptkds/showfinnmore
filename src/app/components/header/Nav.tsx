@@ -7,7 +7,7 @@ import CartLink from './nav/CartLink';
 import MyPage from './nav/MyPage';
 const Nav: React.FC = () => {
   return (
-    <nav className="min-width-313 header-bottom relative sticky flex h-16 items-center bg-zinc-100 bg-opacity-80 shadow dark:bg-black	 dark:bg-opacity-60 dark:text-white sm:m-4 sm:rounded-xl">
+    <nav className="min-width-313 header-bottom sticky flex h-16 items-center bg-zinc-100 bg-opacity-80 shadow dark:bg-black	 dark:bg-opacity-60 dark:text-white sm:m-4 sm:rounded-xl">
       <div className="lg:order-0 lg:order-0 order-1 flex  basis-1/3 justify-center lg:ml-8 lg:justify-normal">
         <h1 className="flex hidden items-center font-normal sm:block lg:mr-2 ">
           <LogoLink />
